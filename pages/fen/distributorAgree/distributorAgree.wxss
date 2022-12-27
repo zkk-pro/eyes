@@ -1,0 +1,39 @@
+/* pages/fen/distributorAgree/distributorAgree.wxss */
+page{
+    background: #FFF;
+}
+.richText{
+    background: #fff;
+    padding: 30rpx;
+    padding-bottom: 200rpx;
+}
+.bottom-wrap{
+    width:100%;
+    padding: 0 60rpx 20rpx 60rpx;
+    position: fixed;
+    bottom: 0rpx;
+    left: 0rpx;
+    background: #FFF;
+    border-top: 1px solid #EEEEEE;
+}
+.bottom-wrap .choice-area{
+    width: 100%;
+    padding: 20rpx 0rpx;
+}
+.bottom-wrap .choice-area .iconfont{
+    color: #FEA034;
+    margin-right: 15rpx;
+}
+.bottom-wrap .choice-area text:last-child{
+    color: #FEA034;
+    margin-right: 15rpx;
+}
+.bottom-wrap .btn-click{
+    width: 100%;
+    height: 75rpx;
+    line-height: 75rpx;
+    border-radius: 75rpx;
+    text-align: center;
+    background: linear-gradient(to right,#FEA034,#FE811B);
+    color: #FFF;
+}

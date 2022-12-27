@@ -1,0 +1,13 @@
+<!--pages/logins/logins.wxml-->
+<view class='login-btn-wrap flex-column'>
+    <view class='login-icon'>
+        <image mode="widthFix" src="../../static/images/weixin_logo.png" />
+    </view>
+    <view class="login-info-wrap flex-column">
+        <text class="login-title">微信授权</text>
+        <text class="login-tip">本小程序需要您授权头像昵称等信息</text>
+    </view>
+    <view class='login-btn'>
+        <button bindtap="getUserProfile" >允许</button>
+    </view>
+</view>

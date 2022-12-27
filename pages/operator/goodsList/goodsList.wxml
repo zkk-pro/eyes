@@ -1,0 +1,51 @@
+<view class="wrap">
+    <view class="postiton">
+        <view class="top-nav flex-row space-between align-items-center">
+            <picker bindchange="bindNameChange"  value="{{optometristIndex}}" range="{{optometristInfo}}" range-key="name">
+                <view class="flex-row flex-start align-items-center">
+                    <text class="iconfont icon-mendian"></text>
+                    <text>{{optometristName}}</text>
+                    <text class="iconfont icon-xiasanjiao1"></text>
+                </view>
+            </picker>
+        </view>
+
+        <view class="change-nav flex-row space-between align-items-end">
+            <text bindtap="changeNav" data-type="0" class="{{type == 0 ? 'cur' : ''}}">普通商城</text>
+            <text bindtap="changeNav" data-type="1" class="{{type == 1 ? 'cur' : ''}}">抽奖商城</text>
+            <text bindtap="changeNav" data-type="2" class="{{type == 2 ? 'cur' : ''}}">秒杀商城</text>
+        </view>
+    </view>
+
+    <view class="goods-list">
+        <block wx:for="{{list}}">
+            <view bindtap="isShowMore" data-index="{{index}}" class="goods">
+                <view class="name flex-row space-between">
+                    <text>{{item.goods_name}}</text>
+                    <text wx:if="{{item.is_show_more == 1 && item.propertyGroups}}" class="iconfont icon-triangle-left"></text>
+                    <text wx:if="{{item.is_show_more != 1 && item.propertyGroups}}" class="iconfont icon-triangle-right"></text>
+                </view>
+                <block wx:if="{{item.propertyGroups}}">
+                    <block wx:for="{{item.propertyGroups}}" wx:for-item="property" wx:for-index="propertyIndex">
+                        <view wx:if="{{ propertyIndex == 0 || (propertyIndex > 0 && item.is_show_more == 1)}}" class="perproty flex-row space-between">
+                            <text>规格：{{property.property_text}}</text>
+                            <text>库存：{{property.inventory ? property.inventory : 0}}件</text>
+                            <text>销量：{{property.sale_quantity  ? property.sale_quantity : 0}}件</text>
+                        </view>
+
+                    </block>
+
+                </block>
+                <block wx:else>
+                    <view  class="perproty flex-row space-between align-items-center">
+                        <text>规格：统一规格</text>
+                        <text>库存：{{item.inventory ? item.inventory : 0}}件</text>
+                        <text>销量：{{item.sale_quantity ? item.sale_quantity : 0}}件</text>
+                    </view>
+                </block>
+
+            </view>
+        </block>
+    </view>
+    <view class="bottom_text">{{bottom_text}}</view>
+</view>

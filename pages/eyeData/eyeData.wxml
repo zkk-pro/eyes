@@ -1,0 +1,118 @@
+<view class="wrap">
+  <view class="list">
+    <view class="item" wx:for="{{listData}}" wx:key="id">
+      <view class="user-data">
+        <view class="data-row">
+          <view class="row-content">
+            <view class="label">度数/球镜/SPH左(左)</view>
+            <view>{{item.degree_left}} </view>
+          </view>
+          <view class="row-content">
+            <view class="label">度数/球镜/SPH左(右)</view>
+            <view>{{item.degree_right}} </view>
+          </view>
+        </view>
+        <view class="data-row">
+          <view class="row-content">
+            <view class="label">散光/柱镜/CYL(左)</view>
+            <view>{{item.astigmia_left}} </view>
+          </view>
+          <view class="row-content">
+            <view class="label">散光/柱镜/CYL(右)</view>
+            <view>
+              <input class="{{isEdit?'edit-val': '' }}" type="text" value="{{item.astigmia_right}}" disabled="{{!isEdit}}" />
+            </view>
+          </view>
+        </view>
+        <view class="data-row">
+          <view class="row-content">
+            <view class="label">轴位/AXIS(左)</view>
+            <view>{{item.axial_left}} </view>
+          </view>
+          <view class="row-content">
+            <view class="label">轴位/AXIS(右)</view>
+            <view>
+              <input class="{{isEdit?'edit-val': '' }}" type="text" value="{{item.axial_right}}" disabled="{{!isEdit}}" />
+            </view>
+          </view>
+        </view>
+        <view class="data-row">
+          <view class="row-content">
+            <view class="label">瞳距</view>
+            <view>{{item.pd}} </view>
+          </view>
+        </view>
+        <view class="data-row flex-right">
+          <!-- <button class="edit-btn" bindtap="editHandler" wx:if="{{isEdit}}">保存</button> -->
+          <button class="edit-btn" data-item="{{item}}" bindtap="editHandler">编辑信息</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <button class="add-btn" bindtap="addData">添加数据</button>
+</view>
+
+<view class="edit-modal" wx:if="{{showModal}}">
+  <view class="mask"></view>
+  <view class="modal-content">
+    <view class="modal-title">{{isEdit ? '编辑': '新增'}}</view>
+    <view class="">
+      <view class="user-data">
+        <view class="data-row">
+          <view class="row-content">
+            <view class="label">度数/球镜/SPH左(左)</view>
+            <view class="edit-val">
+              <input type="text" value="{{currentData.degree_left}}" data-key="degree_left" bindinput="inputHandler" />
+            </view>
+          </view>
+          <view class="row-content">
+            <view class="label">度数/球镜/SPH左(右)</view>
+            <view>
+              <input class="edit-val" type="text" value="{{currentData.degree_right}}" data-key="degree_right" bindinput="inputHandler" />
+            </view>
+          </view>
+        </view>
+        <view class="data-row">
+          <view class="row-content">
+            <view class="label">散光/柱镜/CYL(左)</view>
+            <view>
+              <input class="edit-val" type="text" value="{{currentData.astigmia_left}}" data-key="astigmia_left" bindinput="inputHandler" />
+            </view>
+          </view>
+          <view class="row-content">
+            <view class="label">散光/柱镜/CYL(右)</view>
+            <view>
+              <input class="edit-val" type="text" value="{{currentData.astigmia_right}}" data-key="astigmia_right" bindinput="inputHandler" />
+            </view>
+          </view>
+        </view>
+        <view class="data-row">
+          <view class="row-content">
+            <view class="label">轴位/AXIS(左)</view>
+            <view>
+              <input class="edit-val" type="text" value="{{currentData.axial_left}}" data-key="axial_left" bindinput="inputHandler" />
+            </view>
+          </view>
+          <view class="row-content">
+            <view class="label">轴位/AXIS(右)</view>
+            <view>
+              <input class="edit-val" type="text" value="{{currentData.axial_right}}" data-key="axial_right" bindinput="inputHandler" />
+            </view>
+          </view>
+        </view>
+        <view class="data-row">
+          <view class="row-content">
+            <view class="label">瞳距</view>
+            <view>
+              <input class="edit-val" type="text" value="{{currentData.pd}}" data-key="pd" bindinput="inputHandler" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-group">
+      <button bindtap="onCancel">取消</button>
+      <button class="confirm-btn" bindtap="onConfirm">确定</button>
+    </view>
+  </view>
+</view>

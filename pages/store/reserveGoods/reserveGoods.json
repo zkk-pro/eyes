@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "铺货清单",
+  "navigationBarBackgroundColor":"#FE992E",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

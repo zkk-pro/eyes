@@ -1,0 +1,43 @@
+<view class="my-wrap">
+    <view class="account-area">
+      <view class="type-area">
+        <text class="type-name">类型</text>
+        <view class="type-right">
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{typeArray}}">
+              <text class="type">{{typeArray[typeIndex]}}</text>
+          </picker>
+          <text class="iconfont icon-zuoyou"></text>
+        </view>
+      </view>
+      <block wx:if="{{account_type == 1}}">
+        <view class="input-area">
+          <text class="input-name">姓名</text>
+          <input class="input" name="name" placeholder="账号持有人真实姓名" value="{{name}}" bindinput="nameInput"/>
+        </view>
+        <view class="input-area">
+          <text class="input-name">银行卡号</text>
+          <input class="input" name="account" placeholder="请输入银行卡号" value="{{account}}" bindinput="accountInput"/>
+        </view>
+        <view class="input-area">
+          <text class="input-name">开户行</text>
+          <input class="input" name="account_bank" placeholder="请输入开户行" value="{{account_bank}}" bindinput="bankInput"/>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="input-area">
+          <text class="input-name">账号姓名</text>
+          <input class="input" name="name" placeholder="账号持有人真实姓名" value="{{name}}" bindinput="nameInput"/>
+        </view>
+        <view class="input-area">
+          <text class="input-name">账号</text>
+          <input class="input" name="account" placeholder="请输入支付宝账号" value="{{account}}" bindinput="accountInput"/>
+        </view>
+      </block>
+    </view>
+    <view class="submit-area" bindtap='submit'>
+      <text class="submit-text">确认提交</text>
+    </view>
+</view>
+
+
+

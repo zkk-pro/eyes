@@ -1,0 +1,61 @@
+<wxs module="filters" src="../../index/index.wxs"></wxs>
+<import src='/pages/template/template' />
+<view class="wrap">
+<!-- 搜索 -->
+        <view class="search-area">
+            <view class="search flex-row flex-start align-items-center">
+                <text class="iconfont icon-sousuo"></text>
+                <input type="text" value="{{keywords}}" bindblur="searchGoods" placeholder="输入产品名称进行搜索" />
+                <view class="search-btn" bindblur="searchGoods">搜索</view>
+            </view>
+        </view> 
+    <scroll-view scroll-x="true" class="sec-category">
+        <view bindtap="changeSec" data-id="0" class="sec {{secCur == 0 ? 'cur' : ''}}" >
+            <text>全部</text>
+            <text class="border"></text>   
+        </view>
+        <block wx:for="{{secCategory}}">
+            <view bindtap="changeSec" data-id="{{item.id}}" class="sec  {{secCur == item.id ? 'cur' : ''}}">
+                <text> {{item.name}}</text>
+                <text class="border"></text> 
+                <!-- <image class="border" src="/static/images/bql_by_icon.png"></image> -->
+            </view>
+        </block>
+    </scroll-view>
+    <view class="store-goods-list">
+        <block wx:for="{{list}}">
+            <view class="shop_item"  data-id="{{item.id}}" bindtap="goodsDetail">
+                <image  src="{{base_url}}{{item.img_url}}" class="shop_item_img"></image>
+                <view class="shop_item_bottom">
+                    <text class="shop_item_bottom_title">{{item.name}}</text>
+                    <view class="shop_item_bottom_num">
+                        <!-- <text>月售1668</text> -->
+                        <!-- <text style="margin: 0 5rpx;">|</text> -->
+                        <!-- <text>库存999</text> -->
+                    </view>
+                    <view class="shop_item_bottom_money">
+                        <text class="bottom_money_label">￥</text>
+                        <text class="bottom_money_price">{{filters.substr(item.price)}}</text>
+                        <text class="bottom_money_hint">铺货价￥{{filters.substr(item.settlement_money)}}</text>
+                    </view>
+                </view>
+                <image src="/static/images/gwc_iocn.png" class="shop_item_go"></image>
+            </view>
+        </block>
+    </view>
+    <view class="bottom_text">{{bottom_text}}</view>
+
+    <view wx:if="{{isShowFirBox == 1}}" bindtap="hiddenFirBox" class="box-cate">
+        <scroll-view catchtap="emptyEvent" scroll-y="true" class="left-scroll">
+            <block wx:for="{{firCategory}}">
+                <view catchtap="changeFir" data-id="{{item.id}}" data-fir="{{item.fir}}" data-name="{{item.name}}"
+                    class="fir-cate {{item.fir == fir ? 'firCur' : ''}}">
+                    <text class="line"></text>
+                    <text> {{item.name}}</text>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+   
+</view>
+<template is='bottom-nav' data="{{...nav_active}}" />

@@ -1,0 +1,28 @@
+page{
+  background: #FFF;
+}
+.title{
+  width:100%;
+  padding: 20rpx;
+  background: #F2F5F8;
+  color: #7D7D7D;
+}
+.text-area{
+  width:100%;
+  margin-top:10rpx;
+}
+.text-area textarea{
+  width:100%;
+  padding: 20rpx;
+}
+
+.btn{
+  width:100%;
+  font-size: 30rpx;
+  color: #FFF;
+  background: #FE8A22;
+  padding: 25rpx;
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+}

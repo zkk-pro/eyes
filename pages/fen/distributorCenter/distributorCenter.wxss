@@ -1,0 +1,91 @@
+.header-img{
+  width: 100%;
+  height: auto;
+}
+.header-img .img{
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+}
+.title{
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  /* background: linear-gradient(to right,#FDD062,#FCC141); */
+}
+.title view{
+  position: absolute;
+  padding: 20rpx;
+  width: 100%;
+  left: 0;
+  bottom: 10rpx;
+  color: #FFF;
+}
+.title view text:last-child {
+    font-size: 30rpx;
+    margin-left: 37%;
+    color: #FFF;
+}
+.top-fee{
+  position: absolute;
+  top: 45%;
+  left: 30rpx;
+  color: #FFF;
+}
+.top-fee text:last-child{
+  font-size: 60rpx;
+  margin-top: 20rpx;
+}
+.commission{
+  width: 100%;
+  padding: 30rpx;
+  background: #FFF;
+}
+.commission view:first-child text:first-child{
+  color: #8E8E8E;
+  font-size: 24rpx;
+  margin-right: 20rpx;
+}
+.commission view:first-child text:last-child{
+  font-size: 40rpx;
+}
+.commission .btn view{
+  width: 150rpx;
+  height: 55rpx;
+  line-height: 53rpx;
+  border-radius: 55rpx;
+  text-align: center;
+  color: #FFB336;
+  border: 1px solid #FFB336;
+  font-size: 26rpx;
+}
+.commission .btn view:last-child{
+  background: linear-gradient(to right,#FFA401,#FDCD3F);
+  border:none;
+  line-height: 55rpx;
+  margin-left: 15rpx;
+  color: #FFF;
+}
+
+.menu-list{
+  margin-top:0rpx ;
+}
+.menu-list .menu{
+  width: 100%;
+  padding: 20rpx 30rpx;
+  background: #FFF;
+  margin-top: 20rpx;
+}
+.menu-list .menu image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+.menu-list .menu .icon-zuoyou{
+  color:#858585;
+  font-size: 28rpx;
+}

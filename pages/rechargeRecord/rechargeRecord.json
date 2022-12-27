@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "余额明细",
+  "navigationBarBackgroundColor":"#FE992E",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

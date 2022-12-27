@@ -1,0 +1,63 @@
+<!--pages/order/confirmOrder/confirmOrder.wxml-->
+<view class="wrap">
+	<!-- 商品列表 -->
+	<view class="goods-list">
+		<block wx:key="1" wx:for="{{goodsList}}">
+			<view class="goods-item flex-row">
+				<view class="goods-img">
+					<image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+				</view>
+				<view class="goods-info">
+					<view class="goods-name">{{item.name}}</view>
+					<view class="property">商品型号：统一规格</view>
+				</view>
+				<view wx:if="{{item.updown == 1}}" class="other-info">
+					<view class="price">￥{{item.price}}</view>
+					<view class="count">×{{item.goods_count}}</view>
+				</view>
+				<view wx:else style="color: #999999;font-size: 32rpx; align-items: center;display: flex">该商品已下架</view>
+			</view>
+		</block>
+	</view>
+
+
+	<view class="delivery-area">
+		<view class="express">
+			<text>推荐优惠</text>
+			<text style="color:#FE5F14">-￥{{recommendFee}}</text>
+		</view>
+	</view>
+
+		<view class="delivery-area">
+		<view class="express exp-type">
+			<text>支付方式</text>
+
+			<view class="picker">
+				<text class="iconfont icon-weixinzhifu"> <text style="color:#525252;margin-left:10rpx;font-size:28rpx">微信支付</text></text>
+			</view>
+
+		</view>
+	</view>
+
+
+	<view class="message flex-row">
+		<text>买家留言:</text>
+		<input bindinput="messageCont" placeholder="对于本次交易的说明,需要特别标注的事情..." placeholder-style="color:#999;font-size:13px;" />
+	</view>
+
+	<view class="total-wrap">
+		<text class="goods-count">共1件商品</text>
+		<text class="total-price">小计： <text>￥{{realPrice}}</text> </text>
+	</view>
+
+	<!-- 底部 -->
+	<view class="bottom-wrap flex-row">
+		<view class="bottom-left">
+			<text class="counts">共1件商品</text>
+			<text class="total-price">总金额： <text>￥{{realPrice}}</text> </text>
+		</view>
+		<view class="bottom-right" bindtap="submitOrder">立即购买</view>
+	</view>
+
+
+</view>

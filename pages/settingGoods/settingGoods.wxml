@@ -1,0 +1,28 @@
+<wxs module="filters" src="../index/index.wxs"></wxs>
+<view class="wrap">
+   
+    <view class="store-goods-list">
+        <block wx:for="{{list}}">
+            <view data-id="{{item.id}}" bindtap="goodsDetail" class="store-goods flex-row flex-start">
+                <view class="g-left">
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                </view>
+                <view class="g-right flex-column space-between">
+                    <view class="g-title">{{item.name}}</view>
+                    <view class="g-info flex-row space-between align-items-center">
+                        <view class="i-l flex-row flex-start align-items-end">
+                            <text>￥{{filters.substr(item.price)}}</text>
+                            <text>￥{{filters.substr(item.ori_price)}}</text>
+                            <text>总奖金:￥{{filters.substr(item.commission)}}</text>
+                        </view>
+                        <view class="buy-btn">立即购买</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+
+
+    </view>
+    <view class="bottom_text">{{bottom_text}}</view>
+
+</view>

@@ -1,0 +1,34 @@
+<view class="wrap">
+    <view class="top-nav flex-row space-between align-items-center">
+        <text  bindtap="changeState" data-state="0" class=" {{state == 0 ? 'cur' : ''}}">未使用</text>
+        <text  bindtap="changeState" data-state="1" class=" {{state == 1 ? 'cur' : ''}}">已使用</text>
+        <text  bindtap="changeState" data-state="2" class=" {{state == 2 ? 'cur' : ''}}">已失效</text>
+    </view>
+    <view class="coupon-list">
+        <block wx:for="{{list}}">
+            <image bindtap="goIndex" wx:if="{{state == 0}}" mode="widthFix" src="{{base_url}}bg/coupon_bg_one.png">
+                <view class="coupon">
+                    <view>优惠券</view>
+                    <view>满{{item.condition_value}}减{{item.value}}</view>
+                    <view>有效期：{{item.valid_start}} ~ {{item.valid_end}}</view>
+                </view>
+            </image>
+            <image wx:elif="{{state == 1}}" mode="widthFix" src="{{base_url}}bg/coupon_bg_two.png">
+                <view class="coupon">
+                    <view>优惠券</view>
+                    <view>满{{item.condition_value}}减{{item.value}}</view>
+                    <view>有效期：{{item.valid_start}} ~ {{item.valid_end}}</view>
+                </view>
+            </image>
+            <image wx:elif="{{state == 2}}" mode="widthFix" src="{{base_url}}bg/coupon_bg_thr.png">
+                <view class="coupon">
+                    <view style="color:#AAAAAA">优惠券</view>
+                    <view style="color:#AAAAAA">满{{item.condition_value}}减{{item.value}}</view>
+                    <view>有效期：{{item.valid_start}} ~ {{item.valid_end}}</view>
+                </view>
+            </image>
+        </block>
+        <view class="bottom_text">{{bottom_text}}</view>
+    </view>
+
+</view>

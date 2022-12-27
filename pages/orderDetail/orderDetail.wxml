@@ -1,0 +1,214 @@
+<!--pages/order/orderDetail/orderDetail.wxml-->
+<view class="wrap">
+    <view class="order-top">
+        <image mode="widthFix" src="{{base_url}}bg/order_detail.png">
+            <view wx:if="{{type != 2}}" class="flex-column">
+                <text wx:if="{{orderInfo.state == 0}}">待付款</text>
+                <text wx:elif="{{orderInfo.state == 1 && (!orderInfo.optometry_data || (orderInfo.optometry_data && orderInfo.optometry_data.isDegree != 3) || showCommission == 1) }}">待发货</text>
+                <text wx:elif="{{orderInfo.state == 1 && (!orderInfo.optometry_data || (orderInfo.optometry_data && orderInfo.optometry_data.isDegree == 3 && showCommission != 1)) }}">待核销</text>
+                <text wx:elif="{{orderInfo.state == 2 && (!orderInfo.optometry_data || (orderInfo.optometry_data && orderInfo.optometry_data.isDegree != 3))}}">待收货</text>
+                <text wx:elif="{{orderInfo.state == 2 && (!orderInfo.optometry_data || (orderInfo.optometry_data && orderInfo.optometry_data.isDegree == 3))}}">已核销</text>
+                <text wx:elif="{{orderInfo.state == 3}}">已收货</text>
+                <text wx:elif="{{orderInfo.state == 4}}">已取消</text>
+                <text wx:elif="{{orderInfo.state == 5}}">已完成</text>
+                <text wx:elif="{{orderInfo.state == 6}}">退款中</text>
+                <text wx:elif="{{orderInfo.state == 7}}">退款成功</text>
+                <text wx:else>异常订单</text>
+                <text>{{orderInfo.state == 0 ? '下单成功,请尽快支付' :'买家已付款'}}</text>
+            </view>
+            <view wx:else class="flex-column">
+                <text wx:if="{{orderInfo.state == 0}}">待付款</text>
+                <text wx:elif="{{orderInfo.state == 1}}">待开奖</text>
+                <text wx:elif="{{orderInfo.state == 2}}">已中奖</text>
+                <text wx:elif="{{orderInfo.state == 3}}">未中奖</text>
+                <text wx:elif="{{orderInfo.state == 4}}">已取消</text>
+                <text wx:elif="{{orderInfo.state == 5}}">已核销</text>
+                <text wx:else>异常订单</text>
+                <text>{{orderInfo.state == 0 ? '下单成功,请尽快支付' :'买家已付款'}}</text>
+            </view>
+        </image>
+    </view>
+    <view class="goods-list">
+        <block wx:for="{{orderInfo.goods_list}}" wx:key="index">
+            <view class="goods flex-row space-between">
+                <view class="left flex-row flex-start">
+                    <image mode="widthFix" src="{{base_url}}{{item.thumb}}"></image>
+                    <view class="l-info flex-column">
+                        <text>{{item.goods_name}}</text>
+                        <view class="property">
+                            <block wx:key="index1" wx:for="{{item.property}}" wx:for-item="property" wx:for-index="index1">
+                                {{property.name}}:{{property.value}}
+                            </block>
+                        </view>
+                    </view>
+                </view>
+                <view class="right flex-column">
+                    <text>￥{{item.price}}</text>
+                    <text>x{{item.count}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view wx:if="{{orderInfo.optometry_data && orderInfo.optometry_data.isDegree != 3}}" class="settingArea">
+        <view class="title-area flex-row space-between align-items-center">
+            <view>
+                <text>验光数据</text>
+            </view>
+            <view>右</view>
+            <view>左</view>
+        </view>
+        <view class="input-area flex-row space-between  align-items-center">
+            <view>度数/球镜/SPH</view>
+            <view class="flex-row flex-end align-items-center">
+                {{orderInfo.optometry_data.degreeRightName}}
+            </view>
+            <view class="flex-row flex-end align-items-center">
+                {{orderInfo.optometry_data.degreeLeftName}}
+            </view>
+        </view>
+        <view class="input-area flex-row space-between  align-items-center">
+            <view>瞳距</view>
+            <view style="width:55%" class="flex-row flex-center align-items-center">
+                {{orderInfo.optometry_data.pupilRightName}}
+            </view>
+        </view>
+        <view wx:if="{{orderInfo.optometry_data.isDegree == 1}}" class="input-area flex-row space-between  align-items-center">
+            <view>散光/柱镜/CYL</view>
+            <view class="flex-row flex-end align-items-center">
+                {{orderInfo.optometry_data.astigmiaRightName}}
+            </view>
+            <view class="flex-row flex-end align-items-center">
+                {{orderInfo.optometry_data.astigmiaLeftName}}
+            </view>
+        </view>
+        <view wx:if="{{orderInfo.optometry_data.isDegree == 1}}" class="input-area flex-row space-between  align-items-center">
+            <view>轴位/AXIS</view>
+            <view class="flex-row flex-end align-items-center">
+                {{orderInfo.optometry_data.axialRightName}}
+            </view>
+            <view class="flex-row flex-end align-items-center">
+                {{orderInfo.optometry_data.axialLeftName}}
+            </view>
+        </view>
+
+
+
+
+    </view>
+
+    <view wx:if="{{!orderInfo.optometry_data}}" style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>配送方式</text>
+            <text>快递</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>配送费</text>
+            <text>￥{{orderInfo.fee}}</text>
+        </view>
+
+    </view>
+    <view style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>微信支付</text>
+            <text>￥{{orderInfo.total_price}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>余额支付</text>
+            <text>￥{{orderInfo.balance_fee}}</text>
+        </view>
+
+    </view>
+    <view wx:if="{{orderInfo.express_company && orderInfo.express_number}}" style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>物流信息</text>
+            <text style="color:#FD8925">{{orderInfo.express_company}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>快递单号</text>
+            <text style="color:#FD8925">{{orderInfo.express_number}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text style="color:#FD8925">物流跟踪请到公众号九九目客服中心查看</text>
+            <text style="padding:10rpx;background:#FD8925;color:#FFF;border-radius:4rpx;font-size:24rpx" bind:tap="copyCode">复制单号</text>
+        </view>
+    </view>
+
+
+    <view style="margin-top:20rpx" class="i-wrap">
+        <view wx:if="{{orderInfo.message}}" class="info flex-row flex-start align-items-center">
+            <text>买家留言</text>
+            <text style="margin-left:20rpx">{{orderInfo.message || '--'}}</text>
+        </view>
+        <view class="info flex-row flex-end align-items-center">
+            <text style="color:#333">共{{orderInfo.goods_list.length}}件商品　　合计 ￥{{orderInfo.real_money}}</text>
+        </view>
+    </view>
+
+    <view wx:if="{{list.length > 0 && type == 2}}" class="order-list">
+        <view class="border"></view>
+        <block wx:for="{{list}}">
+            <view wx:if="{{item.state == 2}}" class="reward flex-row space-between align-items-center">
+                <view>中奖人</view>
+                <view class="flex-row flex-end align-items-center">
+                    <text>{{item.nick_name}}</text>
+                    <image src="{{item.head_img_url}}"></image>
+                </view>
+            </view>
+        </block>
+        <view class="border"></view>
+        <block wx:for="{{list}}">
+            <view wx:if="{{index == 0}}" class="o-title flex-row space-between align-items-center">
+                <text>参与人员</text>
+                <text>下单时间</text>
+            </view>
+            <view class="list-detail {{isShowMore == 0 && index > 4 ? 'hidden':''}} flex-row space-between align-items-center">
+                <view class="flex-row flex-start align-items-center">
+                    <image src="{{item.head_img_url}}"></image>
+                    <text>{{item.nick_name}}</text>
+                </view>
+                <text>{{item.pay_time ? item.pay_time : item.add_time}}</text>
+            </view>
+        </block>
+        <view bindtap="showMore" wx:if="{{isShowMore == 0 && list.length > 5}}" class="lookMore flex-row flex-center align-items-center">
+            <text>查看更多</text>
+            <text class="iconfont icon-z044"></text>
+        </view>
+    </view>
+
+    <view style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>订单号</text>
+            <text>{{orderInfo.order_num}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>下单时间</text>
+            <text>{{orderInfo.add_time}}</text>
+        </view>
+
+
+
+        <view class="info flex-row space-between align-items-center">
+            <text>支付方式</text>
+            <text wx:if="{{orderInfo.total_price > 0 && orderInfo.balance_fee > 0}}">微信+余额支付</text>
+            <text wx:elif="{{orderInfo.total_price > 0 && orderInfo.balance_fee == 0}}">微信支付</text>
+            <text wx:elif="{{orderInfo.total_price == 0 && orderInfo.balance_fee > 0}}">余额支付</text>
+        </view>
+    </view>
+    <view bindtap="operator" wx:if="{{writeOff == 1 && orderInfo.state == 1}}" class="write-off">确认核销</view>
+    <!-- <view class="btn flex-row flex-end">
+            <text>确认收货</text>
+    </view> -->
+
+</view>
+<view class="proShop" wx:if="{{orderInfo.optometrist_list.length}}">
+    <view class="info">附近店铺</view>
+    <block wx:for="{{orderInfo.optometrist_list}}" wx:key="index">
+        <view class="info flex-row space-between align-items-center" bindtap="openNearShop" data-obj="{{item}}">
+            <text data-obj="{{item}}">{{item.name}}</text>
+            <view class="flex-row align-items-center" data-obj="{{item}}">
+                <text class="hint" data-obj="{{item}}">点击查看</text>
+                <text class="iconfont icon-xiangyou1 hint" data-obj="{{item}}"></text>
+            </view>
+        </view>
+    </block>
+</view>

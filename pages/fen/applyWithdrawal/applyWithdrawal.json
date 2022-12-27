@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText":"申请提现",
+  "navigationBarBackgroundColor":"#FE992E",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

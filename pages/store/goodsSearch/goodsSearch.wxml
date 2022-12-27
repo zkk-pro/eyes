@@ -1,0 +1,35 @@
+<wxs module="filters" src="../../index/index.wxs"></wxs>
+<view class="wrap">
+    <!-- 搜索 -->
+        <view class="search-area">
+            <view class="search flex-row flex-start align-items-center">
+                <text class="iconfont icon-sousuo"></text>
+                <input type="text" value="{{keywords}}" bindblur="searchGoods" placeholder="输入产品名称进行搜索" />
+                <view class="search-btn" bindblur="searchGoods">搜索</view>
+            </view>
+        </view> 
+    <view class="store-goods-list">
+        <block wx:for="{{list}}">
+            <view data-id="{{item.id}}" bindtap="goodsDetail" class="store-goods flex-row flex-start">
+                <view class="g-left">
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                </view>
+                <view class="g-right flex-column space-between">
+                    <view class="g-title">{{item.name}}</view>
+                    <view class="g-info flex-row space-between align-items-center">
+                        <view class="i-l flex-row flex-start align-items-end">
+                            <text>￥{{filters.substr(item.price)}}</text>
+                            <text>￥{{filters.substr(item.ori_price)}}</text>
+                            <!-- <text  class="commission" wx:if="{{showCommission == 1}}">结算价:￥{{filters.substr(item.settlement_money)}}</text> -->
+                        </view>
+                        <view class="buy-btn">立即购买</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+
+
+    </view>
+    <view class="bottom_text">{{bottom_text}}</view>
+
+</view>

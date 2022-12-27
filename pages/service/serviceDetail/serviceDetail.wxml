@@ -1,0 +1,78 @@
+<!--pages/order/orderDetail/orderDetail.wxml-->
+<view class="wrap">
+    <view class="goods-list">
+
+        <view class="goods flex-row space-between">
+            <view class="left flex-row flex-start">
+                <image mode="widthFix" src="{{base_url}}{{goodsInfo.img_url}}"></image>
+                <view class="l-info flex-column">
+                    <text>{{goodsInfo.goods_name}}</text>
+                    <view class="property">
+                        统一规格
+                    </view>
+                </view>
+            </view>
+            <view class="right flex-column">
+                <text>￥{{goodsInfo.price}}</text>
+                <text></text>
+            </view>
+        </view>
+    </view>
+    <view  style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>重置时间</text>
+            <text>每年{{goodsInfo.month}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>可核销次数</text>
+            <text>{{goodsInfo.write_off_times}}/年</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>分享获得总次数</text>
+            <text>{{goodsInfo.total_share_times}}</text>
+        </view>
+    </view>
+    <view  style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>已核销次数</text>
+            <text>{{goodsInfo.totalCount}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>当前已核销次数</text>
+            <text>{{goodsInfo.currentCount}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>分享获得剩余次数</text>
+            <text>{{goodsInfo.share_times}}</text>
+        </view>
+    </view>
+
+
+
+    <view wx:if="{{list.length > 0}}" class="order-list">
+        <view class="border"></view>
+        <block wx:for="{{list}}">
+            <view wx:if="{{index == 0}}" class="o-title flex-row space-between align-items-center">
+                <text>核销商家</text>
+                <text>核销时间</text>
+            </view>
+            <view  class="list-detail {{isShowMore == 0 && index > 4 ? 'hidden':''}} flex-row space-between align-items-center">
+                <view class="flex-row flex-start align-items-center">
+<!--                    <image  src="{{item.head_img_url}}"></image>-->
+                    <text>{{item.optometrist_name}}</text>
+                </view>
+                <text>{{item.add_time}}</text>
+            </view>
+        </block>
+        <view bindtap="showMore" wx:if="{{isShowMore == 0 && list.length > 5}}" class="lookMore flex-row flex-center align-items-center">
+            <text>查看更多</text>
+            <text class="iconfont icon-z044"></text>
+        </view>
+    </view>
+
+    <view bindtap="operator" wx:if="{{writeOff == 1}}"  class="write-off">确认核销</view>
+    <!-- <view class="btn flex-row flex-end">
+            <text>确认收货</text>
+    </view> -->
+
+</view>

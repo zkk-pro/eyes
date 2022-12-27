@@ -1,0 +1,38 @@
+page{
+    padding-bottom: 200rpx;
+}
+.info{
+    background: #FFF;
+    margin-top: 15rpx;
+    padding:0 30rpx;
+}
+.info:first-child{
+    margin-top: 0rpx;
+}
+.info > view{
+    width: 100%;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #F2F2F2;
+}
+.info view image{
+    width: 100rpx;
+    height: auto;
+}
+.info > view > view:first-child{
+    color: #565656;
+}
+.info > view > view:last-child{
+    width: 70%;
+}
+.write-off{
+    width: 80%;
+    height: 75rpx;
+    line-height: 75rpx;
+    border-radius: 75rpx;
+    color: #FFF;
+    text-align: center;
+    background: #FE8A22;
+    position: fixed;
+    bottom: 100rpx;
+    left: 10%;
+}

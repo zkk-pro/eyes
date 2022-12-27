@@ -1,0 +1,26 @@
+<view class="wrap">
+    <view class="rechrage_fee">
+        <image mode="widthFix" src="{{base_url}}bg/recharge.png" >
+            <view class="balance-pay flex-column">
+                <text>可用余额 (元)</text>
+                <text>{{userInfo.recharge_money ? userInfo.recharge_money : 0}}</text>
+            </view>
+        </image>
+    </view>
+    <view class="input-recharge">
+        <view class="title">请输入充值金额</view>
+        <view class="input flex-row flex-start align-items-end">
+            <text>￥</text>
+            <input type="number" bindinput="money" value="" placeholder="0" />
+        </view>
+        <view wx:if="{{rechargeSend.length > 0}}" class="recharge-desc flex-column">
+            <block wx:for="{{rechargeSend}}">
+                <view>• 充值满{{item.money}}元送{{item.send_money}}元</view>
+            </block>
+        </view>
+    </view>
+    <view class="btn-click">
+        <view bindtap="addRechargeOrder" >确认充值</view>
+    </view>
+
+</view>

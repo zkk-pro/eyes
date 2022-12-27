@@ -1,0 +1,165 @@
+<view class="wrap">
+    <!-- 左右滑动tab内容 -->
+    <view class="tab-wrap">
+        <scroll-view scroll-y="true" style="height: 100%;padding-bottom:70rpx">
+            <!-- 商品滚动图 -->
+            <swiper class="goods-img" style="height:{{img_height}}px" indicator-dots="true" autoplay="true" circular="true" interval="3000">
+                <swiper-item>
+                    <image bindtap="preview" class="img-item" src="{{base_url}}{{goodsInfo.img_url}}" data-src="{{base_url}}{{goodsInfo.img_url}}"></image>
+                </swiper-item>
+                <block wx:if="{{goodsInfo.image_list.length > 0}}" wx:key="index" wx:for="{{goodsInfo.image_list}}">
+                    <swiper-item>
+                        <image bindtap="preview" class="img-item" src="{{base_url}}{{item.img_url}}" data-src="{{base_url}}{{item.img_url}}"></image>
+                    </swiper-item>
+                </block>
+
+            </swiper>
+            <!-- 商品信息 -->
+            <view class="goods-info">
+                <view class="goods-name">{{goodsInfo.name}} 
+                    <image wx:if="{{heart == 0}}" bindtap='heart_fill' style="width: 140rpx;height: 45rpx;margin-right: 20rpx;" src="{{base_url}}/bg/heart.png" data-src="{{base_url}}{{item.img_url}}"></image>
+                    <image wx:if="{{heart == 1}}" bindtap='heart' style="width: 140rpx;height: 45rpx;margin-right: 20rpx;" src="{{base_url}}/bg/heart-fill.png" data-src="{{base_url}}{{item.img_url}}"></image>
+                </view>
+                <view class="goods-price">￥
+                    <text>{{goodsInfo.price}}</text>
+                    <text wx:if="{{showCommission != 1}}" class="ori-price">吊牌价:{{goodsInfo.ori_price}}</text>
+                    <text wx:if="{{showCommission == 1 && type == 1}}" class="commission">铺货结算价:{{goodsInfo.settlement_money}}</text>
+                    <text wx:if="{{showCommission == 1 && type != 1}}" class="commission">现金结算价:{{goodsInfo.cash_money}}</text>
+                    <view bindtap="share" class="share flex-row flex-end align-items-center">
+                        <text class="iconfont icon-fenxiang"></text>
+                        <text>分享</text>
+                    </view>
+                </view>
+                <view class="other-info">
+                    <view class="goods-attr flex-row flex-start align-items-center">
+                        <text class="iconfont icon-xuanzhong1"></text>
+                        <text class="goods-value">仓库库存：{{goodsInfo.inventory}}</text>
+                    </view>
+                    <view wx:if="{{show_sale == 1}}" class="goods-attr flex-row flex-start align-items-center">
+                        <text class="iconfont icon-xuanzhong1"></text>
+                        <text class="goods-value">销量：{{goodsInfo.sale_quantity}}</text>
+                    </view>
+                    <view class="goods-attr flex-row flex-start align-items-center">
+                        <text class="iconfont icon-xuanzhong1"></text>
+                        <text class="goods-value">浏览量：{{goodsInfo.total_view}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="property-wrap flex-row" bindtap='onMask'>
+                <text>选择：</text>
+                <view class="selected-property">
+                    <text wx:if="{{selectedProperty}}" wx:key="index" wx:for="{{selectedProperty.propertyList}}">{{item.name}} {{item.value}}</text>
+                </view>
+                <image class="more" mode="scaleToFill" src="../../../static/images/my/more.png"></image>
+            </view>
+            <!-- 商品详情 -->
+            <view class="goods-detail">
+                <view class="detail-title">商品详情</view>
+                <view class="detail-cont">
+                    <!-- <rich-text nodes="{{goodsInfo.detail_desc}}" space="nbsp"  ></rich-text>     -->
+                    	<template is="wxParse" data="{{wxParseData:description.nodes}}" />
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <!--    铺货操作区-->
+    <!-- <view wx:if="{{isBusiness == 1}}" class="reserve-wrap">
+        <view bindtap="reserveGoods" class="flex-column flex-center">
+            <text>铺货</text>
+            <text>列表</text>
+        </view>
+        <view bindtap="operator" data-index="2" class="flex-column flex-center">
+            <text>加入</text>
+            <text>铺货</text>
+        </view>
+        <text class="reserve-count">{{reserveCounts}}</text>
+    </view> -->
+    <!-- 操作区 -->
+    <view class="opt-wrap">
+        <view class="icon-wrap good-cart" bindtap='goIndex'>
+            <text class="iconfont icon-shouye"></text>
+            <text>首页</text>
+        </view>
+        <button class="icon-wrap good-cart" open-type="contact">
+            <text class="iconfont icon-kefu1"></text>
+            <text>客服</text>
+        </button>
+        <view wx:if="{{type != 1}}" class="icon-wrap good-cart" bindtap='cart'>
+            <text class="iconfont icon-gouwuche"></text>
+            <text wx:if="{{counts > 0}}" class="count">{{counts}}</text>
+            <text>现金清单</text>
+        </view>
+        <view wx:if="{{type == 1}}" class="icon-wrap good-cart" bindtap='reserveGoods' style="color: #d8990a;">
+            <text class="iconfont icon-gouwuche"></text>
+            <text>铺货列表</text>
+        </view>
+        <view wx:if="{{type != 1}}" class="add-cart" bindtap="operator" data-index="0">加入现金清单</view>
+        <view wx:if="{{type != 1}}" class="buy" bindtap="operator" data-index="1">立即购买</view>
+        <view wx:if="{{type == 1}}" class="add-cart buy" bindtap="operator" data-index="2" style="width: 50%;">加入铺货</view>
+        <!-- <view wx:if="{{type == 1}}" class="buy" bindtap="reserveGoods">铺货列表</view> -->
+    </view>
+
+    <!-- 选择属性弹层 -->
+    <view class="property-opt-wrap" hidden="{{maskHidden}}">
+        <image class="other-wrap"  mode="aspectFill" src="{{base_url}}{{includeGroup[0].image}}" catchtap="previewImage" data-item="{{base_url}}{{includeGroup[0].image}}"></image>
+        <view class="property-detail">
+
+            <view class="property-top">
+                <image class="goods-img" mode="scaleToFill" src="{{base_url}}{{includeGroup[0].image}}"></image>
+                <view class="top-right">
+                    <view class="price-wrap flex-row">
+                        <text>￥{{ propertyPrice}}</text>
+                        <image mode="scaleToFill" class="off-icon" src="../../../static/images/my/off_icon.png"
+                               bindtap="offMask"></image>
+                    </view>
+                    <view class="top-item">
+                        仓库库存：
+                        <text wx:if="{{type != 1}}">{{selectedProperty ? selectedProperty.inventory : propertyinventory}}</text>
+                        <text wx:if="{{type == 1}}">{{selectedProperty ? selectedProperty.reserve_inventory : propertyinventory}}</text>
+                    </view>
+                    <view class="top-item flex-row flex-start align-items-center flex-wrap">
+                        <text>已选：</text>   
+                        <text wx:if="{{selectedProperty}}" wx:key="index" wx:for="{{selectedProperty.propertyList}}"
+                              wx:for-item="pro">{{pro.name}} {{pro.value}}　
+                        </text>
+                    </view>
+                </view>
+            </view>
+            <view class="unit-wrap">
+                <block wx:key="index" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex">
+                <view class="property-unit">
+                    <text class="unit-name">{{attrValueObj.attrKey}}</text>
+                    <view class="unit-cont flex-row">
+
+                        <view bindtap="selectAttrValue" wx:key="index"
+                              class="cont-item {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex] ? (value==attrValueObj.selectedValue ? 'attr_value_active' : '') : 'attr_value_disabled'}}"
+                              data-status="{{attrValueObj.attrValueStatus[valueIndex]}}" data-value="{{value}}"
+                              data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}"
+                              data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}"
+                              wx:for-item="value" wx:for-index="valueIndex">{{value}}
+                        </view>
+
+                    </view>
+                </view>
+            </block>
+            </view>
+            
+
+            <view class="property-unit count-box">
+                <text class="unit-name">数量</text>
+                <view class="unit-cont flex-row">
+                    <text class="opt-btn" bindtap="goodsCount" data-type="0">-</text>
+                    <text class="count">{{count}}</text>
+                    <text class="opt-btn" bindtap="goodsCount" data-type="1">+</text>
+                </view>
+            </view>
+			<view class="modal-but-area">
+				<view wx:if="{{type != 1}}" class="add-cart" bindtap="operator" data-index="0">加入现金清单</view>
+                <view wx:if="{{isBusiness == 1 && type == 1}}" class="add-reserve" bindtap="operator" data-index="2">加入铺货</view>
+                <view wx:if="{{type != 1}}" class="buy" bindtap="operator" data-index="1">立即购买</view>
+			</view>
+        </view>
+    </view>
+</view>
+<!-- html转wxml -->
+<import src="/wxParse/wxParse.wxml" />

@@ -1,0 +1,57 @@
+<import src='/pages/template/template' />
+
+
+<view class="container">
+    <!--订单列表-->
+    <view class='order-wrap'>
+        <block wx:key="1" wx:for="{{list}}" wx:for-item="item">
+            <view bindtap='orderDetail' data-id="{{item.id}}" class="goods-item">
+                <view class="order-head" data-id="{{item.id}}">
+                    <view class="order-head-top">
+                        <text  class="iconfont icon-el-icon-custom-order"></text>
+                        <view style="color:#AAA" class="order-time">重置时间：每年 {{item.month}}</view>
+                    </view>
+
+                    <view class="order-state"></view>
+                    <!--<view class="order-detail">订单详情</view>-->
+                </view>
+                <view class="order-body" >
+                        <view class="goods" data-id="{{item.gid}}">
+                            <image mode='widthFix' class="img" src="{{base_url}}{{item.img_url}}"></image>
+                            <view class="goods-info">
+                                <view class="name">{{item.goods_name}}</view>
+                                <view class="property">
+                                    统一规格
+                                </view>
+                                <view class="goods-price">￥{{item.price}}</view>
+                            </view>
+                            <view class="price-num">
+
+                                <view class="goods-num"></view>
+                            </view>
+                        </view>
+                </view>
+                <view class="order-foot">
+                    <view class="total-price">
+                        <view class="flex-row flex-start align-items-center">
+                            <view>可核销：{{item.write_off_times}}/年</view>
+                            <view class="text-inde">分享获得：</view>
+                            <view class="total-money">{{item.share_times}}</view>
+                        </view>
+
+                        <view class="option" >
+                            <view style="margin-right:20rpx" class="pay_order" type='mini' data-index="{{index}}"  data-id="{{item.id}}" catchtap="writeOff">核销</view>
+                            <view class="pay_order"  data-index="{{index}}"  data-id="{{item.id}}" catchtap="orderDetail">查看</view>
+                        </view>
+                    </view>
+
+                </view>
+
+            </view>
+        </block>
+    </view>
+    <view class="bottom_text">{{bottom_text}}</view>
+</view>
+
+
+

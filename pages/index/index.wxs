@@ -1,0 +1,20 @@
+var filters = {
+  substr: function (value) {
+    // value = value.toString();
+    // var length = value.length;
+    return Number(value);//value.substring(0,length-3)
+  },
+  substring:function (value){
+    value = value.toString();
+    var length = value.length;
+    if(length > 6){
+      return value.substring(0,4);
+    }else{
+      return value;
+    }
+  }
+}
+module.exports = {
+  substr: filters.substr,
+  substring: filters.substring,
+}

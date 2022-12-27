@@ -1,0 +1,70 @@
+<wxs module="com">
+  var selectNowOne = function (arr, item, item1) {
+    var flag = false
+    if (arr.length) {
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i].id == item.sellerQuestionId && (arr[i].answer == item1 || arr[i].answer.indexOf(item1) != -1)) {
+          flag = true
+          return flag
+        }
+      }
+    }
+    return flag
+  }
+  module.exports.selectNowOne = selectNowOne;
+</wxs>
+<block wx:if="{{dataList.length}}">
+  <view class="pl-2 pr-2 mainList">
+    <view style="position: relative;z-index: 111;">
+      <view class="pageTitle">问卷调查</view>
+      <view class="pageHint">填写问卷必得0.5~2元现金红包奖励</view>
+      <block wx:for="{{dataList}}" wx:key="index">
+        <view>
+          <view class="hxn_f_sc mb-3">
+            <text class="hint" wx:if="{{item.must}}">*</text>
+            <text class="title">{{item.problem}}</text>
+            <text wx:if="{{item.multiple}}" class="title">(多选题)</text>
+          </view>
+          <block wx:if="{{item.multiple}}">
+            <checkbox-group bindchange="checkboxChange" data-item="{{item}}">
+              <block wx:for="{{item.answer}}" wx:key="sellerQuestionId" wx:for-index="index1" wx:for-item="item1">
+                <view class="topic3">
+                  <checkbox value="{{item1}}" color="#006bff" />
+                  <text>{{item1}}</text>
+                </view>
+              </block>
+            </checkbox-group>
+
+          </block>
+          <block wx:else>
+            <block wx:if="{{item.graph}}">
+              <view class="topicBox">
+                <block wx:for="{{item.answer}}" wx:key="sellerQuestionId" wx:for-index="index1" wx:for-item="item1">
+                  <view class="topic1 {{com.selectNowOne(select,item,item1)?'topicClick1':''}}" bindtap="select" data-item="{{item}}" data-answ="{{item1}}">
+                    {{item1}}
+                  </view>
+                </block>
+              </view>
+            </block>
+            <block wx:else>
+              <radio-group bindchange="radioChange" class="topicBox" data-item="{{item}}">
+                <block wx:for="{{item.answer}}" wx:key="sellerQuestionId" wx:for-index="index1" wx:for-item="item1">
+                  <view class="topic2">
+                    <radio value="{{item1}}" color="#006bff" />
+                    <text>{{item1}}</text>
+                  </view>
+                </block>
+              </radio-group>
+              <block wx:if="{{otherObj[item.sellerQuestionId]}}">
+                <input type="text" bindinput="otherInput" class="otherInput" maxlength="18" data-item="{{item}}" />
+              </block>
+            </block>
+          </block>
+        </view>
+      </block>
+      <button class="mr_btn2" bindtap="aplication">提交</button>
+    </view>
+    <image class="bgimg" src="{{base_url}}bg/questionnaire_footer.png"></image>
+  </view>
+</block>
+<promote-pop flag="{{commitOk}}" bindcancle="promoteCancle" bindoneClick="promoteOneClick" bindtwoClick="promoteTwoClick"></promote-pop>

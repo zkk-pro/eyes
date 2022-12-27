@@ -1,0 +1,14 @@
+<view class="wrap">
+    <view class="code-area">
+        <view class="code-desc">核销二维码</view>
+        <view class="code-img flex-row flex-center">
+            <image src="{{base_url}}{{code}}" mode="widthFix" ></image>
+        </view>
+        <view class="code-text">
+            <text>商品价格:</text>
+            <text>￥<text style="font-size:30rpx">{{goodsInfo.price}}</text> </text>
+        </view>
+    </view>
+    <view class="desc">向核销人员出示二维码进行核销</view>
+    <view class="add_time">提交时间：{{goodsInfo.add_time}}</view>
+</view>

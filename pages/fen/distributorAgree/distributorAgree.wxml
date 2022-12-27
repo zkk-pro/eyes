@@ -1,0 +1,12 @@
+<view class="richText">
+    <rich-text nodes="{{content}}" space="nbsp"></rich-text>
+</view>
+<view style="bottom:{{height > 0 ? height + 'px':'0px'}}" class="bottom-wrap">
+    <view bindtap="isAgree" class="choice-area flex-row flex-center align-items-center">
+        <text class="iconfont {{isAgree == 1 ? 'icon-choosed2':'icon-xuanzhongyuandian'}} "></text>
+        <text>我已阅读并同意</text>
+        <text>《分销平台用户协议》</text>
+    </view>
+    <view bindtap="agreeDistributor" class="btn-click">进入分销中心</view>
+</view>
+

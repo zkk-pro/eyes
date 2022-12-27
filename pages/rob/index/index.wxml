@@ -1,0 +1,54 @@
+<wxs module="filters" src="../../index/index.wxs"></wxs>
+<view class="wrap">
+    <!-- 秒杀商品 -->
+    <view wx:if="{{robGoods.length > 0}}" class="simple-desc flex-row space-between align-items-center">
+        <image mode="widthFix"  src="{{base_url}}bg/index_rob.png"></image>
+    </view>
+    <scroll-view wx:if="{{robGoods.length > 0}}" scroll-x="true" >
+        <block wx:for="{{robGoods}}">
+            <view data-id="{{item.id}}" bindtap="goodsDetail" class="goods flex-column">
+                <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                <view class="goods_name">{{item.name}}</view>
+                <view class="price flex-row space-between align-items-center">
+                    <view>
+                        <text>￥{{filters.substr(item.price)}}</text>
+                        <text>￥{{filters.substr(item.ori_price)}}</text>
+                    </view>
+                    <view>{{item.finish_time}}</view>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+    <view class="store-goods-list">
+        <block wx:for="{{list}}">
+            <view data-id="{{item.id}}" bindtap="goodsDetail" class="store-goods flex-row flex-start">
+                <view class="g-left">
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                </view>
+                <view class="g-right flex-column space-between">
+                    <view class="g-title">{{item.name}}</view>
+                    <view class="g-info flex-row space-between align-items-end">
+                        <view class="i-l ">
+                            <view class="flex-row flex-start align-items-end">
+                                <text>￥{{filters.substr(item.price)}}</text>
+                                <text>￥{{filters.substr(item.ori_price)}}</text>
+                                <text class="commission" wx:if="{{showCommission == 1}}">结算价:￥{{filters.substr(item.settlement_money)}}</text>
+                            </view>
+                            <view class="time-desc flex-row flex-start align-items-center">
+                                 <text class="time-l">{{item.finish_time.hour}}</text>
+                                 <text class="time-d">：</text>
+                                 <text  class="time-l">{{item.finish_time.minute}}</text>
+                                 <text class="time-d">：</text>
+                                 <text  class="time-l">{{item.finish_time.second}}</text>
+                            </view>
+                           
+                        </view>
+                        <view class="buy-btn">立即购买</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+
+    </view>
+<view class="bottom_text">{{bottom_text}}</view>
+</view>

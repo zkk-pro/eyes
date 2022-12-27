@@ -1,0 +1,69 @@
+<import src='/pages/template/template' />
+<view class="mod-cart">
+    <scroll-view scroll-y="true">
+        <view class="cart-title">
+            <view class="all-select-box">
+                <image src="../../../static/images/my/selecteds.png" wx:if="{{selectAll}}" bindtap="selectAll"></image>
+                <image src="../../../static/images/my/select.png" wx:else bindtap="selectAll"></image>
+                <span class="title">全选</span>
+            </view>
+            <span class="edit-cart" bindtap="changeTab" data-editend="{{editEnd}}">{{editEndText}}</span>
+        </view>
+
+        <block wx:if="{{con}}">
+
+            <block wx:key="key" wx:for="{{dataList}}">
+                <view  class="goods-item" data-index="{{index}}" bindtouchstart="touchstartX" bindtap="resetX" bindtouchmove="touchmoveX" bindtouchend="touchendX" animation="{{currentIndex === index ?animation : ''}}">
+                    <view class="checkbox">
+                        <image src="../../../static/images/my/selecteds.png" wx:if="{{item.checked}}" data-index="{{index}}" bindtap="check"></image>
+                        <image src="../../../static/images/my/select.png" wx:else data-index="{{index}}" bindtap="check"></image>
+                    </view>
+                    <view class="goods-image">
+                        <image class="goods-img-url" src="{{base_url}}{{item.thumb}}"></image>
+                    </view>
+
+                    <view class="goods-content flex-column space-around">
+                        <view class="goods-title">{{item.goods_name}}</view>
+                        <view class="property">{{item.property_text}}</view>
+                        <view wx:if="{{item.updown == 0}}" class="goods-dowm">商品已下架</view>
+                        <!--内容底部-->
+                        <view class="cont-bottom">
+                            <!--按钮-->
+                            <view class="add-box flex-row space-between align-items-center" wx:if="{{item.updown == 1}}">
+                                <text data-count="{{item.goods_count}}" data-id="{{item.id}}" data-gid="{{item.gid}}" data-gpid="{{item.gpid}}" bindtap="reduce" data-num="{{index}}" class="iconfont icon-jian1"></text>
+                                <text>{{item.goods_count}}</text>
+                                <text data-count="{{item.goods_count}}" data-id="{{item.id}}" data-gid="{{item.gid}}" data-gpid="{{item.gpid}}" bindtap="add" data-num="{{index}}" class="iconfont icon-xiaojiahao"></text>
+                            </view>
+                        </view>
+                        <text class="goods-price">￥{{item.settlement_money}}<text class="property">￥{{item.price}}</text></text>
+                    </view>
+                    <view class="goods-oprate">
+                        <view class="goods-oprate-del" bindtap="deleteReserve" data-id="{{item.id}}">删除</view>
+                    </view>
+                </view>
+            </block>
+
+        </block>
+
+        <block wx:else>
+            <view  class="" style="text-align: center;color: #999999;">您还没有铺货清单数据~快去挑选吧</view>
+        </block>
+    </scroll-view>
+    <block wx:if="{{btnTexts}}">
+        <view  class="bottom-content">
+            <view class="total-price-box">
+                <view class="total-price"> <text>共{{total_num}}件商品</text></view>
+            </view>
+            <view class="submit-order" bindtap="confirmOrder">立即购买</view>
+        </view>
+    </block>
+    <block wx:else>
+        <view  class="bottom-content">
+            <view class="total-price-box">
+                <view class="total-price"></view>
+            </view>
+            <view class="submit-order">  <view class="edit" bindtap="deleteReserveGoods">删除</view></view>
+        </view>
+    </block>
+</view>
+<template is='bottom-nav' data="{{...nav_active}}" />

@@ -1,0 +1,20 @@
+<view class="wrap">
+    <view class="top-image flex-row flex-center">
+        <image mode="widthFix" src="{{base_url}}bg/logo.png"></image>
+    </view>
+    <view class="info flex-column">
+        <view class="input flex-row flex-start align-items-center">
+            <text class="iconfont icon-user"></text>
+            <input bindinput="listenInput" data-type="account" type="text" value="" placeholder="请输入账号" />
+        </view>
+    </view>
+    <view class="info flex-column">
+        <view class="input flex-row flex-start align-items-center">
+            <text class="iconfont icon-dunpai"></text>
+            <input bindinput="listenInput" data-type="password" type="text" value="" placeholder="请输入密码" />
+        </view>
+    </view>
+    <view class="btn-click">
+        <view bindtap="loginIn">登录</view>
+    </view>
+</view>

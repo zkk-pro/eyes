@@ -1,0 +1,185 @@
+<view class="wrap">
+   <view class="info flex-row space-between align-items-center">
+      <view class="left">头像</view>
+      <view class="right">
+          <image src="{{userInfo.head_img_url}}"></image>
+      </view>
+   </view>
+   <view class="info flex-row space-between align-items-center">
+        <view class="left">昵称</view>
+        <view class="right flex-row flex-end align-items-center">
+            <input type="text" placeholder="输入昵称" bindinput="listenInput" data-type="nick_name" value="{{nick_name}}" />
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+    <view class="info flex-row space-between align-items-center">
+        <view class="left">姓名</view>
+        <view class="right flex-row flex-end align-items-center">
+            <input type="text" bindinput="listenInput" data-type="name" placeholder="输入姓名" value="{{name}}" />
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+     <view class="info flex-row space-between align-items-center">
+        <view class="left">手机号</view>
+        <view class="right flex-row flex-end align-items-center">
+            <input type="text" bindinput="listenInput" data-type="phone" placeholder="输入手机号" value="{{phone}}" />
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+    <view class="info flex-row space-between align-items-center">
+        <view class="left">地区</view>
+        <view class="right flex-row flex-end align-items-center">
+            <picker mode="region" bindchange="bindRegionChange" value="address">
+              <view class="picker">
+                {{address[0]}} {{address[1]}} {{address[2]}}
+              </view>
+            </picker>
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+    <view class="info flex-row space-between align-items-center">
+        <view class="left">详细地址</view>
+        <view class="right flex-row flex-end align-items-center">
+            <input type="text" bindinput="listenInput" data-type="detail" placeholder="输入详细地址" value="{{detail}}" />
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+    <view class="info flex-row space-between align-items-center">
+        <view class="left">镜框码数</view>
+        <view class="right flex-row flex-end align-items-center">
+            <input type="number" bindinput="listenInput" data-type="picture_frame" placeholder="输入镜框码数" value="{{picture_frame}}" />
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+    <view class="settingArea">
+		<view class="title-area flex-row space-between align-items-center">
+			<view>
+				<text>验光数据</text>
+				<text>(配镜请填写度数)</text>
+			</view>
+			<view>右</view>
+			<view>左</view>
+		</view>
+		<view class="input-area flex-row space-between  align-items-center">
+			<view>度数/球镜/SPH</view>
+			<view>
+				<picker data-type="degreeRightName" bindchange="bindPickerChange" range="{{degreeArray}}" range-key="name">
+					<view  class="flex-row flex-end align-items-center">
+						<input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="degreeRightName" type="text" value="{{degreeRightName}}" />
+						<text class="iconfont icon-xiasanjiao"></text>
+					</view>
+				</picker>
+			</view>
+			<view class="flex-row flex-end align-items-center">
+				<picker data-type="degreeLeftName" bindchange="bindPickerChange" range="{{degreeArray}}" range-key="name">
+					<view  class="flex-row flex-end align-items-center">
+						<input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="degreeLeftName" type="text" value="{{degreeLeftName}}" />
+							<text class="iconfont icon-xiasanjiao"></text>
+					</view>
+				
+				</picker>
+			</view>
+		</view>
+			<view class="input-area flex-row flex-start  align-items-center">
+			<view>瞳距/PD</view>
+			<view style="width:55%" class="flex-row flex-center align-items-center" >
+				<picker style="width:27.5%" data-type="pupilRightName" bindchange="bindPickerChange" range="{{pupilArray}}" range-key="name">
+					<view  class="flex-row flex-center align-items-center">
+						<input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="pupilRightName" type="text" value="{{pupilRightName}}" />
+							<text class="iconfont icon-xiasanjiao"></text>
+					</view>
+				
+				</picker>
+			</view>
+			<!-- <view class="flex-row flex-end align-items-center">
+				<input bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="pupilLeftName" type="text" value="{{pupilLeftName}}" />
+				<picker data-type="pupilLeftName" bindchange="bindPickerChange" range="{{pupilArray}}" range-key="name">
+					<text class="iconfont icon-xiasanjiao"></text>
+				</picker>
+			</view> -->
+		</view>
+
+		<view class="choice-area flex-row flex-center align-items-center">
+					<view data-is-degree = "0" bindtap="isDegree" class="l-area flex-row flex-start align-items-center">
+							<text wx:if="{{isDegree == 1}}" class="iconfont icon-xuanzhongyuandian"></text>
+								<text wx:else class="iconfont icon-choosed2"></text>
+							<text>无散光</text>
+					</view>
+					<view data-is-degree = "1" bindtap="isDegree" class="r-area flex-row flex-start align-items-center">
+							<text wx:if="{{isDegree == 1}}" class="iconfont icon-choosed2"></text>
+								<text wx:else class="iconfont icon-xuanzhongyuandian"></text>
+							<text>有散光</text>
+					</view>
+		</view>
+		<view wx:if="{{isDegree == 1}}" class="input-area flex-row space-between  align-items-center">
+			<view>散光/柱镜/CYL</view>
+			<view >
+				<picker data-type="astigmiaRightName" bindchange="bindPickerChange" range="{{astigmiaArray}}" range-key="name">
+					<view class="flex-row flex-end align-items-center">
+				    <input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="astigmiaRightName" type="text" value="{{astigmiaRightName}}" />
+						<text class="iconfont icon-xiasanjiao"></text>
+					</view>
+				</picker>
+			</view>
+			<view >
+				<picker data-type="astigmiaLeftName" bindchange="bindPickerChange" range="{{astigmiaArray}}" range-key="name">
+					<view class="flex-row flex-end align-items-center">
+						<input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="astigmiaLeftName" type="text" value="{{astigmiaLeftName}}" />
+						<text class="iconfont icon-xiasanjiao"></text>
+					</view>
+				
+				</picker>
+			</view>
+		</view>
+		<view wx:if="{{isDegree == 1}}" class="input-area flex-row space-between  align-items-center">
+			<view>轴位/AXIS</view>
+			<view>
+				<picker data-type="axialRightName" bindchange="bindPickerChange" range="{{axialArray}}" range-key="name">
+					<view  class="flex-row flex-end align-items-center">
+						<input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="axialRightName" type="text" value="{{axialRightName}}" />
+						<text class="iconfont icon-xiasanjiao"></text>
+					</view>
+				
+				</picker>
+			</view>
+			<view>
+				<picker data-type="axialLeftName" bindchange="bindPickerChange" range="{{axialArray}}" range-key="name">
+					<view  class="flex-row flex-end align-items-center">
+						<input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="axialLeftName" type="text" value="{{axialLeftName}}" />
+						<text class="iconfont icon-xiasanjiao"></text>
+					</view>
+				</picker>
+			</view>
+		</view>
+		<!-- <view class="input-area flex-row space-between  align-items-center">
+			<view>ADD</view>
+			<view class="flex-row flex-end align-items-center">
+				<input bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="addRightName" type="text" value="{{addRightName}}" />
+				<picker data-type="addRightName" bindchange="bindPickerChange" range="{{addArray}}" range-key="name">
+					<text class="iconfont icon-xiasanjiao"></text>
+				</picker>
+			</view>
+			<view class="flex-row flex-end align-items-center">
+				<input bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="addLeftName" type="text" value="{{addLeftName}}" />
+				<picker data-type="addLeftName" bindchange="bindPickerChange" range="{{addArray}}" range-key="name">
+					<text class="iconfont icon-xiasanjiao"></text>
+				</picker>
+			</view>
+		</view> -->
+			<view bindtap="showNoticeImg" class="input-area flex-row space-between  align-items-center">
+			<view class="flex-column">
+			   <text>验光单说明</text>
+				 <text  style="font-size:22rpx;color:#AAA">(点击{{showImg == 1 ? '收起' : '展开'}}验光单说明)</text>
+			</view>
+			<view class="flex-row flex-end align-items-center">
+					<image data-src="{{base_url}}bg/notice.png?r=1.0" mode="widthFix" class="n-img" src="{{base_url}}bg/notice.png"></image>
+			</view>
+		
+		</view>
+		<image wx:if="{{showImg == 1}}" style="width:100%;height:auto;" mode="widthFix" class="n-img" src="{{base_url}}bg/notice.png"></image>
+	
+
+	</view>
+
+    <view bindtap="editUser" class="btn">保存</view>
+</view>

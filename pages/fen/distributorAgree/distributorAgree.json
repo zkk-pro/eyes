@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "分销平台用户协议",
+  "navigationBarBackgroundColor":"#FE992E",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

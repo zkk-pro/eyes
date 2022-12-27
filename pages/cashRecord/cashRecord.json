@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "收益统计",
+  "navigationBarBackgroundColor":"#FE8A22",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

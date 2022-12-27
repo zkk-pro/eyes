@@ -1,0 +1,36 @@
+/* pages/userCenter/editAddress/editAddress.wxss */
+page {
+    font-size: 28rpx;
+    background: #F5F5F5;
+}
+.input-area{
+  background: #FFF;
+  padding-left: 30rpx;
+}
+.attr-area{
+  height: 90rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 2rpx solid #EEE;
+}
+.attr-area:last-child{
+  border: none;
+}
+.input{
+  display: flex;
+  flex:1;
+  margin-left: 10rpx;
+}
+.submit-area{
+  position: fixed;
+  bottom: 150rpx;
+  left: 40rpx;
+  width: calc(100% - 80rpx); 
+  display: flex;
+  background: #FFA300;
+  padding: 20rpx 0rpx;
+  justify-content: center;
+  border-radius: 45rpx;
+  color: #FFF;
+}

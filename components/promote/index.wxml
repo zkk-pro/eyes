@@ -1,0 +1,16 @@
+<!--components/promote/index.wxml-->
+<view  class="cu-modal {{flag?'show':''}}" catchtouchmove>
+    <view class="mainBox">
+        <text class="iconfont icon-guanbi" catchtap="cancle"></text>
+        <view class="promote">
+            <view class="promote_one">
+                <image class="promote_one_image" src="{{base_url}}bg/questionnaire_activity.png"></image>
+                <view class="promote_one_btn" catchtap="oneBtnClick">一分钱领取眼镜</view>
+            </view>
+            <view class="promote_one">
+                <image class="promote_one_image" src="{{base_url}}bg/questionnaire_reward.png"></image>
+                <view class="promote_one_btn" catchtap="twoBtnClick">点击开启红包雨</view>
+            </view>
+        </view>
+    </view>4
+</view>

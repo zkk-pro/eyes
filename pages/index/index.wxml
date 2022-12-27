@@ -1,0 +1,238 @@
+<import src='/pages/template/template' />
+<wxs module="filters" src="./index.wxs"></wxs>
+<view class="wrap">
+    <!-- 头部 -->
+    <view class="header-img">
+      <image mode="widthFix" src="{{base_url}}bg/index.png"></image>
+      <view class="title"></view>
+        <view wx:if="{{parentUser}}" class="parentUser flex-row flex-start align-items-center">
+            <image src="{{parentUser.head_img_url}}"></image>
+            <view class="right">
+                <view>欢迎进入{{parentUser.name ? parentUser.name : parentUser.nick_name}}的小店</view>
+                <view>第{{parentUser.fen_num}}号小店</view>
+            </view>
+        </view>
+       <!-- 搜索 -->
+        <view style="top:{{parentUser ? '53%' : '26%'}}" class="search-area">
+            <view bindtap="goodsSearch" class="search flex-row flex-start align-items-center">
+                <text class="iconfont icon-sousuo"></text>
+                <input type="text" disabled="true"  placeholder="输入产品名称进行搜索" />
+            </view>
+        </view> 
+    </view>
+     <!-- 幻灯片 -->
+   <view style="margin-top:{{parentUser ? '-20%' : '-39%'}};" wx:if="{{slideList.length > 0 && isUseOther == 1 }}" class="swiper">
+        <swiper circular="true" current="{{currentItemId}}" autoplay="{{autopPlay == 1 ? true:false}}" previous-margin="60rpx" next-margin="60rpx" bindchange="swiperChange" >
+            <block wx:for="{{slideList}}">
+                <swiper-item item-id="{{index}}" data-item-id="{{index}}" bindtap='clickChange'>
+                <view class="out">
+                    <view class="in {{currentItemId == index ? 'selected' : ''}}">
+                    <image src="{{base_url}}{{item.img_url}}"></image>
+                    </view>
+                </view>       
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view style="margin-top:{{isUseOther == 0 && isServiceShow == 0 && parentUser ? '-21%' :  (isUseOther == 0 && isServiceShow == 0 && !parentUser ? '-38%' : 0)}};"  class="test-wrap">
+       
+    <!-- 广告 -->
+    <view wx:if="{{isServiceShow == 1}}"  class="ad flex-row flex-center align-items-center">
+      <image  style="margin-top:{{isUseOther == 1 ? 0 : (parentUser ? -180 : -400)}}rpx;" mode="widthFix" bindtap="lookMore" data-type="service" src="{{base_url}}bg/index_two.png"></image>
+    </view>
+    <!-- 广告 -->
+    <view wx:if="{{isUseOther == 1 }}" bindtap="yearCard" class="ad flex-row flex-center align-items-center">
+      <image mode="widthFix" bindtap="opticianSetting" src="{{base_url}}bg/my-refer.png"></image>
+    </view>
+    <!-- 分类 -->
+    <!-- <view wx:if="{{categoryList.length > 0}}" class="category-list flex-row flex-center align-items-center flex-wrap">
+        <block wx:for="{{categoryList}}">
+            <view data-id="{{item.id}}" data-fir="{{item.fir}}"  data-name="{{item.name}}" bindtap="goCate" class="category">
+                <view class="img flex-row flex-center align-items-center">
+                    <image src="{{base_url}}{{item.icon}}"></image>
+                </view>
+                <view class="flex-row flex-center">{{item.name}}</view>
+            </view>
+        </block>
+    </view> -->
+    <!-- <view class="store-desc flex-row space-between align-items-center">
+        <image mode="widthFix" bindtap="goCash" style="width: 100%;" src="{{base_url}}bg/index-banner.png"></image>
+    </view> -->
+
+    <!-- 抽奖商品 -->
+    <view wx:if="{{rewardGoods.length > 0 && isUseOther == 1 }}"  class="simple-desc flex-row space-between align-items-center">
+        <image mode="widthFix"  src="{{base_url}}bg/index_reward.png"></image>
+        <view bindtap="lookMore" data-type="reward" class="flex-row flex-end align-items-center">
+            <text>更多抽奖</text>
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+    <scroll-view wx:if="{{rewardGoods.length > 0 && isUseOther == 1 }}" scroll-x="true" >
+            <block wx:for="{{rewardGoods}}">
+                <view data-id="{{item.id}}" data-type="reward" bindtap="goDetail"  class="goods flex-column">
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                    <view class="goods_name">{{item.name}}</view>
+                    <view class="price flex-row space-between align-items-end">
+                        <text>￥{{filters.substr(item.ori_price)}}</text>
+                        <text>抽奖</text>
+                    </view>
+                </view>   
+            </block>
+    </scroll-view>
+
+    <!-- 秒杀商品 -->
+    <view wx:if="{{robGoods.length > 0 && isUseOther == 1}}"  class="simple-desc flex-row space-between align-items-center">
+        <image mode="widthFix"  src="{{base_url}}bg/index_rob.png"></image>
+        <view bindtap="lookMore" data-type="rob" class="flex-row flex-end align-items-center">
+            <text>更多抢购</text>
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+    <scroll-view wx:if="{{robGoods.length > 0 && isUseOther == 1}}" scroll-x="true" >
+            <block wx:for="{{robGoods}}">
+                <view data-id="{{item.id}}" data-type="rob" bindtap="goDetail" class="goods flex-column">
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                    <view class="goods_name">{{item.name}}</view>
+                    <view class="price flex-row space-between align-items-center">
+                        <view>
+                             <text>￥{{filters.substr(item.price)}}</text>
+                            <text>￥{{filters.substr(item.ori_price)}}</text>
+                        </view>
+                        <view>{{item.finish_time}}</view>
+                    </view>
+                </view>   
+            </block>
+    </scroll-view>
+    <!-- 服务商品 -->
+    <view wx:if="{{serviceGoods.length > 0}}"  class="store-desc flex-row space-between align-items-center">
+        <view class="s-left flex-row flex-start align-items-end">
+            <text>服务商品</text>
+            <image mode="widthFix" src="{{base_url}}bg/hot-recommend.png"></image>
+        </view>
+        <view bindtap="lookMore" data-type="service" class="s-right flex-row flex-end align-items-center">
+            <text>查看更多</text>
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+    <scroll-view wx:if="{{serviceGoods.length > 0}}" scroll-x="true" >
+        <block wx:for="{{serviceGoods}}">
+            <view data-id="{{item.id}}" data-type="service" bindtap="goDetail" class="goods flex-column">
+                <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                <view class="goods_name">{{item.name}}</view>
+                <view class="price flex-row space-between align-items-center">
+                    <view>
+                        <text>￥{{filters.substr(item.price)}}</text>
+                        <text>￥{{filters.substr(item.ori_price)}}</text>
+                    </view>
+                    <view style="display: none"></view>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+    <!-- 特惠图片 -->
+    <!-- <view class="store-desc flex-row space-between align-items-center" style="padding: 30rpx 30rpx 10rpx 30rpx;">
+        <view bindtap="goPreferential" style="width: 100%;">
+            <image style="width: 100%;height: 200rpx;" src="{{base_url}}bg/preferential.png"></image>
+        </view>
+    </view> -->
+    <!-- 加盟店铺货图片 -->
+    <!-- <view wx:if="{{is_show == 1}}" class="store-desc flex-row space-between align-items-center" style="margin-top: 0rpx;padding: 10rpx 30rpx;">
+        <view bindtap="goChain">
+            <image style="width: 334rpx;height: 200rpx;" src="{{base_url}}bg/left.png"></image>
+        </view>
+        <view bindtap="goVip">
+            <image style="width: 334rpx;height: 200rpx;" src="{{base_url}}bg/right.png"></image>
+        </view>
+    </view> -->
+     <!-- 排行榜商品 -->
+     <view wx:if="{{storeRankingGoods.length > 0}}"  class="store-desc flex-row space-between align-items-center" style="margin-top: 0rpx;">
+        <view class="s-left flex-row flex-start align-items-end">
+            <image src="{{base_url}}bg/index-ranking.png" style="width: 350rpx;height: 70rpx;margin-left: 0rpx;"></image>
+        </view>
+        <view bindtap="goCash" data-type="store" class="s-right flex-row flex-end align-items-center">
+            <image src="{{base_url}}bg/index-more.png" style="width: 180rpx;height: 60rpx;"></image>
+        </view>
+    </view>
+    <view wx:if="{{storeRankingGoods.length > 0}}" class="store-goods-list">
+        <block wx:for="{{storeRankingGoods}}" wx:key="index">
+            <view data-id="{{item.id}}" data-type="store" bindtap="goDetail" class="store-goods flex-row flex-start">
+                <view class="g-left">
+                    <view class="store-goods-sort">
+                        <image src="{{base_url}}bg/index-ranking-{{index+1}}.png" mode="widthFix" class="store-goods-sortImg"></image>
+                        <!-- <text class="store-goods-sortNum">1</text> -->
+                    </view>
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}" class="g-left-image"></image>
+                </view>
+                <view class="g-right flex-column space-between">
+                    <view class="g-title">{{item.name}}</view>
+                    <view class="g-info flex-row space-between align-items-center">
+                        <view class="i-l flex-row flex-start align-items-end">
+                                <text>￥{{filters.substr(item.price)}}</text>
+                                <text>￥{{filters.substr(item.ori_price)}}</text>
+                                <!-- <text class="commission" wx:if="{{showCommission == 1}}">结算价:￥{{filters.substr(item.cash_money)}}</text> -->
+                        </view>
+                        <view class="buy-btn">立即购买</view>
+                    </view>
+                </view>  
+            </view>
+        </block> 
+    </view> 
+    <!-- 新品推荐商品 -->
+    <view wx:if="{{storeGoods.length > 0}}"  class="store-desc flex-row space-between align-items-center" style="margin-top: 0rpx;">
+        <view class="s-left flex-row flex-start align-items-end">
+            <image src="{{base_url}}bg/index-recommend.png" style="width: 350rpx;height: 70rpx;margin-left: 0rpx;"></image>
+        </view>
+        <view bindtap="goCash" data-type="store" class="s-right flex-row flex-end align-items-center">
+            <image src="{{base_url}}bg/index-more.png"  style="width: 180rpx;height: 60rpx;"></image>
+        </view>
+    </view>
+    <view wx:if="{{storeGoods.length > 0}}" class="store-goods-list">
+        <block wx:for="{{storeGoods}}" wx:key="index">
+            <view data-id="{{item.id}}" data-type="store" bindtap="goDetail" class="store-goods flex-row flex-start">
+                <view class="g-left">
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}" class="g-left-image"></image>
+                </view>
+                <view class="g-right flex-column space-between">
+                    <view class="g-title">{{item.name}}</view>
+                    <view class="g-info flex-row space-between align-items-center">
+                        <view class="i-l flex-row flex-start align-items-end">
+                                <text>￥{{filters.substr(item.price)}}</text>
+                                <text>￥{{filters.substr(item.ori_price)}}</text>
+                                <!-- <text class="commission" wx:if="{{showCommission == 1}}">结算价:￥{{filters.substr(item.cash_money)}}</text> -->
+                        </view>
+                        <view class="buy-btn">立即购买</view>
+                    </view>
+                </view>  
+            </view>
+        </block> 
+    </view> 
+    <view wx:if="{{storeGoods.length <= 0 && rewardGoods.length <= 0 && robGoods.length <= 0 }}" class="bottom_text">~~暂无数据~~</view>
+    <view wx:if="{{storeGoods.length > 0 && rewardGoods.length > 0 && robGoods.length > 0 }}" class="padding-bottom"></view> 
+    
+    </view>
+    
+</view>
+<view wx:if="{{showAd == 1 && adImg != ''}}" class="ad-img flex-column flex-center">
+    <view class="img-wrap">
+        <image mode="widthFix" src="{{base_url}}{{adImg}}">
+            <text class="second">{{adSecond}}S</text>
+        </image>
+    </view>
+
+    <view class="flex-row flex-center">
+        <text bindtap="hideAd" class="iconfont icon-no"></text>
+    </view>
+</view>
+
+<view wx:if="{{actiInfo && showActiInfo == 1}}" class="acti-wrap flex-column flex-center">
+    <view bindtap="actiDetail" class="acti-img">
+        <image mode="widthFix" src="{{base_url}}bg/acti_index.png"></image>
+    </view>
+    <view class="cancel-icon">
+        <text bindtap="closeActi" class="iconfont  icon-no"></text>
+    </view>
+
+</view>
+
+
+<template is='bottom-nav' data="{{...nav_active}}" />

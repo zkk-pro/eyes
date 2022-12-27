@@ -1,0 +1,98 @@
+.search-area{
+    width: 100%;
+    padding: 30rpx 7%;
+    position: fixed;
+    top: 0%;
+    background: #FFF;
+    border-bottom: 1px solid #F2F2F2;
+  }
+  .search-btn {
+    width: 130rpx;
+    height: 45rpx;
+    text-align: center;
+    line-height: 45rpx;
+    border-radius: 45rpx;
+    color: #FFF;
+    background: linear-gradient(to right,#FFA300,#FEBF2A);
+    margin-left: 130rpx;
+    font-size: 24rpx;
+  }
+  .search-area .search{
+    width: 100%;
+    padding: 10rpx 20rpx;
+    border-radius: 20rpx;
+    background: #F2F5F8;
+  }
+  .search-area .search .icon-sousuo{
+    margin-right: 10rpx;
+    color: #855908;
+    font-size: 36rpx;
+  }
+.store-goods-list{
+    width:100%;
+    background: #FFF;
+    margin-top: 127rpx;
+}
+.store-goods-list .store-goods{
+    width: 100%;
+    padding: 30rpx;
+    border-bottom: 1px solid #F2F2F2;
+}
+.store-goods-list .store-goods:first-child{
+    margin-top: 0rpx;
+}
+.store-goods-list .store-goods .g-left image{
+    width: 180rpx;
+    height: auto;
+    border:1px solid #EEE;
+    border-radius: 4rpx;
+    margin-right: 20rpx;
+}
+.store-goods-list .store-goods .g-right{
+    flex: 1;
+}
+.store-goods-list .store-goods .g-right .g-title{
+    width: 100%;
+    font-size: 30rpx;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.store-goods-list .store-goods .g-right .g-info{
+    margin-bottom: 6rpx;
+}
+.store-goods-list .store-goods .g-right .g-info .i-l text:first-child{
+    color: #FD4F27;
+    margin-right: 10rpx;
+    font-size: 32rpx;
+}
+.store-goods-list .store-goods .g-right .g-info .i-l text:nth-child(2){
+    color: #9A9A9A;
+    text-decoration: line-through;
+    font-size: 26rpx;
+}
+.store-goods-list .store-goods .g-right .g-info .i-l text.commission{
+    width: 130rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    border-radius: 5rpx;
+    color: #D8B778;
+    background: #373636;
+    font-size: 20rpx;
+    text-align: center;
+    margin-left: 15rpx;
+}
+.store-goods-list .store-goods .g-right .g-info .buy-btn{
+    width: 130rpx;
+    height: 45rpx;
+    text-align: center;
+    line-height: 45rpx;
+    border-radius: 45rpx;
+    color: #FFF;
+    background: linear-gradient(to right,#FFA300,#FEBF2A);
+    margin-left: 10rpx;
+    font-size: 24rpx;
+}

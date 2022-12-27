@@ -1,0 +1,55 @@
+<import src='/pages/template/template' />
+<view class="title" style='height:{{navH}}px'>
+  <view class="flex-row flex-start align-items-center">
+      <text bindtap="goBack" class="iconfont icon-glyphicon-chevron-right"></text>
+      <text>店长中心</text>
+  </view>
+
+</view>
+<view class="wrap">
+    <view class="header-img">
+        <image mode="widthFix" class="img" src="{{base_url}}bg/promotion.png">
+             <view class="top-fee flex-column">
+                  <text>我的推广奖金 (元)</text>
+                  <text>{{balanceFee}}</text>
+             </view> 
+        </image>
+    </view>
+    <view class="commission flex-row space-between align-items-center">
+          <view class="flex-row flex-start align-items-center">
+              <text>可提现金额(元)</text>
+              <text>{{balanceFee}}</text>
+
+          </view>
+          <view class="btn flex-row flex-end align-items-center">
+              <view bindtap="jumpPage" data-type="becomeRecharge" >转入余额</view>
+              <view bindtap="jumpPage" data-type="applyWithdrawal" >提现</view>
+          </view>
+    </view>
+    <view class="menu-list">
+        <view bindtap="jumpPage" data-type="record" class="menu flex-row space-between align-items-center">
+           <view class="left flex-row flex-start align-items-center">
+              <image src="{{base_url}}bg/icon/commisson.png"></image>
+              <text>收益统计</text>
+           </view>
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+        <view bindtap="jumpPage" data-type="myteam"  class="menu flex-row space-between align-items-center">
+           <view class="left flex-row flex-start align-items-center">
+              <image src="{{base_url}}bg/icon/myteam.png"></image>
+              <text>我的团队</text>
+           </view>
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+        <view bindtap="jumpPage" data-type="qrcode" class="menu flex-row space-between align-items-center">
+           <view class="left flex-row flex-start align-items-center">
+              <image src="{{base_url}}bg/icon/qrcode.png"></image>
+              <text>推广二维码</text>
+           </view>
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+   
+
+
+</view>

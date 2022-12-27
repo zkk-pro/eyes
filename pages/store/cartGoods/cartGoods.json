@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "Empty-com": "/components/Empty/index"
+  },
+  "navigationBarTitleText": "现金清单",
+  "navigationBarBackgroundColor":"#FE992E",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

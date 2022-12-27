@@ -1,0 +1,195 @@
+/* pages/fen/commissionRecord/commissionRecord.wxss */
+
+.wrap .get-more {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom:70px;
+    color: #999;
+}
+
+.wrap .no-more {
+    font-size: 12px;
+    padding: 0px 10px;
+}
+.record-list {
+    padding: 0px 15px;
+}
+.record-list .record-item {
+    background: #FFF;
+    margin-top: 12px;
+    border-radius: 5px;
+    box-shadow: 0px -3px 3px 0px rgba(200,200,200,0.1), /*上边阴影 红色*/
+    -3px 0px 3px 0px rgba(200,200,200,0.1), /*左边阴影 绿色*/
+    3px 0px 3px 0px rgba(200,200,200,0.1), /*右边阴影 蓝色*/
+    0px 3px 3px 0px rgba(200,200,200,0.1);
+}
+.record-list .record-item .record-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 13px;
+    color: #999;
+    border-bottom: 1px solid #EEE;
+}
+.record-list .record-item .record-top .iconfont {
+    color: #CCC;
+    font-size: 14px;
+}
+.record-list .record-item .record-detail {
+    padding: 15px 10px 20px;
+    display: flex;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+.record-list .record-item .record-detail .user-info {
+    display: flex;
+    flex-direction: row;
+}
+.record-list .record-item .record-detail .user-info .head-img {
+    width: 50px;
+    height: 50px;
+    /* border-radius: 100px; */
+    /* overflow: hidden; */
+}
+.record-list .record-item .record-detail .user-info .head-img image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+}
+.record-list .record-item .record-detail .user-info .user-detail {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.record-list .record-item .record-detail .user-info .user-detail .order-time {
+    font-size: 12px;
+    color: #999;
+    margin-top: 5px;
+}
+.record-list .record-item .record-detail .money {
+    font-size: 18px;
+    color: #FF4E48;
+}
+.weui-popup__modal {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.order-info {
+    background: #FFF;
+    padding: 0px 15px 30px;
+    /* border-top-left-radius: 10px; */
+}
+.order-info .order-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0px;
+}
+.order-info .order-top .detail-title {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    margin-right: -16px;
+    font-size: 16px;
+}
+.order-info .order-top .icon{
+    color: #999;
+
+}
+.order-info .order-user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #999;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #EEE;
+}
+.order-info .order-user .user-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+#user-name {
+    color: #333;
+}
+.order-info .order-user .money-area {
+    color: #FF4E48;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+.order-info .order-user .money-area .money{
+    font-size: 16px;
+}
+.order-info .goods-info {
+    padding: 18px 0px;
+    border-bottom: 1px solid #EEE;
+    color: #999;
+}
+.order-info .goods-info .goods-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.order-info .goods-info .goods-list .goods-detail {
+    display: flex;
+    flex-direction: column-reverse;
+    color: #333;
+}
+.order-info .goods-info .goods-list .goods-detail .goods-name {
+    font-size: 13px;
+    padding-bottom: 3px;
+}
+.order-info .goods-info .count-area {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+#counts {
+    color: #333;
+}
+.order-more {
+    padding-top: 18px;
+}
+.order-more .order-attr {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.order-more .order-attr .attr-title {
+    color: #999;
+}
+.mask{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.record-info{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+}

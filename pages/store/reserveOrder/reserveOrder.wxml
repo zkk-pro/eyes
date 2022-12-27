@@ -1,0 +1,100 @@
+<!--pages/order/confirmOrder/confirmOrder.wxml-->
+<view class="wrap">
+    <!-- 地址管理 -->
+    <view class="address-box flex-row" bindtap="selectAddress">
+        <block wx:if="{{address}}">
+            <view class="address-left">
+                <view class="user-info flex-row">
+                    <text>收货人：{{address.call_name}}</text>
+                    <text>{{address.phone}}</text>
+                </view>
+                <view class="address-info">
+                    收货地址：{{address.address.city}}{{address.address.detail}}
+                </view>
+            </view>
+            <view class="address-right">
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="no-address">
+                <text class="add-address">+ 选择收货地址</text>
+            </view>
+        </block>
+    </view>
+    <image class="tiao" mode="scaleToFill" src="../../../static/images/my/tiao.jpg"></image>
+
+    <!-- 商品列表 -->
+    <view class="goods-list">
+
+        <block wx:key="1" wx:for="{{goodsList}}">
+            <view class="goods-item flex-row">
+                <view class="goods-img">
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                </view>
+                <view class="goods-info">
+                    <view class="goods-name">{{item.name}}</view>
+                    <view class="property">商品型号：{{item.property.property_text ? item.property.property_text : '统一规格'}}</view>
+                </view>
+                <view wx:if="{{item.updown == 1}}" class="other-info">
+                   <view class="price">￥{{item.price}}</view>
+                    <view class="count">×{{item.goods_count}}</view>
+                </view>
+                <view wx:else style="color: #999999;font-size: 32rpx; align-items: center;display: flex">该商品已下架</view>
+            </view>
+        </block>
+    </view>
+
+
+    <view  class="delivery-area">
+        <view class="express exp-type">
+            <text>配送方式</text>
+            <text>快递</text>
+        </view>
+        <view class="express">
+            <text>配送费用</text>
+            <text style="color:#FE5F14">￥{{orderFee}}</text>
+        </view>
+    </view>
+
+
+    <view class="delivery-area">
+        <view class="express exp-type">
+            <text>支付方式</text>
+            <picker bindchange="bindPayChange"  range="{{payArray}}"  >
+                <view class="picker">
+                    <text class="iconfont {{payIndex == 1 ? 'icon-yue':'icon-weixinzhifu'}} "> <text style="color:#525252;margin-left:10rpx;font-size:28rpx">{{payArray[payIndex]}}</text></text>
+                    <text class="iconfont icon-zuoyou"></text>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view wx:if="{{payIndex == 1}}" class="delivery-area">
+        <view class="express">
+            <text>当前余额</text>
+            <text style="color:#FE5F14">￥{{rechargeMoney}}</text>
+        </view>
+    </view>
+
+    <view class="message flex-row">
+        <text>买家留言:</text>
+        <input bindinput="messageCont" placeholder="对于本次交易的说明,需要特别标注的事情..." placeholder-style="color:#999;font-size:13px;" />
+    </view>
+
+    <view class="total-wrap">
+        <text class="goods-count">共{{goodsList.length}}件商品</text>
+        <text class="total-price">需支付运费： <text>￥{{orderFee}}</text> </text>
+    </view>
+
+    <!-- 底部 -->
+    <view class="bottom-wrap flex-row">
+        <view class="bottom-left">
+            <text class="counts">共{{goodsList.length}}件商品</text>
+            <text class="total-price">需支付运费： <text>￥{{orderFee}}</text> </text>
+        </view>
+        <view class="bottom-right" bindtap="submitOrder">立即下单</view>
+    </view>
+
+
+
+</view>

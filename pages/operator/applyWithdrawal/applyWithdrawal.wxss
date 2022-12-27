@@ -1,0 +1,113 @@
+/* pages/applyWithdrawal/applyWithdrawal.wxss */
+.nav-top{
+    width: 100%;
+}
+.nav-top > image{
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.nav-top > image .balance{
+    width: 100%;
+    position: absolute;
+    top: 25%;
+    left: 0;
+    color:#FFF;
+    padding: 0 25rpx;
+}
+.nav-top > image .balance text:last-child{
+    font-size: 55rpx;
+    margin-top: 10rpx;
+}
+.nav-top > image .right{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 25rpx;
+}
+.nav-top > image .right .r-btn{
+    width: 150rpx;
+    height: 55rpx;
+    line-height: 55rpx;
+    border-radius: 55rpx;
+    background: #FFF;
+    color: #FFB83F;
+    text-align: center;
+}
+.money{
+    width: 100%;
+    background: #FFF;
+}
+.money > text:first-child{
+    display: block;
+    padding: 25rpx;
+}
+.money .inp-money{
+    width: 100%;
+    padding: 0 25rpx 25rpx 25rpx;
+    border-bottom: 1px solid #F5F5F5;
+}
+.money .inp-money > text:first-child{
+    margin-top: 4rpx;
+    color:#686868;
+}
+.money .inp-money input{
+    width: 80%;
+    font-size: 45rpx;
+}
+
+.title{
+    width: 100%;
+    padding: 25rpx;
+    background: #FFF;
+    margin-top: 15rpx;
+    border-bottom: 1px solid #F5F5F5;
+}
+.title > text:last-child{
+    color:#FFC260;
+}
+.account-list{
+    width: 100%;
+    background: #FFF;
+    padding: 10rpx 0 50rpx 0;
+}
+.account-list .account{
+    width: 100%;
+    padding: 30rpx 25rpx 0rpx 25rpx;
+}
+.account-list .account .a-left .iconfont{
+    margin-right: 25rpx;
+    font-size: 36rpx;
+}
+.account-list .account .a-left .icon-choosed2{
+    color:#FFC260;
+}
+.account-list .account .num{
+    color:#9A9A9A;
+}
+.account-list .account text:last-child{
+    color:#7D7D7D;
+}
+.apply-btn{
+    width: 100%;
+    padding: 0 60rpx;
+    margin-top: 100rpx;
+    margin-bottom: 50rpx;
+}
+.apply-btn view{
+    width: 100%;
+    height: 75rpx;
+    line-height: 75rpx;
+    border-radius: 75rpx;
+    text-align: center;
+    background: #FFB22A;
+    color: #FFF;
+    font-size: 30rpx;
+}
+.notice{
+    width: 100%;
+    text-align: center;
+    padding: 20rpx;
+    color:#7D7D7D;
+}

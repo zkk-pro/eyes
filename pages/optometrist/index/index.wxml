@@ -1,0 +1,22 @@
+<view class="wrap">
+     <view class="top-image flex-row flex-center">
+         <image mode="widthFix" src="{{base_url}}bg/logo.png"></image>
+     </view>
+     <view class="info flex-column">
+         <view class="title">登录</view>
+         <view class="input flex-row space-between align-items-center">
+             <view class="flex-row flex-start align-items-center">
+                 <text class="iconfont icon-mobile"></text>
+                 <input bindinput="listenInput" data-type="phone"  type="number" value="" placeholder="请输入手机号" />
+             </view>
+             <text bindtap="sendCode" class="code">{{code_text}}</text>
+         </view>
+         <view class="input flex-row flex-start align-items-center">
+             <text class="iconfont icon-yanzhengma"></text>
+             <input bindinput="listenInput" data-type="phoneCode" type="number" value="" placeholder="请输入获取的验证码" />
+         </view>
+     </view>
+     <view class="btn-click">
+         <view bindtap="bindOptometristUser" >登录</view>
+     </view>
+</view>

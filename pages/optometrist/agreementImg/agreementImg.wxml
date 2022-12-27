@@ -1,0 +1,5 @@
+<image bindtap="showImg" mode="widthFix" src="{{imgPath}}"></image>
+<view class="btn">
+    <text bindtap="save">立即保存</text>
+</view>
+<canvas style="width:{{width}}px;height:{{height}}px" hidden='{{canvasHidden}}' canvas-id='share'></canvas>

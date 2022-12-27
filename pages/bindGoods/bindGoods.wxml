@@ -1,0 +1,35 @@
+<view class="wrap">
+    <view class="goods-info flex-row flex-start align-items-center">
+        <image mode="aspectFill" src="{{base_url}}{{goodsInfo.img_url}}"></image>
+        <view class="flex-column space-between">
+            <text>{{goodsInfo.name}}</text>
+            <text style="color:#FF0000">￥{{goodsInfo.price}}</text>
+        </view>
+    </view>
+    <view class="property-wrap flex-column">
+        <view class="title">规格信息</view>
+        <view wx:if="{{goodsInfo.propertyGroups}}" class="property-list">
+            <block wx:for="{{goodsInfo.propertyGroups}}">
+                <view class="property flex-row space-between">
+                    <view>
+                        <block wx:for="{{item.propertyList}}" wx:for-item="provalue" >
+                            <text style="margin-right:10rpx">{{provalue.name}}:{{provalue.value}} <text style="color:{{item.is_bind == 1 ? '#FE992E' : '#FF0000'}}">({{item.is_bind == 1 ? '已绑定' : '未绑定'}})</text> </text>
+                        </block>
+                    </view>
+                    <view wx:if="{{item.is_bind == 1}}" bindtap="confirmOrder" data-pid="{{item.id}}" data-id="{{goodsInfo.id}}"  class="btn-buy">购买</view>
+                </view>
+            </block>
+        </view>
+        <view wx:else class="property-list">
+            <view class="property flex-row space-between">
+                <view>统一规格 <text style="color:{{goodsInfo.is_bind == 1 ? '#FE992E' : '#FF0000'}}">({{goodsInfo.is_bind == 1 ? '已绑定' : '未绑定'}})</text> </view>
+                <view wx:if="{{goodsInfo.is_bind == 1}}" bindtap="confirmOrder" data-pid="0" data-id="{{goodsInfo.id}}"  class="btn-buy">购买</view>
+            </view>
+        </view>
+    </view>
+    <view class="btn-area flex-row flex-start align-items-center">
+        <view bindtap="goIndex" class="click-btn">回到首页</view>
+        <view bindtap="relieveStoreBind" class="click-btn">解除绑定</view>
+        <view bindtap="bindGoodsProperty" class="click-btn">确认绑定</view>
+    </view>
+</view>

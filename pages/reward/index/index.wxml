@@ -1,0 +1,43 @@
+<wxs module="filters" src="../../index/index.wxs"></wxs>
+<view class="wrap">
+    <!-- 秒杀商品 -->
+    <view wx:if="{{rewardGoods.length > 0}}" class="simple-desc flex-row space-between align-items-center">
+        <image mode="widthFix"  src="{{base_url}}bg/index_reward.png"></image>
+    </view>
+    <scroll-view wx:if="{{rewardGoods.length > 0}}" scroll-x="true" >
+        <block wx:for="{{rewardGoods}}">
+           <view data-id="{{item.id}}" bindtap="goodsDetail" class="goods flex-column">
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                    <view class="goods_name">{{item.name}}</view>
+                    <view class="price flex-row space-between align-items-end">
+                        <text>￥{{filters.substr(item.ori_price)}}</text>
+                        <text>抽奖</text>
+                    </view>
+                </view> 
+        </block>
+    </scroll-view>
+    <view class="store-goods-list">
+        <block wx:for="{{list}}">
+            <view data-id="{{item.id}}" bindtap="goodsDetail" class="store-goods flex-row flex-start">
+                <view class="g-left">
+                    <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+                </view>
+                <view class="g-right flex-column space-between">
+                    <view class="g-title">{{item.name}}</view>
+                    <view class="g-info flex-row space-between align-items-end">
+                        <view class="i-l ">
+                            <view class="flex-row flex-start align-items-end">
+                                <text>￥{{filters.substr(item.price)}}</text>
+                                <text>￥{{filters.substr(item.ori_price)}}</text>
+                                <text wx:if="{{showCommission == 1}}" class="commission" >结算价:￥{{filters.substr(item.settlement_money)}}</text>
+                            </view>    
+                        </view>
+                        <view class="buy-btn">参与抽奖</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+
+    </view>
+<view class="bottom_text">{{bottom_text}}</view>
+</view>

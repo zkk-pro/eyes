@@ -1,0 +1,58 @@
+page{
+    background: #FFF;
+}
+.top-image{
+    margin-top: 60rpx;
+}
+.top-image image{
+    width: 260rpx;
+    height: auto;
+}
+.info{
+    width: 100%;
+    padding: 0 60rpx;
+}
+.info .title{
+    width: 100%;
+    padding: 30rpx 0;
+    font-size: 32rpx;
+    border-bottom: 1px solid #F8F8F8;
+    color: #333;
+    font-weight: 600;
+}
+.info  .input{
+    width: 100%;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #F8F8F8;
+}
+.info  .input .iconfont{
+    color: #FE8518;
+    margin-right: 40rpx;
+    font-size: 45rpx;
+}
+.info  .input .code{
+    width:140rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 50rpx;
+    text-align: center;
+    background: #FE8821;
+    color: #FFF;
+    font-size: 22rpx;
+}
+.btn-click{
+    width: 100%;
+    padding: 0 60rpx;
+    position: fixed;
+    bottom: 100rpx;
+}
+.btn-click view{
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 80rpx;
+    text-align: center;
+    color: #FFF;
+    background: linear-gradient(to right,#FEA034,#FE811B);
+    font-size: 32rpx;
+}

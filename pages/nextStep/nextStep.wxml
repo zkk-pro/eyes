@@ -1,0 +1,16 @@
+<view class="wrap">
+    <view class="title">选择</view>
+    <view class="choice-area flex-column">
+        <view data-type="1" bindtap="changeType" class="flex-row space-between align-items-center">
+            <text>有验光数据</text>
+            <text class="iconfont {{choseType == 1 ? 'icon-choosed2' : 'icon-xuanzhongyuandian'}} "></text>
+        </view>
+        <view data-type="2" bindtap="changeType" class="flex-row space-between align-items-center">
+            <text>无验光数据</text>
+            <text class="iconfont {{choseType == 2 ? 'icon-choosed2' : 'icon-xuanzhongyuandian'}}"></text>
+        </view>
+    </view>
+    <view class="btn-click">
+        <view bindtap="submitOrder">确定</view>
+    </view>
+</view>

@@ -1,0 +1,57 @@
+<view class="wrap">
+    <view class="top-image flex-row flex-center">
+        <image mode="widthFix" src="{{base_url}}bg/logo.png?r=1.0"></image>
+    </view>
+    <view class="info flex-column">
+        <view class="input flex-row flex-start align-items-center">
+            <text class="iconfont icon-user"></text>
+            <input bindinput="listenInput" data-type="name" type="text" value="" placeholder="请输入店铺名称" />
+        </view>
+    </view>
+    <view class="info flex-column">
+        <view class="input flex-row flex-start align-items-center">
+            <text class="iconfont icon-mobile"></text>
+            <input bindinput="listenInput" data-type="phone" type="text" value="" placeholder="请输入您的手机号" />
+        </view>
+    </view>
+    <view bindtap="choiceArea" class="info flex-column">
+        <view class="input flex-row flex-start">
+            <text class="iconfont icon-daohang"></text>
+            <textarea   maxlength="-1" disabled  value="{{address}}" placeholder="请点击选择您的地址" ></textarea>
+        </view>
+    </view>
+    <view class="upload-area flex-row space-between align-items-center">
+        <view class="upload-img">
+            <view>上传商家头像</view>
+            <view class="img-area flex-row flex-start align-items-center">
+                <image wx:if="{{head_img}}"   mode="aspectFill" src="{{base_url}}{{head_img}}">
+                    <text catchtap="delImage" data-type="head_img"  class="iconfont icon-quxiao"></text>
+                </image>
+                <view wx:else bindtap="uploadImg" data-type="head_img" class="add-btn flex-column flex-center">
+                    <text class="iconfont icon-tupian"></text>
+                </view>
+            </view>
+        </view>
+        <view class="upload-img">
+            <view>上传营业执照</view>
+            <view class="img-area flex-row flex-start align-items-center">
+
+                <image wx:if="{{license}}"   mode="aspectFill" src="{{base_url}}{{license}}">
+                    <text catchtap="delImage" data-type="license" class="iconfont icon-quxiao"></text>
+                </image>
+                <view wx:else bindtap="uploadImg" data-type="license" class="add-btn flex-column flex-center">
+                    <text class="iconfont icon-tupian"></text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view bindtap="agreeRule" class="agree flex-row flex-center align-items-center">
+        <view >我已阅读并同意 <text catchtap="jumpRule" style="color:#FEA034">《商家入驻协议》</text> </view>
+        <text wx:if="{{is_agree != 1}}" class="iconfont icon-xuanzhongyuandian"></text>
+        <text wx:else class="iconfont icon-choosed2"></text>
+    </view>
+
+    <view class="btn-click">
+        <view bindtap="addApply">申请入驻</view>
+    </view>
+</view>

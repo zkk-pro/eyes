@@ -1,0 +1,74 @@
+<wxs module="filters" src="../index/index.wxs"></wxs>
+<view wx:if="{{actiInfo}}" class="wrap">
+    <image bindload="imgload" class="acti_bg" mode="widthFix" src="{{acti_bg}}">
+        <view  class="top-wrap">
+            <view class="info-img flex-column">
+                <view class="head_img flex-row flex-center">
+                    <image wx:if="{{userInfo.id}}" src="{{userInfo.head_img_url}}"></image>
+                    <image wx:else src="{{base_url}}bg/no-img.png"></image>
+                </view>
+                <view class="flex-row flex-center">
+                    <text>我的邀请{{totalCount}}人</text>
+                </view>
+                <view class="flex-row flex-center">每邀请一人立得 <text style="color:#FE9E4F;">{{filters.substr(actiInfo.cashback)}}</text>元</view>
+            </view>
+
+            <view class="img-wrap">
+                <block wx:if="{{allUserRecord.length > 0}}" wx:for="{{allUserRecord}}" >
+                    <view  class="show-img flex-column">
+                        <view class="flex-row flex-center"><image src="{{item.head_img_url}}"></image></view>
+                        <view class="flex-row flex-center"><text>{{filters.substring(item.nick_name)}}</text></view>
+                    </view>
+
+                </block>
+                <block wx:for="{{5 - allUserRecord.length}}" >
+                    <button wx:if="{{userInfo.id}}" open-type="share" class="show-img flex-column">
+                        <view class="flex-row flex-center"><view class="circle"><text class="iconfont icon-xiaojiahao"></text></view></view>
+                        <view class="flex-row flex-center color">立即邀请</view>
+                    </button>
+                    <button wx:else bindtap="isLogin" class="show-img flex-column">
+                        <view class="flex-row flex-center"><view class="circle"><text class="iconfont icon-xiaojiahao"></text></view></view>
+                        <view class="flex-row flex-center color">立即邀请</view>
+                    </button>
+                </block>
+            </view>
+            <view class="commission">获得奖金：<text style="font-size: 36rpx">{{filters.substr(totalCommission)}}</text>元</view>
+
+            <view class="btn-area flex-row space-between align-items-center">
+                <button wx:if="{{userInfo.id}}" open-type="share">立即分享</button>
+                <button wx:else bindtap="isLogin">立即分享</button>
+                <button bindtap="goShare">生成海报</button>
+            </view>
+            <view class="left-tip">左右滑动</view>
+        </view>
+        <view  class="middle-wrap">
+            <rich-text nodes="{{actiInfo.details}}" space="nbsp"  ></rich-text>
+        </view>
+
+    </image>
+</view>
+<view class="bottom_text" wx:else>{{bottom_text}}</view>
+
+<view wx:if="{{isServiceShow == 1}}" class="store-goods-list">
+    <block wx:for="{{list}}">
+        <view data-id="{{item.id}}" bindtap="goodsDetail" class="store-goods flex-row flex-start">
+            <view class="g-left">
+                <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+            </view>
+            <view class="g-right flex-column space-between">
+                <view class="g-title">{{item.name}}</view>
+                <view class="g-info flex-row space-between align-items-end">
+                    <view class="i-l ">
+                        <view class="flex-row flex-start align-items-center">
+                            <text>￥{{filters.substr(item.price)}}</text>
+                            <text>￥{{filters.substr(item.ori_price)}}</text>
+                            <text class="commission" wx:if="{{showCommission == 1}}">总奖金:￥{{filters.substr(item.commission)}}</text>
+                        </view>
+                    </view>
+                    <view class="buy-btn">立即购买</view>
+                </view>
+            </view>
+        </view>
+    </block>
+
+</view>

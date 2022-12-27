@@ -1,0 +1,7 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText":"运营中心",
+  "navigationBarBackgroundColor":"#FE9F33",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

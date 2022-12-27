@@ -1,0 +1,103 @@
+page{
+  background: #FFF;
+  padding-bottom: 100rpx;
+}
+.info{
+  width: 100%;
+  padding: 20rpx;
+}
+.info .right image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.info .right input{
+  text-align: right;
+  margin-right: 10rpx;
+}
+.info .right .iconfont{
+  font-size: 24rpx;
+  color:#CCC;
+  margin-top: 8rpx;
+}
+.btn{
+  width:calc(100% - 80rpx);
+  height: 75rpx;
+  line-height: 75rpx;
+  border-radius: 75rpx;
+  text-align: center;
+  color: #FFF;
+  background: #FE8A22;
+  margin-left: 40rpx;
+  font-size: 32rpx;
+  margin-top: 100rpx;
+}
+.settingArea .title-area{
+  padding: 20rpx 20rpx 20rpx 20rpx;
+}
+.settingArea .title-area view{
+  width: 27.5%;
+  font-size: 30rpx;
+  font-weight: 550;
+  text-align: right;
+  padding-right: 20rpx;
+}
+.settingArea .title-area view:first-child{
+  width: 45%;
+  text-align: left;
+  padding-right:0rpx
+}
+.settingArea .title-area view:first-child text:last-child{
+  font-weight: normal;
+  font-size: 24rpx;
+  color: #5F5F60;
+  margin-left: 15rpx;
+}
+.settingArea  .input-area{
+  padding: 20rpx;
+  background: #FFF;
+}
+.settingArea  .input-area > view{
+  width: 27.5%;
+  font-size: 30rpx;
+  padding-right: 20rpx;
+}
+.settingArea .input-area > view:first-child{
+  width: 45%;
+  text-align: left;
+  padding-right: 0rpx;
+}
+.settingArea .input-area > view > view{
+  width: 100%;
+}
+.settingArea .input-area > view > view input{
+  font-size: 28rpx;
+  width: 150rpx;
+}
+.placeholder-class{
+  color:#CBCBCB;
+  font-size: 24rpx;
+}
+.settingArea .input-area view .icon-xiasanjiao{
+  font-size: 36rpx;
+  color: #909090;
+}
+.choice-area{
+  width: 100%;
+  padding: 20rpx;
+  background: #FFF;
+}
+.choice-area .l-area {
+  margin-right: 50rpx;
+}
+.choice-area .iconfont{
+  margin-right: 10rpx;
+  font-size: 36rpx;
+}
+.choice-area .icon-choosed2{
+  color: #FD9831;
+}
+.n-img{
+  width: 100rpx;
+ height: auto;
+}

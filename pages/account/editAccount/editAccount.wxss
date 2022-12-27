@@ -1,0 +1,61 @@
+page {
+  font-family: "微软雅黑";
+  font-size:28rpx;
+  color:#333;
+  padding-bottom: 150rpx;
+  background: #F5F5F5
+}
+.account-area{
+  background: #FFF;
+}
+.type-area{
+  height:100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0rpx 30rpx;
+  border-bottom: 2rpx solid #EEE;
+}
+.type-right{
+  display: flex;
+  flex-direction: row;
+  flex:1;
+  justify-content: flex-end;
+  align-items: center;
+  /* height: 80rpx; */
+}
+picker{
+  flex:1;
+  text-align: right;
+}
+.input-area{
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0rpx 30rpx;
+  border-bottom: 2rpx solid #EEE;
+}
+.input-area input{
+  width: 70%;
+}
+.input-name{
+  width:150rpx;
+}
+.submit-area{
+  margin:0 30rpx;
+  margin-top:100rpx;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #FFB22A;
+  border-radius: 80rpx;
+  font-size: 30rpx;
+  color:#FFF;  
+}
+.icon-zuoyou{
+  color: #4A4A4A;
+  margin-left: 10rpx;
+}

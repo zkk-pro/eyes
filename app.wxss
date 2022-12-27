@@ -1,0 +1,171 @@
+/**app.wxss**/
+@import "static/icon.wxss";
+@import "/pages/template/template.wxss";
+page{
+  background: #F2F5F8;
+  font-family: "微软雅黑";
+  font-size: 28rpx;
+}
+::-webkit-scrollbar{
+	display: none;
+	width: 0;
+	height: 0;
+	color: transparent;
+}
+.hidden{
+  display: none !important;
+}
+view,text,navigator,scroll-view,textarea,image,cover-view,swiper,swiper-item,input{
+	box-sizing: border-box;
+}
+
+.wrap .no-more{
+	width:100%;
+	padding:30rpx;
+	text-align:center;
+	color:#999;
+	font-size:26rpx;
+}
+.bottom_text{
+  padding: 30rpx;
+  color:#AAA;
+  text-align: center;
+}
+/**公共flex方法**/
+.flex-row{
+  display: flex;
+  flex-direction: row; 
+}
+.flex-column{
+  display: flex;
+  flex-direction: column; 
+}
+.flex-start{
+  justify-content: flex-start;
+}
+.flex-end{
+  justify-content: flex-end;
+}
+.flex-center{
+  justify-content: center;
+}
+.flex-wrap{
+  flex-wrap: wrap;
+}
+.flex-nowrap{
+  flex-wrap: nowrap;
+}
+.space-between{
+  justify-content: space-between;
+}
+.space-around{
+  justify-content: space-around;
+}
+.align-items-center{
+  align-items: center;
+}
+.align-self-center{
+ align-self: center;
+}  
+.align-items-end{
+  align-items: flex-end;
+}
+page,.place-holder {
+  font-family: "微软雅黑";
+}
+page {
+  font-size: 28rpx;
+}
+.inline{
+      display: inline-block;
+}
+view{
+	box-sizing:border-box;
+}
+
+button{
+	margin-left: 0px;
+	margin-right: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	box-sizing: border-box;
+	text-align: center;
+	text-decoration: none;
+	line-height:normal;
+	border-radius: 0px;
+	overflow: hidden;
+	color: #000;
+	background-color: #fff;
+}
+button::after{
+	border:0px;
+	border-radius:0px;
+}
+.add-btn-cont{
+	width:100%;
+	height:0px;
+	background:#fff;
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	z-index:999;
+}
+
+.cu-modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1110;
+	opacity: 0;
+	outline: 0;
+	text-align: center;
+	-ms-transform: scale(1.185);
+	transform: scale(1.185);
+	backface-visibility: hidden;
+	perspective: 2000upx;
+	background: rgba(0, 0, 0, 0.6);
+	transition: all 0.3s ease-in-out 0s;
+	pointer-events: none;
+  }
+  
+  .cu-modal::before {
+	content: "\200B";
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+  }
+  
+  .cu-modal.show {
+	opacity: 1;
+	transition-duration: 0.3s;
+	-ms-transform: scale(1);
+	transform: scale(1);
+	overflow-x: hidden;
+	overflow-y: auto;
+	pointer-events: auto;
+  }
+  @font-face {
+	font-family: "iconfont"; /* Project id 2883583 */
+	src: url('//at.alicdn.com/t/font_2883583_s1guc5h7wbq.woff2?t=1634890200651') format('woff2'),
+		 url('//at.alicdn.com/t/font_2883583_s1guc5h7wbq.woff?t=1634890200651') format('woff'),
+		 url('//at.alicdn.com/t/font_2883583_s1guc5h7wbq.ttf?t=1634890200651') format('truetype');
+  }
+  
+  .iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-xiangyou1:before {
+	content: "\e775";
+  }
+  
+  .icon-guanbi:before {
+	content: "\e600";
+  }
+  

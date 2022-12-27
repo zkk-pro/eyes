@@ -1,0 +1,340 @@
+<!--pages/order/confirmOrder/confirmOrder.wxml-->
+<view class="wrap">
+  <!-- 地址管理 -->
+  <!-- <view wx:if="{{(goodsList[0].is_normal == 0 || goodsList[0].is_data == 1 || is_optometrist) && showPosition == 0}}" class="address-box flex-row" bindtap="selectAddress"> -->
+  <view class="address-box flex-row" bindtap="selectAddress">
+    <block wx:if="{{address}}">
+      <view class="address-left">
+        <view class="user-info flex-row">
+          <text>收货人：{{address.call_name}}</text>
+          <text>{{address.phone}}</text>
+        </view>
+        <view class="address-info">
+          收货地址：{{address.address.city}}{{address.address.detail}}
+        </view>
+      </view>
+      <view class="address-right">
+        <text class="iconfont icon-zuoyou"></text>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="no-address">
+        <text class="add-address">+ 选择收货地址</text>
+      </view>
+    </block>
+  </view>
+  <!-- <image wx:if="{{goodsList[0].is_normal == 0 || goodsList[0].is_data == 1}}" class="tiao" mode="scaleToFill" src="../../../static/images/my/tiao.jpg"></image> -->
+  <image class="tiao" mode="scaleToFill" src="../../../static/images/my/tiao.jpg"></image>
+  <view class="settingArea">
+    <view class="title-area flex-row space-between align-items-center">
+      <view class="flex-column">
+        <text>验光数据</text>
+        <text>(可联系客服协助查看验光单)</text>
+      </view>
+      <view>右</view>
+      <view>左</view>
+    </view>
+    <view class="input-area flex-row space-between  align-items-center">
+      <view>度数/球镜/SPH</view>
+      <view>
+
+        <picker data-type="degreeRightName" bindchange="bindPickerChange" range="{{degreeArray}}" range-key="name">
+          <view class="flex-row flex-end align-items-center">
+            <input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="degreeRightName" type="text" value="{{degreeRightName}}" />
+            <text class="iconfont icon-xiasanjiao"></text>
+          </view>
+
+        </picker>
+      </view>
+      <view class="flex-row flex-end align-items-center">
+
+        <picker data-type="degreeLeftName" bindchange="bindPickerChange" range="{{degreeArray}}" range-key="name">
+          <view class="flex-row flex-end align-items-center">
+            <input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="degreeLeftName" type="text" value="{{degreeLeftName}}" />
+            <text class="iconfont icon-xiasanjiao"></text>
+          </view>
+
+        </picker>
+      </view>
+    </view>
+    <view class="input-area flex-row flex-start  align-items-center">
+      <view>瞳距/PD</view>
+      <view style="width:55%" class="flex-row flex-center align-items-center">
+
+        <picker style="width:27.5%" data-type="pupilRightName" bindchange="bindPickerChange" range="{{pupilArray}}" range-key="name">
+          <view class="flex-row flex-center align-items-center">
+            <input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="pupilRightName" type="text" value="{{pupilRightName}}" />
+            <text class="iconfont icon-xiasanjiao"></text>
+          </view>
+
+        </picker>
+      </view>
+      <!-- <view class="flex-row flex-end align-items-center">
+				<input bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="pupilLeftName" type="text" value="{{pupilLeftName}}" />
+				<picker data-type="pupilLeftName" bindchange="bindPickerChange" range="{{pupilArray}}" range-key="name">
+					<text class="iconfont icon-xiasanjiao"></text>
+				</picker>
+			</view> -->
+    </view>
+
+    <view class="choice-area flex-row flex-center align-items-center">
+      <view data-is-degree="0" bindtap="isDegree" class="l-area flex-row flex-start align-items-center">
+        <text wx:if="{{isDegree == 1}}" class="iconfont icon-xuanzhongyuandian"></text>
+        <text wx:else class="iconfont icon-choosed2"></text>
+        <text>无散光</text>
+      </view>
+      <view data-is-degree="1" bindtap="isDegree" class="r-area flex-row flex-start align-items-center">
+        <text wx:if="{{isDegree == 1}}" class="iconfont icon-choosed2"></text>
+        <text wx:else class="iconfont icon-xuanzhongyuandian"></text>
+        <text>有散光</text>
+      </view>
+    </view>
+
+
+    <view wx:if="{{isDegree == 1}}" class="input-area flex-row space-between  align-items-center">
+      <view>散光/柱镜/CYL</view>
+      <view>
+
+        <picker data-type="astigmiaRightName" bindchange="bindPickerChange" range="{{astigmiaArray}}" range-key="name">
+          <view class="flex-row flex-end align-items-center">
+            <input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="astigmiaRightName" type="text" value="{{astigmiaRightName}}" />
+            <text class="iconfont icon-xiasanjiao"></text>
+          </view>
+
+        </picker>
+      </view>
+      <view>
+
+        <picker data-type="astigmiaLeftName" bindchange="bindPickerChange" range="{{astigmiaArray}}" range-key="name">
+          <view class="flex-row flex-end align-items-center">
+            <input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="astigmiaLeftName" type="text" value="{{astigmiaLeftName}}" />
+            <text class="iconfont icon-xiasanjiao"></text>
+          </view>
+
+        </picker>
+      </view>
+    </view>
+    <view wx:if="{{isDegree == 1}}" class="input-area flex-row space-between  align-items-center">
+      <view>轴位/AXIS</view>
+      <view>
+
+        <picker data-type="axialRightName" bindchange="bindPickerChange" range="{{axialArray}}" range-key="name">
+          <view class="flex-row flex-end align-items-center">
+            <input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="axialRightName" type="text" value="{{axialRightName}}" />
+            <text class="iconfont icon-xiasanjiao"></text>
+          </view>
+
+        </picker>
+      </view>
+      <view>
+
+        <picker data-type="axialLeftName" bindchange="bindPickerChange" range="{{axialArray}}" range-key="name">
+          <view class="flex-row flex-end align-items-center">
+            <input disabled="true" bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="axialLeftName" type="text" value="{{axialLeftName}}" />
+            <text class="iconfont icon-xiasanjiao"></text>
+          </view>
+
+        </picker>
+      </view>
+    </view>
+    <!-- <view class="input-area flex-row space-between  align-items-center">
+			<view>ADD</view>
+			<view class="flex-row flex-end align-items-center">
+				<input bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="addRightName" type="text" value="{{addRightName}}" />
+				<picker data-type="addRightName" bindchange="bindPickerChange" range="{{addArray}}" range-key="name">
+					<text class="iconfont icon-xiasanjiao"></text>
+				</picker>
+			</view>
+			<view class="flex-row flex-end align-items-center">
+				<input bindinput="listenInput" placeholder-class="placeholder-class" placeholder="请选择/输入" data-type="addLeftName" type="text" value="{{addLeftName}}" />
+				<picker data-type="addLeftName" bindchange="bindPickerChange" range="{{addArray}}" range-key="name">
+					<text class="iconfont icon-xiasanjiao"></text>
+				</picker>
+			</view>
+		</view> -->
+    <view bindtap="showNoticeImg" class="input-area flex-row space-between  align-items-center">
+      <view style="width:73%" class="flex-column">
+        <text>验光单说明</text>
+        <text style="font-size:22rpx;color:#AAA">(点击{{showImg == 1 ? '收起' : '展开'}}验光单说明)</text>
+      </view>
+      <view class="flex-row flex-end align-items-center">
+        <image data-src="{{base_url}}bg/notice.png?r=1.0" mode="widthFix" class="n-img" src="{{base_url}}bg/notice.png"></image>
+      </view>
+
+    </view>
+    <image wx:if="{{showImg == 1}}" style="width:100%;height:auto;" mode="widthFix" class="n-img" src="{{base_url}}bg/notice.png"></image>
+
+
+  </view>
+
+
+  <!-- 商品列表 -->
+  <view class="goods-list">
+
+    <block wx:key="1" wx:for="{{goodsList}}">
+      <view class="goods-item flex-row">
+        <view class="goods-img">
+          <image mode="widthFix" src="{{base_url}}{{item.img_url}}"></image>
+        </view>
+        <view class="goods-info">
+          <view class="goods-name">{{item.name}}</view>
+          <view class="property">商品型号：{{item.property.property_text ? item.property.property_text : '统一规格'}}</view>
+        </view>
+        <view wx:if="{{item.updown == 1}}" class="other-info">
+          <view class="price">￥{{item.price}}</view>
+          <view class="count">×{{item.goods_count}}</view>
+        </view>
+        <view wx:else style="color: #999999;font-size: 32rpx; align-items: center;display: flex">该商品已下架</view>
+      </view>
+    </block>
+  </view>
+  <!-- 代买镜框 -->
+  <view class="help-content">
+    <view class="choice-area flex-row flex-center align-items-center">
+      <view data-help-buy="1" bindtap="helpBuyHandler" class="l-area flex-row flex-start align-items-center">
+        <text wx:if="{{helpBuy == 0}}" class="iconfont icon-xuanzhongyuandian"></text>
+        <text wx:else class="iconfont icon-choosed2"></text>
+        <text>代买镜框</text>
+      </view>
+      <view data-help-buy="0" bindtap="helpBuyHandler" class="r-area flex-row flex-start align-items-center">
+        <text wx:if="{{helpBuy == 0}}" class="iconfont icon-choosed2"></text>
+        <text wx:else class="iconfont icon-xuanzhongyuandian"></text>
+        <text>不代买镜框</text>
+      </view>
+    </view>
+    <view wx:if="{{helpBuy == 1}}">
+      <view class="help-item">
+        <text class="label">照片</text>
+        <img src="src" alt="" />
+        <view class="upload-btn">上传照片</view>
+      </view>
+      <view class="help-item">
+        <text class="label">品牌</text>
+        <input type="text" placeholder="请输入品牌" class="placeholder-class" />
+      </view>
+      <view class="help-item">
+        <text class="label">型号</text>
+        <input type="text" placeholder="请输入型号" class="placeholder-class" />
+      </view>
+      <view class="help-item">
+        <text class="label">手机号</text>
+        <input type="text" placeholder="请输入手机号" class="placeholder-class" />
+      </view>
+    </view>
+  </view>
+
+
+  <view wx:if="{{goodsList[0].is_normal == 0}}" class="delivery-area">
+    <view class="express exp-type">
+      <text>配送方式</text>
+      <text>快递</text>
+    </view>
+    <view class="express">
+      <text>配送费用</text>
+      <text style="color:#FE5F14">￥{{orderFee}}</text>
+    </view>
+  </view>
+
+  <view class="delivery-area">
+    <view class="express">
+      <text>推荐优惠</text>
+      <text style="color:#FE5F14">-￥{{recommendFee}}</text>
+    </view>
+  </view>
+  <view class="delivery-area">
+    <view class="express">
+      <text>镜片加工费</text>
+      <text style="color:#FE5F14">+￥{{lens_processing_fee}}</text>
+    </view>
+  </view>
+
+  <view class="delivery-area">
+    <view class="express exp-type">
+      <text>支付方式</text>
+      <picker bindchange="bindPayChange" range="{{payArray}}">
+        <view class="picker">
+          <text class="iconfont {{payIndex == 1 ? 'icon-yue':'icon-weixinzhifu'}} "> <text style="color:#525252;margin-left:10rpx;font-size:28rpx">{{payArray[payIndex]}}</text></text>
+          <text class="iconfont icon-zuoyou"></text>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view wx:if="{{payIndex == 1}}" class="delivery-area">
+    <view class="express">
+      <text>当前余额</text>
+      <text style="color:#FE5F14">￥{{rechargeMoney}}</text>
+    </view>
+  </view>
+  <view wx:if="{{couponInfo.length > 1}}" class="delivery-area">
+    <view class="express exp-type">
+      <text>选择优惠券</text>
+      <picker bindchange="bindChoiceCoupon" range="{{couponInfo}}">
+        <view class="picker">
+          <text>{{couponName}}</text>
+          <text class="iconfont icon-zuoyou"></text>
+        </view>
+      </picker>
+    </view>
+  </view>
+  <view wx:if="{{optometristName != '暂无核销商家信息' && optometristName}}" class="delivery-area">
+    <view bindtap="openModal" class="express exp-type">
+      <text>当前核销商家</text>
+      <view class="picker">
+        <text>{{optometristName}}</text>
+        <text class="iconfont icon-zuoyou"></text>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{couponInfo.length > 1}}" class="delivery-area">
+    <view class="express">
+      <text>优惠券减免</text>
+      <text style="color:#FE5F14">-￥{{couponMin}}</text>
+    </view>
+  </view>
+
+  <view class="message flex-row">
+    <text>买家留言:</text>
+    <input bindinput="messageCont" placeholder="对于本次交易的说明,需要特别标注的事情..." placeholder-style="color:#999;font-size:13px;" />
+  </view>
+
+  <view class="total-wrap">
+    <text class="goods-count">共{{goodsList.length}}件商品</text>
+    <text class="total-price">小计： <text>￥{{realPrice - couponMin}}</text> </text>
+  </view>
+
+  <!-- 底部 -->
+  <view class="bottom-wrap flex-row">
+    <view class="bottom-left">
+      <text class="counts">共{{goodsList.length}}件商品</text>
+      <text class="total-price">总金额： <text>￥{{realPrice - couponMin}}</text> </text>
+    </view>
+    <view class="bottom-right" bindtap="submitOrder">立即购买</view>
+  </view>
+
+  <!--	商家选择-->
+  <view wx:if="{{showModal == 1}}" class="b-wrap flex-column flex-center">
+    <view class="b-list">
+      <view class="b-title">选择核销商家</view>
+      <block wx:if="{{optometristInfo}}">
+        <block wx:for="{{optometristInfo}}">
+          <view bindtap="changeBusiness" data-id="{{item.optometrist_id}}" data-name="{{item.name}}" class="b-info flex-row space-between">
+            <view>{{item.name}}({{item.distance}}m)</view>
+            <view class="chocie-b">
+              <text wx:if="{{item.optometrist_id == optometristId}}" class="iconfont icon-choosed2"></text>
+              <text wx:else class="iconfont icon-xuanzhongyuandian"></text>
+            </view>
+          </view>
+        </block>
+      </block>
+
+      <block wx:else>
+        <view class="b-info flex-row space-between">
+          <view>附近无核销商家，无法下单</view>
+        </view>
+      </block>
+      <view bindtap="closeModal" class="click-btn">确　　定</view>
+    </view>
+
+  </view>
+
+</view>

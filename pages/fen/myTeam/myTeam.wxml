@@ -1,0 +1,62 @@
+<view class="wrap">
+    <view class="top-nav flex-column">
+        <view class="user-info flex-row space-between align-items-center">
+            <view class="user flex-row flex-start align-items-center">
+                <image  src="{{userInfo.head_img_url}}"></image>
+                <view class="flex-column">
+                    <text>{{userInfo.nick_name}}</text>
+                    <text>注册时间：{{userInfo.add_time}}</text>
+                </view>
+            </view>
+
+            <view class="team-num flex-column">
+                <text>{{teamNum}}</text>
+                <text>我的团队</text>
+            </view>
+        </view>
+        <view style="margin-top: 20rpx" class="show-num flex-row flex-start align-items-center">
+                <text style="margin-right: 30rpx">店长：{{fenNumInfo}}</text>
+                <text>用户：{{numInfo}}</text>
+        </view>
+        <view class="fen-desc">*分销商可在下线后面设定赚取多少推广奖金，默认为1(即赚取100%的奖金)</view>
+    </view>
+    <view class="title-tab flex-row space-between align-items-center">
+        <view>头像</view>
+        <view>昵称</view>
+        <view>加入时间</view>
+        <view>推广奖金</view>
+        <view>奖金比例</view>
+    </view>
+    <block wx:for="{{list}}">
+        <view bindtap="{{type == 1 ? 'emptyEvent' : 'goMyTeam'}}" data-id="{{item.id}}" class="title-tab flex-row space-between align-items-center">
+            <view class="flex-row flex-center">
+                <image  src="{{item.head_img_url}}"></image>
+            </view>
+            <view class="flex-row flex-center">
+                <text style="font-size: 20rpx;color:#FE9F33 ">({{item.is_distributor == 1 ? '店长' : '用户'}})</text>{{item.nick_name}}
+            </view>
+            <view class="flex-row flex-center">{{item.add_time}}</view>
+            <view class="flex-row flex-center">{{item.total_fee}}元</view>
+            <view catchtap="showModel" data-index="{{index}}" data-id="{{item.id}}" data-value="{{item.commission_rate}}" class="flex-row flex-center align-items-center">
+                <text>{{item.commission_rate}}</text>
+                <text wx:if="{{type != 1}}" class="iconfont icon-bianji"></text>
+            </view>
+        </view>
+    </block>
+    <view class="bottom_text">{{bottom_text}}</view>
+
+    <view bindtap="hideModel" wx:if="{{showModel == 1}}" class="rate-wrap flex-column flex-center">
+        <view catchtap="emptyEvent" class="rate">
+            <view class="title">
+                修改奖金比例
+                <text bindtap="hideModel" class="iconfont icon-no"></text>
+            </view>
+            <view class="rate-input">
+                <input bindinput="listenInput" type="digit" value="{{currentValue}}" />
+            </view>
+            <view bindtap="confirmUpdate" class="btn-click">确认修改</view>
+        </view>
+
+    </view>
+
+</view>

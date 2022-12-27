@@ -1,0 +1,40 @@
+page{
+    background: #FFF;
+}
+.title{
+    width: 100%;
+    padding: 30rpx;
+    background: #F3F6F9;
+}
+.choice-area{
+    width: 100%;
+    background: #FFF;
+    padding: 0 30rpx;
+}
+.choice-area view{
+    padding: 30rpx 0;
+    border-bottom: 1px solid #EFEFEF;
+}
+.choice-area view .icon-choosed2{
+    color: #FEA24F;
+}
+.choice-area view .icon-xuanzhongyuandian{
+    color: #EFEFEF;
+}
+.btn-click{
+    width: 100%;
+    padding: 0 60rpx;
+    position: fixed;
+    bottom: 100rpx;
+    left: 0;
+}
+.btn-click view{
+    width: 100%;
+    height: 75rpx;
+    line-height: 75rpx;
+    border-radius: 75rpx;
+    background: linear-gradient(to right,#FEA135,#FE831E);
+    color: #FFF;
+    font-size: 30rpx;
+    text-align: center;
+}

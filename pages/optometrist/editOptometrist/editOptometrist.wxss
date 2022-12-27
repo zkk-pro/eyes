@@ -1,0 +1,35 @@
+page{
+    background: #FFF;
+}
+.info{
+    width: 100%;
+    padding: 20rpx;
+}
+.info .right image{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    margin-right:10rpx;
+}
+.info .right input{
+    text-align: right;
+    margin-right: 10rpx;
+}
+.info .right .iconfont{
+    font-size: 24rpx;
+    color:#CCC;
+    margin-top: 8rpx;
+}
+.btn{
+    width:calc(100% - 80rpx);
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 80rpx;
+    text-align: center;
+    color: #FFF;
+    background: #FE8A22;
+    position: fixed;
+    bottom: 100rpx;
+    left: 40rpx;
+    font-size: 32rpx;
+}

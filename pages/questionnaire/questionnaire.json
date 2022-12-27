@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "promote-pop": "/components/promote/index"
+  },
+  "navigationBarTitleText": "九九目"
+}

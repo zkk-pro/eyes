@@ -1,0 +1,116 @@
+<view class="wrap">
+    <view class="info">
+        <view class="flex-row space-between align-items-center">
+            <view>性别</view>
+            <view class="flex-row flex-end">
+                <image wx:if="{{orderInfo.sex == 1}}"  mode="widthFix" src="{{base_url}}bg/icon/boy_selected.png "></image>
+                <image wx:else  mode="widthFix" src="{{base_url}}bg/icon/girl_selected.png"></image>
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>定位</view>
+            <view class="flex-row flex-end">
+               {{orderInfo.position}}
+            </view>
+        </view>
+
+    </view>
+    <view class="info">
+        <view class="flex-row space-between align-items-center">
+            <view>框型</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.frame_json_data.frameName}}
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>圈型</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.frame_json_data.circleName}}
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>材质</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.frame_json_data.materialName}}
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>颜色</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.frame_json_data.colorName}}
+            </view>
+        </view>
+         <view wx:if="{{orderInfo.frame_json_data.sizeName}}" class="flex-row space-between align-items-center">
+            <view>尺码</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.frame_json_data.sizeName}}
+            </view>
+        </view>
+    </view>
+
+    <view class="info">
+        <view class="flex-row space-between align-items-center">
+            <view>品牌</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.optic_json_data.brandInfo.name}}
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>折射率</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.optic_json_data.functionInfo.name}}
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>功能</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.optic_json_data.refractionInfo.name}}
+            </view>
+        </view>
+    </view>
+    <view class="info">
+        <view wx:if="{{orderInfo.message}}" class="message">{{orderInfo.message}}</view>
+        <view class="flex-row flex-end algin-items-center">总计：￥{{orderInfo.real_money}}</view>
+    </view>
+
+    <view class="info">
+        <view class="flex-row space-between align-items-center">
+            <view>订单号</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.order_num}}
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>下单时间</view>
+            <view class="flex-row flex-end">
+                {{orderInfo.add_time}}
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>微信支付</view>
+            <view class="flex-row flex-end">
+                ￥{{orderInfo.total_price}}
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>余额支付</view>
+            <view class="flex-row flex-end">
+                ￥{{orderInfo.balance_fee}}
+            </view>
+        </view>
+        <view class="flex-row space-between align-items-center">
+            <view>支付方式</view>
+            <view wx:if="{{orderInfo.total_price > 0 && orderInfo.balance_fee > 0}}" class="flex-row flex-end">
+                微信+余额支付
+            </view>
+            <view wx:elif="{{orderInfo.total_price > 0 && orderInfo.balance_fee == 0}}" class="flex-row flex-end">
+                微信支付
+            </view>
+            <view wx:elif="{{orderInfo.total_price == 0 && orderInfo.balance_fee > 0}}" class="flex-row flex-end">
+                余额支付
+            </view>
+        </view>
+
+    </view>
+    <view bindtap="operator" wx:if="{{writeOff == 1 && orderInfo.state == 1}}" class="write-off">确认核销</view>
+</view>

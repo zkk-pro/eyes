@@ -1,0 +1,40 @@
+<!--pages/myWallet/myWallet.wxml-->
+<view class="my-wrap">
+    <view class="account-area">
+      <view class="top-area">
+        <text class="account-title">账户列表</text>
+        <text class="account-edit">编辑</text>
+      </view>
+      <!--存在账户信息-->
+      <block wx:if="{{is_account}}">
+        <view class="account-list">
+          <block wx:for="{{accountList}}" wx:key="1">
+            <view class="account-item">
+              <view class="account-name" bindtap='selectAccount' data-id="{{item.id}}">
+                <text class="iconfont {{select_id == item.id ? 'icon-choosed2':'icon-xuanzhongyuandian'}}"></text>
+                <text class="account-type">{{item.account_type == 0 ? '微信':item.account_type == 1 ?  '银行卡':'支付宝'}}</text>
+              </view>  
+              <text class="iconfont icon-bianji edit" bindtap='editAccount' data-id="{{item.id}}"></text>
+            </view>
+          </block>
+        </view>
+      </block>
+      <!--暂无数据--> 
+      <block wx:else>
+        <view class="no-data-area">
+          <text class="no-data">还没有任何账户信息呢！</text>
+        </view>
+      </block>
+    </view>
+    <view class="operate-area">
+      <view class="add-account" bindtap='addAccount'>
+        <text class="add-text">添加账户</text>
+      </view>
+      <view class="delete-account" bindtap='deleteAccount'>
+        <text class="detele-text">删除账户</text>
+      </view>
+    </view>
+</view>
+
+
+

@@ -1,0 +1,10 @@
+/* pages/richText/richText.wxss */
+page{
+  background: #FFF;
+}
+.richText{
+  width:100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 30rpx;
+}

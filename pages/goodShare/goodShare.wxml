@@ -1,0 +1,21 @@
+<wxs module="filters" src="./goodShare.wxs"></wxs>
+<view class="choice-img">
+  
+    <scroll-view scroll-x="true" >
+    <block wx:for="{{imgList}}">
+        <image bindtap="choiceImg" data-img="{{item}}" class="{{filters.isChoice(item,chocieImg)}}" mode="widthFix" src="{{item}}">
+            <text class="iconfont icon-choosed2"></text>
+        </image>
+    </block>
+    </scroll-view>
+      
+  
+
+
+</view>
+
+<image class="share-img" bindtap="showImg" mode="widthFix" src="{{imgPath}}"></image>
+<view class="btn">
+    <text bindtap="save">保存图片</text>
+</view>
+ <canvas hidden='{{canvasHidden}}' style="width:{{width}}px;height:{{height}}px"  canvas-id='share'></canvas>

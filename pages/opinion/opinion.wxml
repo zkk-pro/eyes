@@ -1,0 +1,7 @@
+<view class="wrap">
+  <view class="title">意见反馈</view>
+  <view class="text-area">
+    <textarea bindinput="listenInput" maxlength="-1" placeholder-style="color:#BEBEBE" placeholder="请在此输入所要反馈的内容" ></textarea>
+  </view>
+  <view bindtap="addOpinion" class="btn">提交反馈</view>
+</view>

@@ -1,0 +1,97 @@
+<view class="wrap">
+    <view class="postiton">
+        <view class="top-nav flex-row space-between align-items-center">
+            <picker bindchange="bindNameChange" data-type="optometrist" value="{{optometristIndex}}" range="{{optometristInfo}}" range-key="name">
+                <view class="flex-row flex-start align-items-center">
+                    <text class="iconfont icon-mendian"></text>
+                    <text>{{optometristName}}</text>
+                    <text class="iconfont icon-xiasanjiao1"></text>
+                </view>
+            </picker>
+            <picker wx:if="{{operatorInfo.type > 0 }}" bindchange="bindNameChange" data-type="operate" value="{{operateIndex}}" range="{{operateInfo}}" range-key="name">
+                <view class="operate flex-row flex-start align-items-center">
+                    <text>{{operateName}}</text>
+                    <text class="iconfont icon-xiasanjiao1"></text>
+                </view>
+            </picker>
+        </view>
+        <view class="sale-info flex-row space-between align-items-end">
+            <view class="info flex-column">
+                <text>总销售额</text>
+                <text>{{totalSale}}</text>
+            </view>
+            <view class="info flex-column">
+                <text>总奖励</text>
+                <text>{{totalFee}}</text>
+            </view>
+        </view>
+        <view class="change-nav flex-row space-between align-items-end">
+            <text bindtap="changeNav" data-type="0" class="{{type == 0 ? 'cur' : ''}}">普通商城</text>
+            <text bindtap="changeNav" data-type="1" class="{{type == 1 ? 'cur' : ''}}">抽奖商城</text>
+            <text bindtap="changeNav" data-type="2" class="{{type == 2 ? 'cur' : ''}}">秒杀商城</text>
+        </view>
+        <view class="time-area flex-row flex-start align-items-center">
+            <picker mode="date" value="{{startDate}}" data-type="startDate" bindchange="bindDateChange">
+                <view class="date flex-row  flex-center align-items-center">
+                    <text>{{startDate}}</text>
+                    <text class="iconfont icon-triangle-left"></text>
+                </view>
+            </picker>
+            <text>至</text>
+            <picker mode="date" value="{{endDate}}" data-type="endDate" bindchange="bindDateChange">
+                <view class="date flex-row flex-center align-items-center">
+                    <text>{{endDate}}</text>
+                    <text class="iconfont icon-triangle-left"></text>
+                </view>
+            </picker>
+        </view>
+
+    </view>
+
+    <view class="order-list">
+        <block wx:for="{{list}}">
+            <view class="order">
+                <view class="order-top flex-row space-between align-items-center">
+                    <text>订单号:{{item.order_num}}</text>
+                    <view class="flex-row flex-end align-items-center">
+                        <text class="iconfont icon-mendian"></text>
+                        <text>{{item.optometrist_name ? item.optometrist_name : ''}}</text>
+                    </view>
+                </view>
+                <view class="goods-info">
+                    <block wx:for="{{item.goods_list}}" wx:for-item="goods" >
+                       <view class="goods">
+                           <view class="g-top flex-row space-between align-items-center">
+                               <text>{{goods.goods_name}}</text>
+                               <text>￥{{goods.price}}</text>
+                           </view>
+                           <view class="g-bottom flex-row space-between align-items-center">
+                               <view class="flex-row flex-start align-items-center" wx:if="{{goods.property}}">
+                                   <text>规格：</text>
+                                   <block wx:for="{{goods.property}}" wx:for-item="property">
+                                       <text>{{property.name}}:{{property.value}} </text>
+                                   </block>
+                               </view>
+                               <view wx:else>规格：统一规格</view>
+                               <text>X{{goods.count}}</text>
+                           </view>
+                       </view>
+                    </block>
+                </view>
+                <view class="write_off_time flex-row space-between align-items-center">
+                    <text>时间：{{item.write_off_time ? item.write_off_time : item.add_time}}</text>
+                    <text wx:if="{{operatorInfo.type == 0}}">+￥{{item.operator_commission.operator_commission_one ? item.operator_commission.operator_commission_one : 0}}</text>
+                    <text wx:elif="{{operatorInfo.type == 1}}">+￥{{item.operator_commission.operator_commission_two ? item.operator_commission.operator_commission_two : 0}}</text>
+                    <text wx:elif="{{operatorInfo.type == 2}}">+￥{{item.operator_commission.operator_commission_three ? item.operator_commission.operator_commission_three : 0}}</text>
+                    <text wx:elif="{{operatorInfo.type == 3}}">+￥{{item.operator_commission.operator_commission_four ? item.operator_commission.operator_commission_four : 0}}</text>
+                    <text wx:elif="{{operatorInfo.type == 4}}">+￥{{item.operator_commission.operator_commission_five ? item.operator_commission.operator_commission_five : 0}}</text>
+                    <text wx:elif="{{operatorInfo.type == 5}}">+￥{{item.operator_commission.operator_commission_six ? item.operator_commission.operator_commission_six : 0}}</text>
+                    <text wx:elif="{{operatorInfo.type == 6}}">+￥{{item.operator_commission.operator_commission_seven ? item.operator_commission.operator_commission_seven : 0}}</text>
+                    <text wx:else>+￥0</text>
+
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="bottom_text">{{bottom_text}}</view>
+</view>

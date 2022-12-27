@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "销售情况",
+  "navigationBarBackgroundColor":"#FE8A22",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

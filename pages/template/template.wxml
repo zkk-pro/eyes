@@ -1,0 +1,177 @@
+    <!-- 弹框 -->
+    <template name="tip-model">
+        <view class="tip-wrap" hidden="{{tipHidden||false}}">
+          <view class="tip-cont">
+            <view class="tip-top">
+              <image class="off-icon" bindtap="{{cancel_call}}" mode="widthFix" src="/static/images/off_icon.png"></image>
+            </view>
+            <view class="cont-title">{{tipTitle || '提示1'}}</view>
+            <view class="cont-detail">{{tipContent || '操作提示'}}</view>
+            <view class="btn-wrap">
+              <view class="btn-item cancel" bindtap="{{cancel_call}}">{{cancel_btn || '取消'}}</view>
+              <view wx:if="{{confirm_btn}}" class="btn-item sure" bindtap="{{confirm_call}}">{{confirm_btn || '确定'}}</view>
+            </view>
+          </view>
+        </view>
+    </template>
+
+
+    <!-- 弹框:弹出二维码 -->
+    <template name="qrcode-model">
+        <view id="qrcode-model" hidden="{{tipHidden}}">
+            <view class="tip-cont">
+            <view class="tip-top">
+                <view class="cont-title">{{tipTitle || '扫码核销'}}</view>
+                <image class="off-icon" bindtap="{{cancel_call}}" mode="widthFix" src="/static/images/off_icon.png"></image>
+            </view>
+            <!-- <view class="cont-title">{{tipTitle || '扫码核销'}}</view> -->
+            <view class="cont-detail">{{tipContent || '订单号：--'}}</view>
+            <view class="qrcode-wrap">
+                <image mode='aspectFit' src='{{_url}}'></image>
+            </view>
+            <view class="cont-footer cont-detail">{{tipFooter||'等待核销员扫码核销'}}</view>
+            </view>
+        </view>
+    </template>
+
+
+    <!--三栏底部导航-->
+    <template name="bottom-nav">
+        <view class="nav-list">
+			<navigator class="item {{index}}"  open-type='reLaunch' url='/pages/index/index'>
+			    <image  mode="widthFix" class="nav-img" wx:if="{{index == 'active'}}" src="{{base_url}}bg/icon/index_selected.png"></image>
+			    <image  mode="widthFix" class="nav-img" wx:elif="{{base_url}}" src="{{base_url}}bg/icon/index.png"></image>
+			    <view class='nav-title'>首页</view>
+			</navigator>
+            <navigator  wx:if="{{isDistribution != 1}}" class="item {{cart}}"  open-type='reLaunch' url='/pages/store/cartGoods/cartGoods'>
+                <image  mode="widthFix" class="nav-img" wx:if="{{cart == 'active'}}" src="{{base_url}}bg/icon/cart_selected.png"></image>
+                <image  mode="widthFix" class="nav-img" wx:elif="{{base_url}}" src="{{base_url}}bg/icon/cart.png"></image>
+                <view class='nav-title'>现金清单</view>
+            </navigator>
+            <navigator  wx:if="{{isBusiness == 1 && isDistribution == 1}}" class="item {{reserve}}"  open-type='reLaunch' url='/pages/store/reserveGoods/reserveGoods'>
+                <image  mode="widthFix" class="nav-img" wx:if="{{reserve == 'active'}}" src="{{base_url}}bg/icon/reserve_selected.png"></image>
+                <image  mode="widthFix" class="nav-img" wx:elif="{{base_url}}" src="{{base_url}}bg/icon/reserve.png"></image>
+                <view class='nav-title'>铺货清单</view>
+            </navigator>
+            <navigator wx:if="{{isUseOther == 1}}"  class="item {{setting}}"  open-type='reLaunch' url='/pages/opticianSetting/opticianSetting'>
+                <image style="margin-bottom:10rpx" mode="widthFix" class="nav-img" wx:if="{{setting == 'active'}}" src="{{base_url}}bg/icon/glasses_selected.png"></image>
+                <image style="margin-bottom:10rpx"  mode="widthFix" class="nav-img" wx:elif="{{base_url}}" src="{{base_url}}bg/icon/glasses.png"></image>
+                <view class='nav-title'>配镜</view>
+            </navigator>
+            <navigator wx:if="{{isBusiness == 1}}" class="item " url="" bindtap="scanCode" >
+			    <image style="margin-bottom:8rpx"  mode="widthFix" class="nav-img" wx:if="{{base_url}}" src="{{base_url}}bg/icon/scan.png"></image>
+			    <view style="color:#FCB92A" class='nav-title'>核銷</view>
+			</navigator>
+			<navigator wx:if="{{isShowBusiness == 1}}" class="item {{optometrist}}"  open-type='reLaunch' url='/pages/optometrist/optometristList/optometristList' >
+			    <image style="margin-bottom:8rpx"  mode="widthFix" class="nav-img" wx:if="{{optometrist == 'active'}}" src="{{base_url}}bg/icon/op_selected.png"></image>
+			    <image style="margin-bottom:8rpx"  mode="widthFix" class="nav-img" wx:elif="{{base_url}}" src="{{base_url}}bg/icon/op.png"></image>
+			    <view class='nav-title'>商家</view>
+			</navigator>
+           
+            <navigator class="item {{center}}" open-type='reLaunch' url='/pages/userCenter/userCenter'> 
+                <image  mode="widthFix" class="nav-img" wx:if="{{center == 'active'}}" src="{{base_url}}bg/icon/my_selected.png"></image>
+                <image  mode="widthFix" class="nav-img" wx:elif="{{base_url}}" src="{{base_url}}bg/icon/my.png"></image>
+                <view class='nav-title'>我的</view>
+            </navigator>
+        </view>
+    </template>
+
+    <!--两栏底部导航-->
+    <template name="bottom-nav-2">
+        <view class="nav-list">
+            <navigator class="item {{home}}"  open-type='reLaunch' url='/pages/index/index'> 
+                 <text class="iconfont icon-shouye"></text>
+                <view class='nav-title'>首页</view>
+            </navigator>
+            <navigator class="item {{center}}" open-type='reLaunch' url='/pages/points/userCenter/userCenter/userCenter'> 
+                <i class="iconfont icon-gerenzhongxin1"></i>
+                <view class='nav-title'>我的</view>
+            </navigator>
+        </view>
+    </template>
+
+    <!-- 动态小球加载中 -->
+    <template name='loading-ball'>
+        <block  wx:if='{{loadingBall}}'>
+            <view wx:if='{{loadingBall}}' class='loaded loding-wrap'>
+                <view class="loader">
+                    <view class="loader-inner ball-pulse">
+                    <view></view>
+                    <view></view>
+                    <view></view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </template>
+
+     <!-- 动态小球加载中 -->
+     <template name='test'>
+        <view class='flex-row center'>SUCCESS</view>    
+     </template>
+
+     <!-- 底部版权与技术支持提供声明 -->
+    <template name='copyright'>
+        <!-- <block wx:if="{{copyright}}" >
+        <view class='logo-wrap'>
+            <view class='logo-name'>{{title?title:'DOOK'}}</view>
+            <view class='logo-des'>
+            <view class='border-line'></view>
+            <view class=''>{{content?content:'DOOK提供技术和电商支持'}}</view>
+            <view class='border-line'></view>
+            </view>
+        </view>
+        </block> -->
+    </template>
+<!-- 审核弹框 -->
+  <template name='check-model'>
+      <view class="model-wrap" hidden="{{modelHidden}}">
+        <view class="model-wrap-1">
+            <view class="title">{{title}}</view>
+              <view class="con-tent">{{content}}</view>
+              <view class="button">
+                  <button  open-type='{{is_share == 1 ? "share":"normal"}}'>{{btn_name}}</button>
+              </view>
+              <view class="close" bindtap='{{close}}'>
+                <text class="iconfont icon-quxiao"></text>
+              </view>
+        </view>
+      </view>
+      
+     
+  </template>
+  <!-- 预约弹框 -->
+  <template name='appoint-model'>
+      <view class="model-wrap-a" hidden="{{modelHidden}}">
+        <view class="model-wrap-1">
+            <view class="title">{{title}}</view>
+              <view class="con-tent">{{content1}}</view>
+              <view style="color:red" class="con-tent">{{content2}}</view>
+              <view class="con-tent">{{content3}}</view>
+              <view class="con-tent">{{content4}}</view>
+
+              <view class="button">
+                  <button bindtap='{{cofirm}}' open-type='{{is_share == 1 ? "share":"normal"}}'>{{btn_name}}</button>
+              </view>
+              <view class="close" bindtap='{{close}}'>
+                <text class="iconfont icon-quxiao"></text>
+              </view>
+        </view>
+      </view>
+  </template>
+
+  <template name='alert-modal'>
+      <view hidden="{{alertHidden}}" class="alert-modal">
+        <view class="alert">
+            <view class="a-title">{{title ? title : '提示'}}</view>
+            <view class="content">
+                {{content}}
+            </view>
+            <view class="alert-btn">
+                <button class="cancel" bindtap="cancelfun" hidden="{{showCancel}}">{{cancel_text ? cancel_text:'取消'}}</button>
+                <button class="confirm" bindtap="confirmfun" style="width:{{showCancel ? '100%':'50%'}}" > {{confirm_text ? confirm_text:'去选择'}} </button>
+            </view>
+        </view>
+      </view>
+  </template>
+  

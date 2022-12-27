@@ -1,0 +1,17 @@
+/* components/Empty/index.wxss */
+.emptyCom{
+
+}
+.emptyCom .emptyCom_main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Image0{
+    height: 300rpx;
+    margin-bottom: 10rpx;
+}
+.hint{
+    color: #999;
+    font-size: 28rpx;
+}

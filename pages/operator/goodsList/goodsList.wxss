@@ -1,0 +1,87 @@
+page{
+    padding-bottom: 60rpx;
+}
+.postiton{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.top-nav{
+    width: 100%;
+    padding: 25rpx 30rpx;
+    background: #FFF;
+    border: 1px solid #EEE;
+}
+.top-nav > picker:first-child view .icon-mendian{
+    font-size: 42rpx;
+    color: #FC8233;
+    margin-right: 20rpx;
+}
+.top-nav .icon-xiasanjiao1{
+    font-size: 36rpx;
+    margin-top: 10rpx;
+    margin-left: 5rpx;
+}
+.change-nav{
+    width: 100%;
+    padding: 25rpx 30rpx;
+    border-bottom: 1px solid #EEE;
+    background: #FFF;
+    color: #686868;
+    font-size: 32rpx;
+}
+.change-nav text.cur{
+    color: #FA8019;
+}
+.goods-list{
+    width: 100%;
+    padding: 0 30rpx;
+    margin-top: 195rpx;
+    background: #FFF;
+}
+.goods-list .goods{
+    width: 100%;
+    padding: 25rpx 0;
+    border-bottom: 1px solid #EEE;
+}
+.goods-list .goods .name{
+    width: 100%;
+    padding-bottom: 10rpx;
+
+}
+.goods-list .goods .name text:first-child{
+    width: 95%;
+    font-size: 30rpx;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.goods-list .goods .name .iconfont{
+    color: #AAA;
+    font-size: 28rpx;
+    margin-top: 10rpx;
+}
+.goods-list .goods .perproty{
+    width: 100%;
+    color: #9EA3AD;
+    font-size: 26rpx;
+    padding: 10rpx;
+}
+.goods-list .goods .perproty:last-child{
+    border: none;
+}
+.goods-list .goods .perproty text{
+    width: calc((55% - 30rpx) / 2);
+}
+.goods-list .goods .perproty text:nth-child(2){
+    margin:0 15rpx;
+}
+
+.goods-list .goods .perproty text:first-child{
+    width: 45%;
+
+}

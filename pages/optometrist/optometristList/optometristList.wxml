@@ -1,0 +1,40 @@
+<import src='/pages/template/template' />
+<view class="wrap">
+    <view class="list">
+        <block wx:for="{{list}}">
+            <view class="op-wrap flex-row space-between align-items-center">
+                <view class="left flex-row flex-start align-items-center">
+                    <image src="{{base_url}}{{item.head_img}}"></image>
+                    <text>{{item.name}}</text>
+                    <text>{{item.distance}}</text>
+                </view>
+                <view class="right flex-row flex-end align-items-center">
+                    <view data-phone="{{item.phone}}" bindtap="call" class="icon">
+                        <text class="iconfont icon-dianhua1"></text>
+                    </view>
+                    <view data-index="{{index}}" bindtap="openLocation" class="icon">
+                        <text class="iconfont icon-daohang"></text>
+                    </view>
+                </view>
+            </view>
+
+        </block>
+        <view class="bottom_text">{{bottom_text}}</view>
+    </view>
+
+
+</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<template is='bottom-nav' data="{{...nav_active}}" />

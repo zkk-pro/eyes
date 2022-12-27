@@ -1,0 +1,207 @@
+<import src='/pages/template/template' />
+<cover-view bindtap="hideTop" wx:if="{{show_top == 1}}" class="show-wrap flex-column flex-center">
+    <cover-view  catchtap="emptyEvent" class="show-top">
+        <cover-image wx:if="{{img_url}}" mode="widthFix" src="{{base_url}}{{img_url}}"></cover-image>
+        <cover-view  wx:if="{{simple_desc}}" class="simple">{{simple_desc}}</cover-view >
+    </cover-view >
+</cover-view >
+
+
+<view class="wrap">
+    <!-- <view style="color:#FE8D2B" class="title">长按属性，查看属性对应的图片和介绍</view> -->
+    <view class="img-label">
+        <image mode="widthFix" src="{{base_url}}bg/label.jpg"></image>
+    </view>
+    <view class="choice-area flex-row flex-start align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>价格区间</text>
+        </view>
+        <view class="right">
+            <view class="scroll-view">
+                <block wx:for="{{priceAreaInfo}}">
+                    <view data-index="{{index}}" class="children-area {{item.selected == 1 ? 'choice-cur' : ''}}" bindtap="choiceSingle"  wx:if="{{item.type == 1}}">{{item.start_price}}以上</view>
+                    <view data-index="{{index}}" class="children-area {{item.selected == 1 ? 'choice-cur' : ''}}" bindtap="choiceSingle"  wx:elif="{{item.type == 2}}">{{item.end_price}}以下</view>
+                    <view data-index="{{index}}" class="children-area {{item.selected == 1 ? 'choice-cur' : ''}}" bindtap="choiceSingle"  wx:elif="{{item.type == 3}}">{{item.start_price}}</view>
+                    <view data-index="{{index}}" class="children-area {{item.selected == 1 ? 'choice-cur' : ''}}" bindtap="choiceSingle"  wx:else>{{item.start_price}}~{{item.end_price}}</view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="choice-area flex-row flex-end align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>选择性别</text>
+        </view>
+        <view class="right flex-row  flex-end align-items-center">
+            <image data-sex="1" bindtap="choiceSex"  mode="widthFix" src="{{base_url}}{{sex == 1 ? 'bg/icon/boy_selected.png' : 'bg/icon/boy.png'}} "></image>
+            <image data-sex="2" bindtap="choiceSex"  mode="widthFix" src="{{base_url}}{{sex == 2 ? 'bg/icon/girl_selected.png' : 'bg/icon/girl.png'}}"></image>
+        </view>
+
+    </view>
+    <view class="choice-area flex-row space-between align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>定位选择</text>
+        </view>
+        <view class="right flex-row flex-end align-items-center">
+            <picker bindchange="bindPickerChange" value="{{positionIndex}}" range-key="name" range="{{positionInfo}}">
+                <view class="picker flex-row flex-end align-items-center">
+                    <text style="color:{{positionName == '请选择' ? '#A6A6A6' : '#333'}}">{{positionName}}</text>
+                    <text class="iconfont icon-zuoyou"></text>
+                </view>
+            </picker>
+        </view>
+    </view>
+    <view class="title flex-row flex-start align-items-center">
+        <text>镜框属性 </text>
+        <text> (框型、圈型、颜色可多选)</text>
+    </view>
+    <view class="choice-area flex-row flex-start align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>框型选择</text>
+        </view>
+        <view class="right">
+            <view class="scroll-view  ">
+                <block wx:for="{{frameInfo}}">
+                    <view bindlongtap="longTap" data-type="frameInfo" bindtap="choiceGroup"  data-index="{{index}}" class="children-area {{item.selected == 1 ? 'choice-cur' : ''}}" >
+                        <text>{{item.name}}</text>
+
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="choice-area flex-row flex-start align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>圈型选择</text>
+        </view>
+        <view class="right">
+            <view class="scroll-view ">
+                <block wx:for="{{circleInfo}}">
+                    <view  bindlongtap="longTap" data-type="circleInfo" bindtap="choiceGroup"  data-index="{{index}}" class="children-area {{item.selected == 1 ? 'choice-cur' : ''}}" >{{item.name}}</view>
+                </block>
+            </view>
+        </view>
+    </view>
+   
+    <view class="choice-area flex-row flex-start align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>颜色选择</text>
+        </view>
+        <view class="right">
+            <view class="scroll-view ">
+                <block wx:for="{{colorInfo}}">
+                    <view bindlongtap="longTap" data-type="colorInfo" bindtap="choiceGroup" data-index="{{index}}" class="children-area {{item.selected == 1 ? 'choice-cur' : ''}} flex-row flex-center align-items-center">
+                        <text class="color" style="background: {{item.color}}"></text>
+                        <text>{{item.name}}</text>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+    
+     <view class="title flex-row flex-start align-items-center">
+        <text>镜框属性 </text>
+        <text> (单选)</text>
+    </view>
+    <view class="choice-area flex-row flex-start align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>尺码选择</text>
+        </view>
+        <view class="right flex-row flex-end align-items-center">
+            <view data-type="sizeInfo" bindtap="showModal"  class="picker flex-row flex-end align-items-center">
+                <text style="color:{{sizeName == '请选择' ? '#A6A6A6' : '#333'}}">{{sizeName}}</text>
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+    </view>
+     <view class="choice-area flex-row flex-start align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>材质选择</text>
+        </view>
+        <view class="right flex-row flex-end align-items-center">
+            <view data-type="materialInfo" bindtap="showModal"  class="picker flex-row flex-end align-items-center">
+                <text style="color:{{materialName == '请选择' ? '#A6A6A6' : '#333'}}">{{materialName}}</text>
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+    </view>
+     
+
+    <view class="title flex-row flex-start align-items-center">
+        <text>镜片属性</text>
+    </view>
+    <view class="choice-area flex-row space-between align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>品牌选择</text>
+        </view>
+        <view class="right flex-row flex-end align-items-center">
+            <view data-type="brandInfo" bindtap="showModal"  class="picker flex-row flex-end align-items-center">
+                <text style="color:{{brandName == '请选择' ? '#A6A6A6' : '#333'}}">{{brandName}}</text>
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+    </view>
+    <view class="choice-area flex-row space-between align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>折射率选择</text>
+        </view>
+        <view class="right flex-row flex-end align-items-center">
+            <view data-type="refractionInfo" bindtap="showModal" class="picker flex-row flex-end align-items-center">
+                <text style="color:{{refractionName == '请选择' ? '#A6A6A6' : '#333'}}">{{refractionName}}</text>
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+    </view>
+    <view class="choice-area flex-row space-between align-items-center">
+        <view class="left flex-row flex-start align-items-center">
+            <text class="select">*</text>
+            <text>功能选择</text>
+        </view>
+        <view class="right flex-row flex-end align-items-center">
+            <view data-type="functionInfo" bindtap="showModal" class="picker flex-row flex-end align-items-center">
+                <text style="color:{{functionName == '请选择' ? '#A6A6A6' : '#333'}}" >{{functionName}}</text>
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+    </view>
+    <view class="title flex-row flex-start align-items-center">
+        <text>备注 </text>
+    </view>
+   <view class="textarea">
+        <textarea bindinput="message" maxlength="-1" placeholder="请输入备注信息"></textarea>
+    </view>
+</view>
+
+<cover-view style="{{height > 0 ? '130rpx' : '100rpx'}}" class="price-area flex-row space-between align-items-center" >
+    <cover-view class="price-w flex-row flex-start align-items-center">
+        <cover-view>预估价：</cover-view>
+        <cover-view class="price-color">￥{{price}}</cover-view>
+    </cover-view>
+    <cover-view bindtap="nextStep" class="next-btn">下一步</cover-view>
+</cover-view>
+
+<!--配镜底部选择框-->
+<cover-view wx:if="{{isShowModal == 1}}" bindtap="hideModal" class="box-wrap flex-column flex-end">
+    <cover-view catchtap="emptyEvent"  class="box">
+        <cover-view  class="modal-title  flex-row space-between align-items-center">
+            <cover-view>{{choiceTitle}}</cover-view>
+            <cover-view bindtap="hideModal">确定</cover-view>
+        </cover-view >
+        <cover-view  class="property-list flex-row flex-start align-items-center flex-wrap">
+            <block wx:for="{{type == 'brandInfo' ? brandInfo : (type == 'refractionInfo' ?   refractionInfo : (type == 'functionInfo' ? functionInfo : (type == 'sizeInfo' ? sizeInfo : materialInfo))) }}">
+                <cover-view bindlongtap="longTap" bindtap="property" data-index="{{index}}" data-type="{{type}}"  class="{{item.is_can_choice == 1 ? '' : 'noChoice'}} {{item.selected == 1 ? 'choice-cur' : ''}} property">{{item.name}}</cover-view >
+            </block>
+
+        </cover-view >
+    </cover-view >
+</cover-view>
+<template is='bottom-nav' data="{{...nav_active}}" />

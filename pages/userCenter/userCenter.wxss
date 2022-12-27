@@ -1,0 +1,141 @@
+/* pages/userCenter/userCenter.wxss */
+page{
+  padding-bottom: 100rpx;
+}
+.header-img{
+  width: 100%;
+  height: auto;
+}
+.header-img .img{
+    width: 100%;
+    height: auto;
+    display: block;
+    position: relative;
+}
+.header-img .img .user-wrap{
+  width: 100%;
+  position: absolute;
+  top: 26%;
+  left: 0rpx;
+  color: #FFF;
+}
+.header-img .img .user-wrap .head-img{
+  width:100%;
+  margin-bottom: 10rpx;
+}
+.header-img .img .user-wrap .head-img .img-border{
+    width: 140rpx;
+    height: 140rpx;
+    border-radius:50%;
+    border: 6rpx solid #FFE180;
+}
+.header-img .img .user-wrap .head-img .img-border image{
+  width: 100%;
+  height: 100%;
+  border-radius:50%;
+
+}
+.header-img .img .user-wrap .name{
+  width: 100%;
+  font-size: 32rpx;
+  padding: 5rpx 0;
+  color: #FFF;
+}
+.my-balance{
+  width: 100%;
+  padding: 20rpx;
+  background: #FFF;
+}
+.my-balance view:first-child text:first-child{
+  color: #F9CA08;
+  margin-right: 15rpx;
+}
+.my-balance view:first-child text:nth-child(3){
+  font-size: 36rpx;
+  margin-right: 5rpx;
+}
+.my-balance view:first-child text:last-child{
+  font-size: 24rpx;
+}
+.my-balance .recharge{
+  width: 110rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  border-radius: 45rpx;
+  background: linear-gradient(to right,#FCB51B,#FECF59);
+  color: #FFF;
+  text-align: center;
+  font-size: 24rpx;
+}
+
+.order{
+  width: 100%;
+  background: #FFF;
+  padding:0 30rpx;
+  border-radius: 13rpx;
+  margin-top: 20rpx;
+}
+.order .order-title{
+  width: 100%;
+  padding: 20rpx 0;
+  border-bottom: 1px solid #EEE;
+}
+.order .order-title .order-left .border{
+  width: 8rpx;
+  height: 30rpx;
+  border-radius: 8rpx;
+  background: #FE861B;
+  margin-right: 20rpx;
+}
+.order .order-title .order-left text:last-child{
+  font-weight: 600;
+  font-size: 30rpx;
+}
+.order .order-title .icon-zuoyou{
+  font-size: 26rpx;
+  color: #D4D8DC;
+}
+
+.order .order-state{
+  width: 100%;
+  padding: 20rpx 0;
+  color: #797979;
+}
+
+.order .order-state .o-img image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-bottom:10rpx ;
+  position: relative;
+  overflow: visible;
+}
+.order .order-state .o-img image .c-num{
+  position: absolute;
+  top:-10rpx;
+  right: -10rpx;
+  font-size: 18rpx;
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  background: #FE5E6C;
+  color: #FFF;
+  text-align: center;
+  line-height: 30rpx;
+}
+
+.jump-area{
+  width: 100%;
+  padding: 20rpx;
+  background: #FFF;
+  margin-top: 20rpx;
+}
+.jump-area .jump{
+  width: 33.3333%;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.jump-area .jump .iconfont{
+  font-size: 55rpx;
+  margin-bottom: 15rpx;
+}

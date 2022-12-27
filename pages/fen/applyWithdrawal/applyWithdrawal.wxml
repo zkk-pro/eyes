@@ -1,0 +1,47 @@
+<!--pages/applyWithdrawal/applyWithdrawal.wxml-->
+<view class="wrap">
+    <view class="nav-top">
+        <image mode="widthFix" src="{{base_url}}bg/withraw.png">
+            <view class="balance flex-column">
+                <text>可提现余额(元)</text>
+                <text>{{balance_fee}}</text>
+            </view>
+           
+        </image>
+    </view>
+    <view class="money flex-column">
+        <text>请输入提现金额</text>
+        <view class="inp-money flex-row flex-start align-items-center">
+            <text>￥</text>
+            <input bindinput="moneyInput" type="number" value="0" placeholder="0" />
+        </view> 
+    </view>
+    <view class="notice">提交申请平台审核成功后，直接打款到您的微信零钱</view>
+
+<!--    <view class="title flex-row space-between align-items-center">-->
+<!--        <text>请选择提现账户</text>-->
+<!--        <text bindtap="accountList" >账户管理</text>-->
+<!--    </view>-->
+<!--    <view class="account-list">-->
+<!--        <block wx:if="{{accountList.length > 0}}">-->
+<!--            <view bindtap="changeAccount" data-id="{{item.id}}" data-index="{{index}}"  wx:for="{{accountList}}" class="account flex-row space-between align-items-center">-->
+<!--                <view class="a-left flex-row flex-start align-item-center">-->
+<!--                    <text wx:if="{{select_index == index}}" class="iconfont icon-choosed2"></text>-->
+<!--                <text wx:else class="iconfont icon-xuanzhongyuandian"></text>-->
+<!--                    <text>{{item.account_type == 0 ? '微信' : (item.account_type == 1 ? '银行卡':'支付宝')}}</text>-->
+<!--                </view>-->
+<!--                <text class="num">{{item.account}}</text>-->
+<!--                <text>{{item.name}}</text>-->
+<!--            </view>-->
+<!--        -->
+<!--        </block>-->
+<!--        <block wx:else>-->
+<!--            <view class="notice">还没有任何账户信息呢！</view>-->
+<!--        </block>-->
+<!--        -->
+<!--    </view>-->
+
+    <view class="apply-btn">
+        <view bindtap="submit">申请提现</view>
+    </view>
+</view>

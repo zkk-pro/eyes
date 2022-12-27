@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "核销记录",
+  "navigationBarBackgroundColor":"#FE8A22",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

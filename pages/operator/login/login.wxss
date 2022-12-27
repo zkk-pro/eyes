@@ -1,0 +1,44 @@
+page{
+    background: #FFF;
+}
+.top-image{
+    margin-top: 100rpx;
+}
+.top-image image{
+    width: 260rpx;
+    height: auto;
+}
+.info{
+    width: 100%;
+    padding: 0 60rpx;
+
+}
+.info:nth-child(2){
+    margin-top: 100rpx;
+}
+.info  .input{
+    width: 100%;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #F8F8F8;
+}
+.info  .input .iconfont{
+    color: #FE8518;
+    margin-right: 40rpx;
+    font-size: 45rpx;
+}
+.btn-click{
+    width: 100%;
+    padding: 0 60rpx;
+    position: fixed;
+    bottom: 200rpx;
+}
+.btn-click view{
+    width: 100%;
+    height: 75rpx;
+    line-height: 75rpx;
+    border-radius: 75rpx;
+    text-align: center;
+    color: #FFF;
+    background: linear-gradient(to right,#FEA034,#FE811B);
+    font-size: 30rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "打款记录",
+  "navigationBarBackgroundColor":"#FE992E",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

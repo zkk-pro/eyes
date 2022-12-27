@@ -1,0 +1,260 @@
+page{
+    font-family: "微软雅黑";
+    font-size:30rpx;
+    background:#F5F5F5;
+}
+.container {
+    padding-bottom: 0rpx;
+    background-color: #f3f3f3;
+}
+
+/*导航栏样式*/
+
+.swiper-tab {
+    width: 100%;
+    border-top: 2rpx solid #F5F5F5;
+    border-bottom: 2rpx solid #F5F5F5;
+    text-align: center;
+    line-height: 90rpx;
+    position: fixed;
+    z-index: 10;
+    top: 0rpx;
+    background: #fff;
+    display:flex;
+    justify-content: space-around;
+}
+
+.swiper-tab-list {
+    font-size: 30rpx;
+    display: inline-block;
+    color: #9F9F9F;
+    border-bottom: 5rpx solid #fff;
+    position: relative;
+}
+.swiper-tab-list .border{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 8rpx;
+    bottom: -4rpx;
+    left: 0rpx;
+    border-radius: 8rpx;
+    background: #FFF;
+}
+.on {
+    color: #333;
+    font-weight: 600;
+
+}
+.on .border{
+    background: #FFA300;
+}
+
+/*订单样式*/
+.order-wrap {
+    width: 100%;
+}
+
+.goods-item {
+    margin-top:20rpx;
+    background-color: #fff;
+}
+.goods-item:first-child{
+    margin-top:0rpx;
+    background-color: #fff;
+}
+.goods-item .order-head  {
+    display: flex;
+    font-size: 28rpx;
+    position: relative;
+    padding: 20rpx;
+    display:flex;
+    justify-content: space-between;
+}
+.goods-item .order-head .order-head-top{
+    display: flex;
+    align-items: center;
+}
+.order-head-top .icon-el-icon-custom-order{
+    font-size:28rpx;
+    padding-right:16rpx;
+}
+
+.goods-item .order-head .order-state {
+    color: #FFA300;
+    position: absolute;
+    right: 25rpx;
+}
+
+.goods-item .order-head .order-detail {
+    position: absolute;
+    right: 20rpx;
+    top: 10rpx;
+    background: #4caf50;
+    width: 140rpx;
+    line-height: 40rpx;
+    border-radius: 6rpx;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.goods-item .order-body {
+    font-size: 28rpx;
+    background: #fff;
+    padding: 0rpx 20rpx 20rpx 20rpx;
+}
+
+.goods-item .order-body .goods {
+    display: flex;
+    flex-direction: row;
+    background: #F7F9FB;
+    padding: 20rpx;
+    border-radius: 10rpx;
+    margin-top: 20rpx;
+}
+.goods-item .order-body .goods:first-child{
+    margin-top: 0rpx;
+}
+
+
+.goods-item .order-body .goods .img {
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 10rpx;
+    margin-right: 10px;
+}
+
+.goods-item .order-body .goods .goods-info {
+    padding-top: 10rpx;
+    flex: 1;
+}
+
+.goods-item .order-body .goods .goods-info .name {
+    font-size: 30rpx;
+    display: -webkit-box;
+    text-overflow: -o-ellipsis-lastline;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.goods-item .price-num {
+    padding-left: 25rpx;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 10rpx;
+}
+.goods-item .order-body .goods .goods-info .price-num .total-moneys{
+    color: #FE6726;
+}
+.goods-item .order-body .goods .goods-info .price-num .goods-num {
+    position: absolute;
+    right: 20rpx;
+}
+.property{
+    font-size: 24rpx;
+    color: #6A6A6A;
+    margin:10rpx 0;
+    text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.goods-item .order-foot {
+    font-size: 28rpx;
+}
+
+.goods-item .order-foot .total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rpx 20rpx 20rpx 20rpx;
+    font-size:26rpx ;
+}
+.goods-item .order-foot .total-money{
+    color: #F0733F;
+}
+.goods-item .order-foot .total-price .text-inde{
+    text-indent: 1em;
+}
+.goods-item .order-foot .option{
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: flex-end;
+}
+.goods-item .order-foot .option view {
+    display: flex;
+    align-items: center;
+    width: 170rpx;
+    height: 55rpx;
+    justify-content: center;
+    margin-right: 0rpx;
+    margin-left: 0rpx;
+    font-size: 26rpx;
+    line-height: 1.20;
+    padding: 10rpx 20rpx;
+    border-radius: 55rpx;
+}
+.goods-item .order-foot .option view.write_off{
+    color:#FFF;
+    background-color:#FFA300;
+}
+
+.goods-item .order-foot .option view.refund_order{
+    color:#FFF;
+    background-color:#FFA300;
+}
+.goods-item .order-foot .option view.showTips{
+    color:#FFF;
+    background-color:#FFA300;
+}
+.goods-item .order-foot .option view.confirm_order{
+    color:#FFF;
+    background-color:#FFA300;
+}
+
+.goods-item .order-foot .option view.success_order{
+    color:#FFF;
+    background-color:#FFA300;
+}
+
+.goods-item .order-foot .option .cancel_order,.goods-item .order-foot .option .delete_order{
+    /* bottom:0.5px; */
+    /* position: absolute;
+    right:200rpx; */
+    background: #fff;
+    /*color:#fff;*/
+    margin-right: 20rpx;
+    border:1rpx solid #FFA300;
+    color: #FFA300;
+}
+
+.goods-item .order-foot .option .pay_order{
+    /* bottom:0.5px; */
+    background: #FFA300;
+    /* position: absolute;
+    right: 15rpx; */
+    color:#FFF;
+}
+.goods-item .order-foot .option .send_comment {
+    background:#FFA300;
+    color:#FFF;
+    margin-left: 20rpx;
+}
+
+.goods-item .icon-main {
+    width: 35rpx;
+    height: 35rpx;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.goods-item .order-foot .option view.reserve-order{
+    margin-right: 20rpx;
+}

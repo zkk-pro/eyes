@@ -1,0 +1,211 @@
+page{
+    background: #FFF;
+    padding-bottom: 200rpx;
+    position: relative;
+}
+.title{
+    width: 100%;
+    padding: 20rpx 30rpx;
+    background: #F3F6F9;
+    color: #6F6F6F;
+}
+.title text:first-child{
+    font-weight: 600;
+    color: #333;
+    margin-right: 10rpx;
+}
+.img-label{
+    width: 100%;
+}
+.img-label image{
+    width: 100%;
+    height: auto;
+}
+
+
+.choice-area{
+    width: 100%;
+    padding:  30rpx;
+    overflow: visible;
+}
+
+.choice-area .right image{
+    width: 120rpx;
+    height: auto;
+}
+.choice-area .right image:last-child{
+    margin-left: 80rpx;
+}
+.choice-area .left{
+    width: 190rpx;
+}
+.choice-area .left text{
+    font-size: 30rpx;
+}
+.choice-area .left .select{
+    color: #FE9A4A;
+    margin-right: 8rpx;
+}
+
+.choice-area .right{
+    width: calc(100% - 150rpx);
+    overflow: visible;
+}
+.choice-area .right .color{
+    display: inline-block;
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 20rpx;
+    border-radius: 50%;
+    margin-bottom: 3rpx;
+}
+
+.choice-area .right .scroll-view {
+    width: 100%;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+
+::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+.choice-area .right .scroll-view  .children-area{
+    display: inline-flex;
+    padding:0 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 60rpx;
+    background: #F8F7F7;
+    color: #7F756D;
+    margin-left: 20rpx;
+    border: 1px solid #F8F7F7;
+    position: relative;
+}
+.choice-area .right .scroll-view .children-area.choice-cur{
+    color: #FE8D2B;
+    border: 1px solid #FE8D2B;
+    background: #FFF;
+}
+.choice-area .right  .scroll-view .children-area.noChoice{
+    background: #F3F6F9;
+    border: 1px solid #F3F6F9;
+    color: #999;
+}
+.choice-area .right view .icon-zuoyou{
+    color: #CECECE;
+    font-size: 26rpx;
+    margin-left: 10rpx;
+    margin-top: 5rpx;
+}
+
+.textarea textarea{
+  width: 100%;
+  padding:30rpx;
+  height: 300rpx;
+}
+.box-wrap{
+    width: 100%;
+    position: fixed;
+    top:0;
+    bottom: 0;
+    z-index: 1000;
+}
+.box-wrap .box{
+    width: 100%;
+    background: #FFF;
+    padding-bottom: 100rpx;
+}
+.box-wrap .box .modal-title{
+    width: 100%;
+    padding: 40rpx 30rpx;
+    font-size: 30rpx;
+}
+.box-wrap .box .modal-title cover-view:last-child{
+    color: #FE992E;
+}
+
+.box-wrap .box .property-list{
+    width: 100%;
+}
+.box-wrap .box .property-list .property{
+    display: inline-flex;
+    padding:0 30rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border-radius: 60rpx;
+    background: #F8F7F7;
+    color: #7F756D;
+    margin-left: 20rpx;
+    border: 1px solid #F8F7F7;
+    margin-bottom: 20rpx;
+}
+.box-wrap .box .property-list .property.choice-cur{
+    color: #FE8D2B;
+    border: 1px solid #FE8D2B;
+    background: #FFF;
+}
+.box-wrap .box .property-list .property.noChoice{
+    background: #F3F6F9;
+    border: 1px solid #F3F6F9;
+    color: #999;
+}
+.price-area{
+    width: 100%;
+    padding: 10rpx 30rpx;
+    background: #FFF;
+    position: fixed;
+    left: 0;
+    bottom: 100rpx;
+    border-bottom: 1px solid #EEE;
+    border-top: 1px solid #EEE;
+}
+.price-area  .price-w{
+    width: calc(100% - 240rpx);
+}
+.price-area .price-color{
+    width: calc(100% - 100rpx);
+    color: #FE692B;
+    margin-left: 15rpx;
+}
+.price-area .next-btn{
+    width: 210rpx;
+    height: 65rpx;
+    line-height: 65rpx;
+    border-radius: 65rpx;
+    text-align: center;
+    background: #FE8A22;
+    color: #FFF;
+}
+.show-wrap{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+.show-top{
+    width: 70%;
+    padding: 10px;
+    background: #FFF;
+    border-radius: 5px;
+    border: 1px solid #F2F2F2;
+    margin-left: 15%;
+}
+.show-top cover-image{
+    width: 100% !important;
+    height: auto;
+    border-radius: 5px;
+}
+.show-top .simple{
+    width: 100%;
+    padding-top:10px;
+    font-size: 20rpx;
+    color: #4D4D4D;
+    white-space: normal !important;
+    line-height: 1.2em;
+}

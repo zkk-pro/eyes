@@ -1,0 +1,73 @@
+<!--pages/optometrist/center/center.wxml-->
+<view class="wrap">
+    <view class="top-image">
+        <image mode="widthFix" src="{{base_url}}bg/optometrist.png">
+            <view class="user-info flex-column">
+                <view class="flex-row flex-center">
+                    <image src="{{base_url}}{{optometristInfo.head_img}}"></image>
+                </view>
+                <view class="flex-row flex-center">
+                    <text>{{optometristInfo.name}}</text>
+                </view>
+            </view>
+            <view class="total-data flex-row space-around align-items-center">
+                <view class="flex-column">
+                    <text>{{optometristInfo.total_sale}}</text>
+                    <text>订单总额</text>
+                </view>
+                <view class="flex-column">
+                    <text>{{optometristInfo.total_fee}}</text>
+                    <text>个人总收益</text>
+                </view>
+                <!-- <view class="flex-column">
+                    <text>{{optometristInfo.balance_fee}}</text>
+                    <text>可提现金额</text>
+                </view> -->
+            </view>
+            <view bindtap="jumpPage" data-type="writeoff" class="write-off">核销记录</view>
+            <view bindtap="jumpPage" data-type="agreeRule" class="agree-rule">商家入驻协议</view>
+
+        </image>
+    </view>
+
+    <view class="menu-list">
+        <view bindtap="jumpPage" data-type="edit" class="menu flex-row space-between align-items-center">
+            <view class="left flex-row flex-start align-items-center">
+                <view class="menu-icon">
+                    <text class="iconfont icon-fenzucopy"></text>
+                </view>
+                <text>个人信息</text>
+            </view>
+            <view class="right">
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+        <view bindtap="jumpPage" data-type="applyWithdrawal" class="menu flex-row space-between align-items-center">
+            <view class="left flex-row flex-start align-items-center">
+                <view class="menu-icon">
+                    <text class="iconfont icon-tixian"></text>
+                </view>
+                <text>打款记录</text>
+            </view>
+            <view class="right">
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+        <view bindtap="scanCode"  class="menu flex-row space-between align-items-center">
+            <view class="left flex-row flex-start align-items-center">
+                <view class="menu-icon">
+                    <text class="iconfont icon-ico"></text>
+                </view>
+                <text>核销</text>
+            </view>
+            <view class="right">
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+
+    </view>
+
+
+
+
+</view>

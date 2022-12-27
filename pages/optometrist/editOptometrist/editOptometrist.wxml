@@ -1,0 +1,30 @@
+<view class="wrap">
+    <view class="info flex-row space-between align-items-center">
+        <view class="left">头像</view>
+        <view bindtap="changeHeadImg" class="right flex-row flex-end align-items-center">
+            <image src="{{base_url}}{{head_img}}"></image>
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+
+    <view class="info flex-row space-between align-items-center">
+        <view class="left">姓名</view>
+        <view class="right flex-row flex-end align-items-center">
+            <input  type="text" bindinput="listenInput" data-type="name" placeholder="输入姓名" value="{{name}}" />
+            <text class="iconfont icon-zuoyou"></text>
+        </view>
+    </view>
+    <view class="info flex-row space-between align-items-center">
+        <view class="left">手机号</view>
+        <view class="right flex-row flex-end align-items-center">
+            <text>{{optometristInfo.phone ? optometristInfo.phone : '--'}}</text>
+        </view>
+    </view>
+    <view class="info flex-row space-between align-items-center">
+        <view class="left">地址</view>
+        <view class="right flex-row flex-end align-items-center">
+            <text>{{optometristInfo.address ? optometristInfo.address : '--'}}</text>
+        </view>
+    </view>
+    <view bindtap="editOptometrist" class="btn">保存</view>
+</view>

@@ -1,0 +1,16 @@
+<view class="wrap">
+    <block wx:for="{{list}}">
+        <view class="list">
+            <view class="l-top flex-row space-between  align-items-center">
+                <text>核销商品</text>
+                <text>{{item.money}}</text>
+               
+            </view>
+            <view class="l-b flex-row space-between  align-items-center">
+              <text>{{item.add_time}}</text>
+              <text style="color: {{item.state == 1 ? '#00A800' : '#AAA'}} " >{{item.state == 1 ? '打款成功' : '打款失败'}}</text>
+            </view>
+        </view>
+    </block>
+    <view class="bottom_text">{{bottom_text}}</view>
+</view>

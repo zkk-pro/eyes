@@ -1,0 +1,97 @@
+<!--pages/fen/commissionRecord/commissionRecord.wxml-->
+<view class="wrap">
+    <view class="record-area">
+      <view class="record-list">
+        <block wx:for="{{list}}" wx:key="1">
+          <view bindtap="getOrderInfo" data-type="{{item.type}}" data-money="{{item.money}}" data-id="{{item.oid}}"   class="record-item"  data-time="{{item.add_time}}">
+              <view class="record-top">
+                <view class="record-time" wx:if="{{item.type == 1}}">来源：商城</view>
+                <view class="record-time" wx:elif="{{item.type == 2}}">来源：秒杀</view>
+                <view class="record-time" wx:elif="{{item.type == 3}}">来源：抽奖 </view>
+                <view class="record-time" wx:elif="{{item.type == 4}}">来源：用户充值</view>
+                <view class="record-time" wx:elif="{{item.type == 5}}">用途：提现</view>
+                <view class="record-time" wx:elif="{{item.type == 6}}">用途：转入余额</view>
+                 <view class="record-time" wx:elif="{{item.type == 8}}">来源：配镜</view>
+                 <view class="record-time" wx:elif="{{item.type == 9}}">来源：服务</view>
+                <view class="flex-row flex-end align-items-center">
+                  <text>{{item.get_style == 1 ? '一级':(item.get_style == 2 ? '二级' : '本级')}}</text>
+                  <text wx:if="{{item.type == 1 || item.type == 2 || item.type == 3 || item.type == 4}}" class="icon-zuoyou iconfont"></text>
+                </view>
+
+              </view>
+              <view class="record-detail">
+                <view class="user-info">
+                  <view class="head-img">
+                    <image mode="widthFix" src="{{ item.son_user_id == 0 ?  item.head_img : item.son_head_img}}"/>
+                  </view>
+                  <view class="user-detail">
+                    <text class="nick-name">{{ item.son_user_id == 0 ?  item.nick_name : item.son_nick_name}}</text>
+                    <text class="order-time">时间：{{item.add_time}}</text>
+                  </view>
+                </view>
+                <text class="money">{{ item.type == 5 || item.type == 6 ? '-' + item.money : '+' + item.money}}</text>
+              </view>
+            </view>
+        </block>
+      </view>
+    </view>
+    <view class="get-more" >
+      <view class="no-more">{{getMore}}</view>
+    </view>
+    <!--底部弹出-->
+    <view bindtap="closeMask" wx:if="{{showMask}}" class="mask">
+      <view catchtap="emptyEvent" class="record-info">
+        <view class="order-info">
+          <view class="order-top">
+            <view class="detail-title">收入详情</view>
+            <text class="iconfont icon-guanbi" bindtap="closeMask"></text>
+          </view>
+          <view class="order-user">
+            <text class="user-name">分销用户：<text>{{user_name}}</text></text>
+            <view class="money-area">
+              ￥
+              <text class="money">{{money}}</text>
+            </view>
+          </view>
+          <view wx:if="{{type != 4}}" class="goods-info">
+            <view class="goods-list">
+              <text class="goods-title">商品</text>
+              <view class="goods-detail">
+                {{service_name}}
+              </view>
+            </view>
+            <view class="count-area">
+              <text class="counts-title">购买份数</text>
+              <text class="counts">{{counts}}</text>
+            </view>
+          </view>
+          <view wx:else class="goods-info">
+            <view class="goods-list">
+              <text class="goods-title">商品</text>
+              <view class="goods-detail">
+                余额充值
+              </view>
+            </view>
+          </view>
+          <view class="order-more">
+            <view class="order-attr">
+              <view class="attr-title">订单号</view>
+              <view class="attr-value" >{{order_num}}</view>
+            </view>
+            <view class="order-attr">
+              <view class="attr-title">订单金额</view>
+              <view class="attr-value" >￥{{total_price}}</view>
+            </view>
+            <view class="order-attr">
+              <view class="attr-title">下单时间</view>
+              <view class="attr-value" >{{order_time}}</view>
+            </view>
+            <view class="order-attr">
+              <view class="attr-title">消费时间</view>
+              <view class="attr-value" >{{return_time}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+</view>

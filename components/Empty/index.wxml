@@ -1,0 +1,8 @@
+<view class="emptyCom">
+    <view class="emptyCom_main">
+        <block wx:if="{{type==0}}">
+            <image src="./image/gwc_emptyOne.png" class="Image0" mode="heightFix"></image>
+            <text class="hint">现金清单快饿瘪了~快去购物吧</text>
+        </block>
+    </view>
+</view>

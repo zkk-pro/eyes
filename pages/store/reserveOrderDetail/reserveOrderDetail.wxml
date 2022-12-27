@@ -1,0 +1,114 @@
+<!--pages/order/orderDetail/orderDetail.wxml-->
+<view class="wrap">
+    <view class="order-top">
+        <image mode="widthFix" src="{{base_url}}bg/order_detail.png">
+            <view  class="flex-column">
+                <text wx:if="{{orderInfo.state == 0}}">待付款</text>
+                <text wx:elif="{{orderInfo.state == 1}}">待发货</text>
+                <text wx:elif="{{orderInfo.state == 2}}">待收货</text>
+                <text wx:elif="{{orderInfo.state == 3}}">已收货</text>
+                <text wx:elif="{{orderInfo.state == 4}}">已取消</text>
+                <text wx:elif="{{orderInfo.state == 5}}">已完成</text>
+                <text wx:elif="{{orderInfo.state == 6}}">退款中</text>
+                <text wx:elif="{{orderInfo.state == 7}}">退款成功</text>
+                <text wx:else>异常订单</text>
+                <text>{{orderInfo.state == 0 ? '下单成功,请尽快支付' :'买家已付款'}}</text>
+            </view>
+
+        </image>
+    </view>
+    <view class="goods-list">
+        <block wx:for="{{orderInfo.goods_list}}">
+            <view class="goods flex-row space-between">
+                <view class="left flex-row flex-start">
+                    <image mode="widthFix" src="{{base_url}}{{item.thumb}}"></image>
+                    <view class="l-info flex-column">
+                        <text>{{item.goods_name}}</text>
+                        <view class="property">
+                            <block wx:key="1" wx:for="{{item.property}}" wx:for-item="property">
+                                {{property.name}}:{{property.value}}
+                            </block>
+                        </view>
+                        <text>{{item.goods_name}}</text>
+                    </view>
+                </view>
+                <view class="right flex-column">
+                    <text>{{item.price}}</text>
+                    <text>x{{item.count}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+
+
+    <view wx:if="{{!orderInfo.optometry_data}}" style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>配送方式</text>
+            <text>快递</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>配送费</text>
+            <text>￥{{orderInfo.total_price}}</text>
+        </view>
+
+    </view>
+    <view style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>微信支付</text>
+            <text>￥{{orderInfo.total_price}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>余额支付</text>
+            <text>￥{{orderInfo.balance_fee}}</text>
+        </view>
+
+    </view>
+    <view wx:if="{{orderInfo.express_company && orderInfo.express_number}}" style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>物流信息</text>
+            <text style="color:#FD8925">{{orderInfo.express_company}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>快递单号</text>
+            <text style="color:#FD8925">{{orderInfo.express_number}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text style="color:#FD8925">物流跟踪请到公众号九九目客服中心查看</text>
+            <text style="padding:10rpx;background:#FD8925;color:#FFF;border-radius:4rpx;font-size:24rpx" bind:tap="copyCode">复制单号</text>
+        </view>
+    </view>
+
+
+    <view style="margin-top:20rpx" class="i-wrap">
+        <view wx:if="{{orderInfo.message}}"  class="info flex-row flex-start align-items-center">
+            <text>买家留言</text>
+            <text style="margin-left:20rpx">{{orderInfo.message || '--'}}</text>
+        </view>
+        <view class="info flex-row flex-end align-items-center">
+            <text style="color:#333">共{{orderInfo.goods_list.length}}件商品　　合计 ￥{{orderInfo.real_money}}</text>
+        </view>
+    </view>
+
+
+    <view style="margin-top:20rpx" class="i-wrap">
+        <view class="info flex-row space-between align-items-center">
+            <text>订单号</text>
+            <text>{{orderInfo.order_num}}</text>
+        </view>
+        <view class="info flex-row space-between align-items-center">
+            <text>下单时间</text>
+            <text>{{orderInfo.add_time}}</text>
+        </view>
+
+
+
+        <view class="info flex-row space-between align-items-center">
+            <text>支付方式</text>
+            <text wx:if="{{orderInfo.total_price > 0 && orderInfo.balance_fee > 0}}">微信+余额支付</text>
+            <text wx:elif="{{orderInfo.total_price > 0 && orderInfo.balance_fee == 0}}">微信支付</text>
+            <text wx:elif="{{orderInfo.total_price == 0 && orderInfo.balance_fee > 0}}">余额支付</text>
+        </view>
+    </view>
+
+
+</view>

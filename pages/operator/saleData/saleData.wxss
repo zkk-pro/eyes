@@ -1,0 +1,153 @@
+page{
+    padding-bottom: 60rpx;
+}
+.postiton{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.top-nav{
+    width: 100%;
+    padding: 25rpx 30rpx;
+    background: #FFF;
+}
+.top-nav > picker:first-child view .icon-mendian{
+    font-size: 42rpx;
+    color: #FC8233;
+    margin-right: 20rpx;
+}
+.top-nav .icon-xiasanjiao1{
+    font-size: 36rpx;
+    margin-top: 10rpx;
+    margin-left: 5rpx;
+}
+.top-nav >  picker:last-child .operate > text:first-child,.top-nav >  picker:first-child view > text:nth-child(2){
+    font-weight: 600;
+    font-size: 30rpx;
+}
+.sale-info{
+    width: 100%;
+    padding: 60rpx 30rpx;
+    background: linear-gradient(to right,#FEA133,#FE811B);
+    color: #FFF;
+}
+.sale-info .info{
+    width: 50%;
+    text-align: left;
+    font-size: 32rpx;
+}
+.sale-info .info > text:first-child{
+    margin-bottom: 15rpx;
+}
+.sale-info .info:first-child text:last-child{
+    font-size: 65rpx;
+    font-weight: 600;
+}
+.sale-info .info:last-child text:last-child{
+    font-size: 45rpx;
+}
+.sale-info .info:last-child{
+    margin-bottom: 8rpx;
+}
+.change-nav{
+    width: 100%;
+    padding: 25rpx 30rpx;
+    border-bottom: 1px solid #EEE;
+    background: #FFF;
+    color: #686868;
+    font-size: 32rpx;
+}
+.change-nav text.cur{
+    color: #FA8019;
+}
+.time-area{
+    width: 100%;
+    padding: 25rpx 30rpx;
+    background: #FFF;
+    color: #333;
+    border-bottom: 1px solid #EEE;
+}
+.time-area .date{
+    padding: 0 25rpx;
+    background: #FAFAFA;
+    border: 1px solid #EEE;
+    height: 65rpx;
+    line-height: 61rpx;
+    border-radius: 65rpx;
+    text-align: center;
+}
+.time-area .date .icon-triangle-left{
+    color: #666;
+    font-size: 22rpx;
+    margin-left: 10rpx;
+}
+.time-area > text:nth-child(2){
+    margin: 0 20rpx;
+}
+.order-list{
+    width: 100%;
+    padding: 0 30rpx;
+    background: #FFF;
+    margin-top: 559rpx;
+}
+.order-list .order{
+    width: 100%;
+    border-bottom: 1px solid #EEE;
+}
+.order-list .order:last-child{
+    border-bottom: none;
+}
+.order-list .order .order-top{
+    width: 100%;
+    padding: 25rpx 0;
+}
+.order-list .order .order-top .icon-mendian{
+    color: #999;
+    font-size: 38rpx;
+    margin-right: 10rpx;
+}
+.order-list .order .goods-info{
+    width: 100%;
+    background: #F3F6F9;
+    border-radius: 15rpx;
+}
+.order-list .order .goods-info .goods{
+    width: 100%;
+    padding:25rpx 30rpx;
+    border-bottom: 1px solid #EEE;
+}
+.order-list .order .goods-info .goods:last-child{
+    border-bottom: none;
+}
+.order-list .order .goods-info .goods .g-top{
+    width: 100%;
+    font-size: 32rpx;
+    margin-bottom: 15rpx;
+
+}
+.order-list .order .goods-info .goods .g-top text:first-child{
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+.order-list .order .goods-info .g-bottom  view:first-child{
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    color: #A1A6B0;
+}
+.order-list .order .write_off_time{
+    width: 100%;
+    padding: 25rpx 0;
+    color: #666;
+}
+.order-list .order .write_off_time text:last-child{
+    color: #FC6747;
+}

@@ -1,0 +1,63 @@
+.nav-top{
+  width: 100%;
+  background: #FFF;
+  border-bottom: 1px solid #F7F7F7;
+  border-top: 1px solid #F7F7F7;
+}
+.nav-top > view{
+  width: 50%;
+  padding: 25rpx;
+  text-align: center;
+  position: relative;
+}
+.nav-top > view .border{
+  display: block;
+  width: 100rpx;
+  height: 3rpx;
+  background: #FFF;
+  position: absolute;
+  bottom: 0rpx;
+  left: 50%;
+  margin-left:-50rpx;
+}
+.nav-top > view.cur{
+  color: #FFA506;
+}
+.nav-top > view.cur .border{
+  background: #FFA506;
+}
+.list-wrap .list{
+  width: 100%;
+  background: #FFF;
+  margin-bottom: 25rpx;
+  padding: 0 25rpx;
+}
+.list-wrap .list .d-sc{
+  padding: 25rpx 0;
+  border-bottom: 1px solid #EEE;
+  color:#808080;
+}
+.list-wrap .list .d-sc text:first-child{
+  color: #767676;
+}
+.list-wrap .list .user-info{
+  padding: 25rpx 0;
+}
+.list-wrap .list .user-info .left image{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-right:25rpx ;
+}
+.list-wrap .list .user-info .left view text:first-child{
+  font-size: 32rpx;
+}
+.list-wrap .list .user-info .left view text:last-child{
+  color:#7D7D7D;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+}
+.list-wrap .list .user-info .right{
+  color: #FF544E;
+  font-size: 32rpx;
+}

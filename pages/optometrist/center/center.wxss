@@ -1,0 +1,110 @@
+page{
+    background: #FFF;
+}
+.top-image{
+    width: 100%;
+}
+.top-image image{
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+.top-image image .write-off{
+    position: absolute;
+    top:16%;
+    right:0rpx;
+    width:160rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    color:#FFF;
+    background: linear-gradient(to right,#FB7844,#FD593F);
+    border-top-left-radius: 30rpx;
+    border-bottom-left-radius: 30rpx;
+    font-size: 24rpx;
+}
+.agree-rule{
+    position: absolute;
+    top:16%;
+    left:0rpx;
+    width:180rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    color:#FFF;
+    background: linear-gradient(to right,#FB7844,#FD593F);
+    border-top-right-radius: 30rpx;
+    border-bottom-right-radius: 30rpx;
+    font-size: 24rpx;
+}
+.user-info {
+    width: 100%;
+    position: absolute;
+    top: 20rpx;
+    left: 0rpx;
+    color: #FFF;
+    font-size:30rpx;
+}
+.user-info view image{
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 50%;
+    border: 6rpx solid #FFC890;
+    margin-bottom: 15rpx;
+}
+.total-data {
+    width: 100%;
+    position: absolute;
+    bottom: 30rpx;
+    left: 0rpx;
+    color: #FFF;
+    font-size:26rpx;
+}
+.total-data > view{
+    width:33.3333%;
+    text-align: center;
+}
+.total-data > view text:first-child{
+    font-size: 42rpx;
+    margin-bottom: 10rpx;
+}
+.menu-list{
+    width: 100%;
+    padding: 0 30rpx;
+}
+.menu-list .menu{
+    width: 100%;
+    border: 1px solid #F8F4F1;
+    border-radius: 4rpx;
+    box-shadow: 0px -5px 5px 0px #FFFBF7,
+    -5px 0px 5px 0px #FFFBF7,
+    5px 0px 5px 0px #FFFBF7,
+    0px 3px 5px 0px #FFFBF7;
+    margin-top: 20rpx;
+    padding:30rpx  40rpx;
+}
+.menu-list .menu .menu-icon{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+    line-height: 100rpx;
+    text-align: center;
+    background: #FE861F;
+    color: #FFF;
+    margin-right: 40rpx;
+}
+.menu-list .menu .menu-icon .iconfont{
+    font-size: 45rpx;
+}
+.menu-list .menu .right{
+    width: 45rpx;
+    height: 45rpx;
+    line-height: 45rpx;
+    border-radius: 50%;
+    background: #FDE9D7;
+    text-align: center;
+}
+.menu-list .menu .right .iconfont{
+    color: #FE7D0A;
+    font-size: 22rpx;
+}

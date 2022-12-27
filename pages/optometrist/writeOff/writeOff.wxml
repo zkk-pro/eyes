@@ -1,0 +1,141 @@
+<view class="wrap">
+    <!--顶部导航-->
+    <view class="swiper-tab">
+        <view wx:if="{{isServiceShow == 1 || isUseOther == 1}}" class="swiper-tab-list {{currentTab == 1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
+            <text>百货</text>
+            <text class="border"></text>
+        </view>
+        <view wx:if="{{isUseOther == 1}}" class="swiper-tab-list {{currentTab == 0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
+            <text>消费券</text>
+            <text class="border"></text>
+        </view>
+        
+        <view wx:if="{{isUseOther == 1}}" class="swiper-tab-list {{currentTab == 2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">
+            <text>秒杀</text>
+            <text class="border"></text>
+        </view>
+        <view wx:if="{{isUseOther == 1}}" class="swiper-tab-list {{currentTab == 3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">
+            <text>抽奖</text>
+            <text class="border"></text>
+        </view>
+        <view wx:if="{{isServiceShow == 1}}" class="swiper-tab-list {{currentTab == 4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">
+            <text>服务</text>
+            <text class="border"></text>
+        </view>
+    </view>
+    <view wx:if="{{currentTab == 0}}" class="record-list">
+        <block wx:for="{{list}}"  >
+            <view  bindtap='orderDetail' data-oid="{{item.id}}" data-type="{{currentTab}}" class="record flex-column">
+                <view class="top-desc flex-row space-between align-items-center">
+                    <text>核销时间：{{item.add_time}}</text>
+                    <text>价格：￥{{item.total_price}}</text>
+                </view>
+                <view class="detail flex-column">
+                    <view>
+                        镜框属性：{{item.frame_json_data.frameName}},{{item.frame_json_data.circleName}},{{item.frame_json_data.materialName}},{{item.frame_json_data.colorName}}
+                    </view>
+                    <view>
+                        镜片属性：{{item.optic_json_data.brandInfo.name}},{{item.optic_json_data.functionInfo.name}},{{item.optic_json_data.refractionInfo.name}}
+                    </view>
+                </view>
+            </view>
+
+        </block>
+        <view class="bottom_text">{{bottom_text}}</view>
+    </view>
+    <view wx:elif="{{currentTab == 1 || currentTab == 2 || currentTab == 3}}" class='order-wrap'>
+        <block wx:key="1" wx:for="{{list}}" wx:for-item="item">
+            <view bindtap='orderDetail' data-oid="{{item.id}}" data-type="{{currentTab}}" class="goods-item">
+                <view class="order-head" data-id="{{item.id}}">
+                    <view class="order-head-top">
+                        <text class="iconfont icon-el-icon-custom-order"></text>
+                        <view class="order-time">订单号：{{item.order_num}}</view>
+                    </view>
+
+                    <view class="order-state">已核销</view>
+                    <!--<view class="order-detail">订单详情</view>-->
+                </view>
+                <view class="order-body" >
+                    <block wx:key="1" wx:for="{{item.goods_list}}" wx:for-item="goods">
+                        <view class="goods" data-id="{{goods.gid}}" bindtap="goodsDetail">
+                            <image mode='widthFix' class="img" src="{{base_url}}{{goods.thumb}}"></image>
+                            <view class="goods-info">
+                                <view class="name">{{goods.goods_name}}</view>
+                                <view class="property">
+                                    <block wx:key="1" wx:for="{{goods.property}}" wx:for-item="property">
+                                        {{property.name}}:{{property.value}}
+                                    </block>
+                                </view>
+                                <view class="goods-price">￥{{goods.price}}</view>
+                            </view>
+                            <view class="price-num">
+
+                                <view class="goods-num">x{{goods.count}}</view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+                <view class="order-foot">
+                    <view class="total-price">
+                        <view class="flex-row flex-start align-items-center">
+                            <view>共{{item.goods_count}}项</view>
+                            <view class="text-inde">合计：</view>
+                            <view class="total-money">￥{{item.total_price}}</view>
+                        </view>
+
+                    </view>
+
+                </view>
+
+            </view>
+        </block>
+        <view class="bottom_text">{{bottom_text}}</view>
+    </view>
+    <view wx:else class='order-wrap'>
+        <block wx:key="1" wx:for="{{list}}" wx:for-item="item">
+            <view bindtap='orderDetail' data-oid="{{item.user_goods_id}}" data-type="{{currentTab}}" class="goods-item">
+                <view class="order-head" data-id="{{item.id}}">
+                    <view class="order-head-top">
+                        <text class="iconfont icon-el-icon-custom-order"></text>
+                        <view class="order-time">核销时间：{{item.add_time}}</view>
+                    </view>
+
+                    <view class="order-state">已核销</view>
+                    <!--<view class="order-detail">订单详情</view>-->
+                </view>
+                <view class="order-body" >
+
+                    <view class="goods" data-id="{{item.gid}}">
+                        <image mode='widthFix' class="img" src="{{base_url}}{{item.img_url}}"></image>
+                        <view class="goods-info">
+                            <view class="name">{{item.goods_name}}</view>
+                            <view class="property">
+                                统一规格
+                            </view>
+                            <view class="goods-price">￥{{item.price}}</view>
+                        </view>
+                        <view class="price-num">
+
+                            <view class="goods-num"></view>
+                        </view>
+                    </view>
+
+                </view>
+                <view class="order-foot">
+                    <view class="total-price">
+<!--                        <view class="flex-row flex-start align-items-center">-->
+<!--                            <view>共{{item.goods_count}}项</view>-->
+<!--                            <view class="text-inde">合计：</view>-->
+<!--                            <view class="total-money">￥{{item.total_price}}</view>-->
+<!--                        </view>-->
+
+                    </view>
+
+                </view>
+
+            </view>
+        </block>
+        <view class="bottom_text">{{bottom_text}}</view>
+    </view>
+
+</view>

@@ -1,0 +1,68 @@
+<!--pages/optometrist/center/center.wxml-->
+<view class="wrap">
+    <view class="top-image">
+        <image mode="widthFix" src="{{base_url}}bg/optometrist.png">
+            <view class="user-info flex-column">
+                <view class="flex-row flex-center">
+                    <image src="{{userInfo.head_img_url}}"></image>
+                </view>
+                <view class="flex-row flex-center">
+                    <text>{{operatorInfo.name}}</text>
+                </view>
+            </view>
+            <view class="total-data flex-row space-around align-items-center">
+                <view class="flex-column">
+                    <text>{{operatorInfo.total_sale}}</text>
+                    <text>总销售额</text>
+                </view>
+                <view class="flex-column">
+                    <text>{{operatorInfo.total_fee}}</text>
+                    <text>总奖励</text>
+                </view>
+                <!-- <view class="flex-column">
+                    <text>{{optometristInfo.balance_fee}}</text>
+                    <text>可提现金额</text>
+                </view> -->
+            </view>
+<!--            <view bindtap="jumpPage" data-type="writeoff" class="write-off">核销记录</view>-->
+        </image>
+    </view>
+    <view class="my-balance flex-row space-between align-items-center">
+        <view class="flex-row flex-start align-items-center">
+            <text class="iconfont icon-jinqian"></text>
+            <text>我的余额：</text>
+            <text>{{operatorInfo.balance_fee}}</text>
+            <text> 元</text>
+        </view>
+        <view   bindtap="jumpPage" data-type="applyWithdrawal" class="recharge">提现</view>
+    </view>
+    <view class="menu-list">
+        <view bindtap="jumpPage" data-type="saleData" class="menu flex-row space-between align-items-center">
+            <view class="left flex-row flex-start align-items-center">
+                <view class="menu-icon">
+                    <text class="iconfont icon-zhexian"></text>
+                </view>
+                <text>销售情况</text>
+            </view>
+            <view class="right">
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+        <view bindtap="jumpPage" data-type="goodsList" class="menu flex-row space-between align-items-center">
+            <view class="left flex-row flex-start align-items-center">
+                <view class="menu-icon">
+                    <text class="iconfont icon-kucun"></text>
+                </view>
+                <text>产品库存</text>
+            </view>
+            <view class="right">
+                <text class="iconfont icon-zuoyou"></text>
+            </view>
+        </view>
+
+    </view>
+
+
+
+
+</view>

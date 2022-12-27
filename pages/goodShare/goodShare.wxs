@@ -1,0 +1,12 @@
+var filters = {
+  isChoice: function (value,array) {
+    if(array.indexOf(value) != -1){
+		return 'cur';
+	}else{
+		return '';	
+	}
+  },
+}
+module.exports = {
+  isChoice: filters.isChoice,
+}

@@ -1,0 +1,15 @@
+<view class="wrap">
+    <view class="top-image flex-row flex-center">
+        <image mode="widthFix" src="{{base_url}}bg/logo.png"></image>
+    </view>
+    <view class="info flex-column">
+        <view class="input flex-row flex-start align-items-center">
+            <text class="iconfont icon-yaoqingma"></text>
+            <input bindinput="listenInput" data-type="invite_code" type="text" value="" placeholder="请输入邀请码" />
+        </view>
+    </view>
+    <view class="btn-click">
+        <view bindtap="bindDistrutor">绑定</view>
+        <view bindtap="jumpIndex">跳过</view>
+    </view>
+</view>

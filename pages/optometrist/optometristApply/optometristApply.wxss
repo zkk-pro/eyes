@@ -1,0 +1,99 @@
+page{
+    background: #FFF;
+    padding-bottom: 100rpx;
+}
+.top-image{
+    margin-top: 60rpx;
+}
+.top-image image{
+    width: 180rpx;
+    height: auto;
+}
+.info{
+    width: 100%;
+    padding: 0 60rpx;
+    margin-top: 30rpx;
+}
+
+.info  .input{
+    width: 100%;
+    padding: 30rpx 0;
+    border-bottom: 1px solid #F8F8F8;
+}
+.info  .input .iconfont{
+    color: #FE8518;
+    margin-right: 40rpx;
+    font-size: 45rpx;
+}
+.info  .input input{
+    flex: 1;
+}
+.info  .input textarea{
+    flex: 1;
+    height: 120rpx;
+}
+.upload-img{
+    width: 100%;
+    padding: 0 60rpx;
+    margin-top: 30rpx;
+    color: #666;
+}
+.upload-img .img-area{
+    width: 100%;
+    height: auto;
+    margin-top: 30rpx;
+}
+.upload-img .img-area .add-btn{
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 10rpx;
+    text-align: center;
+    border: 1px dotted #999;
+}
+.upload-img .img-area .add-btn .iconfont{
+    font-size: 70rpx;
+    color: #999;
+}
+.img-area image{
+    width: 180rpx;
+    height: 180rpx;
+    border-radius: 10rpx;
+    position: relative;
+}
+.img-area image .iconfont{
+    position: absolute;
+    top: 10rpx;
+    right: 10rpx;
+    font-size: 36rpx;
+}
+.btn-click{
+    width: 100%;
+    padding: 0 60rpx;
+   margin-top: 100rpx;
+}
+.btn-click view{
+    width: 100%;
+    height: 75rpx;
+    line-height: 75rpx;
+    border-radius: 75rpx;
+    text-align: center;
+    color: #FFF;
+    background: linear-gradient(to right,#FEA034,#FE811B);
+    font-size: 30rpx;
+}
+.agree{
+    width: 100%;
+    padding: 20rpx 30rpx;
+    font-size: 30rpx;
+    background: #FFF;
+    margin-top: 30rpx;
+}
+.agree .iconfont{
+    font-size: 40rpx;
+    margin-left: 20rpx;
+    margin-top: 5rpx;
+    color: #DCDCDC;
+}
+.agree .icon-choosed2{
+    color: #FEA034;
+}

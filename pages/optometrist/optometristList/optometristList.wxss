@@ -1,0 +1,38 @@
+page{
+    background: #FFF;
+    padding-bottom: 100rpx;
+}
+.list{
+    width: 100%;
+}
+.list .op-wrap {
+    width: 100%;
+    padding: 30rpx;
+    border-bottom: 1px solid #F0F3F6;
+}
+.list .op-wrap .left{
+    color: #ABABAB;
+}
+.list .op-wrap .left image{
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+.list .op-wrap .left text:nth-child(2){
+    font-size: 30rpx;
+    color: #333;
+    padding: 0 20rpx;
+}
+.list .op-wrap  .right .icon{
+    width: 70rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    border-radius: 50%;
+    text-align: center;
+    background: #FFF3E8;
+    color: #FE8821;
+    margin-left: 40rpx;
+}
+.list .op-wrap  .right .icon .iconfont{
+    font-size: 40rpx;
+}

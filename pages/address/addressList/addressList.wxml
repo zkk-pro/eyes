@@ -1,0 +1,34 @@
+<!--pages/userCenter/addressList/addressList.wxml-->
+<view class="wrap">
+	<view wx:if="{{addressList.length > 0}}" class="address-area">
+		<block wx:for="{{addressList}}" wx:key="1">
+			<view class="address-list">
+				<view class="addresss-top">
+					<view class="address-name">
+						<text class="name">收货人：{{item.call_name}}</text>
+						<text class="phone">{{item.phone}}</text>
+					</view>
+					<view class="address-detail">收货地址：{{item.address.city}} {{item.address.detail}}</view>
+				</view>
+				<view class="address-bottom">
+					<view class="operate-left" bindtap='setDefaultAddress' data-index="{{index}}" data-id="{{item.id}}">
+						<view class="check-area">
+							<block wx:if="{{item.is_default == 1}}">
+								<text class="iconfont icon-duihao"></text>
+							</block>
+						</view>
+						<text class="">设置默认地址</text>
+					</view>
+					<view class="operate-right">
+						<text class="edit" bindtap='editAddress' data-id="{{item.id}}">编辑</text>
+						<text class="delete" bindtap='deleteAddress' data-id="{{item.id}}">删除</text>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+	<view wx:else class="no-address">~~暂无地址信息~~</view>
+	<view class="btn-area">
+		<view class="submit-area" bindtap='addAddress'>新增地址</view>
+	</view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "推荐商品",
+  "navigationBarBackgroundColor":"#FE992E",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":false
+}

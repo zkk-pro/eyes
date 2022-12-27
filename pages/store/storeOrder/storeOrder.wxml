@@ -1,0 +1,94 @@
+<import src='/pages/template/template' />
+
+
+<view class="container">
+
+    <!--顶部导航-->
+    <view class="swiper-tab">
+        <view class="swiper-tab-list {{currentTab == 99 ? 'on' : ''}}" data-current="99" bindtap="swichNav">
+            <text>全部</text>  
+            <text class="border"></text>  
+        </view>
+        <view class="swiper-tab-list {{currentTab == 0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
+            <text>待付款</text>  
+            <text class="border"></text>  
+        </view>
+        <view class="swiper-tab-list {{currentTab == 1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">
+             <text>待发货</text>  
+            <text class="border"></text> 
+        </view>
+         <view class="swiper-tab-list {{currentTab == 'a' ? 'on' : ''}}" data-current="a" bindtap="swichNav">
+             <text>待核销</text>  
+            <text class="border"></text> 
+        </view>
+         <view class="swiper-tab-list {{currentTab == '2' ? 'on' : ''}}" data-current="2" bindtap="swichNav">
+             <text>待收货</text>  
+            <text class="border"></text> 
+        </view>
+        <view class="swiper-tab-list {{currentTab == 3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">
+            <text>已收货</text>  
+            <text class="border"></text> 
+        </view>
+        <view class="swiper-tab-list {{currentTab == '5' ? 'on' : ''}}" data-current="5" bindtap="swichNav">
+            <text>已完成</text>  
+            <text class="border"></text> 
+        </view>
+    </view>
+
+    <!--订单列表-->
+    <view class='order-wrap'>
+        <block wx:key="1" wx:for="{{list}}" wx:for-item="item">
+            <view bindtap='orderDetail' data-oid="{{item.id}}" class="goods-item">
+                <view class="order-head" data-id="{{item.id}}">
+                    <view class="order-head-top">
+                        <text class="iconfont icon-el-icon-custom-order"></text>
+                        <view class="order-time">订单号：{{item.order_num}}</view>
+                    </view>
+
+                    <view class="order-state">{{item.state_text}}</view>
+                    <!--<view class="order-detail">订单详情</view>-->
+                </view>
+                <view class="order-body" >
+                    <block wx:key="1" wx:for="{{item.goods_list}}" wx:for-item="goods">
+                        <view class="goods" data-id="{{goods.gid}}" bindtap="goodsDetail">
+                            <image mode='widthFix' class="img" src="{{base_url}}{{goods.thumb}}"></image>
+                            <view class="goods-info">
+                                <view class="name">{{goods.goods_name}}</view>
+                                <view class="property">
+                                    <block wx:key="1" wx:for="{{goods.property}}" wx:for-item="property">
+                                        {{property.name}}:{{property.value}}
+                                    </block>
+                                </view>
+                                 <view class="goods-price">￥{{goods.price}}</view>
+                            </view>
+                            <view class="price-num">
+                               
+                                <view class="goods-num">x{{goods.count}}</view>
+                            </view>
+                        </view>
+                    </block>
+                </view>
+                <view class="order-foot">
+                    <view class="total-price">
+                        <view class="flex-row flex-start align-items-center">
+                            <view>共{{item.goods_count}}项</view>
+                            <view class="text-inde">合计：</view>
+                            <view class="total-money">￥{{item.total_price}}</view>
+                        </view>
+                       
+                         <view class="option" hidden="{{!item.option}}">
+                            <button style="margin-right:{{item.btn_hidden ? '20rpx':'0rpx'}}" class="{{item.option}}" type='mini' data-index="{{index}}" hidden="{{!item.btn_hiddens}}" data-id="{{item.id}}" catchtap="{{item.option}}">{{item.option_text}}</button>
+                            <button class="{{item.options}}" type='mini' data-index="{{index}}" hidden="{{!item.btn_hidden}}" data-id="{{item.id}}" catchtap="{{item.options}}">{{item.option_texts}}</button>
+                        </view>
+                    </view>
+                   
+                </view>
+
+            </view>
+        </block>
+    </view>
+    <view class="bottom_text">{{bottom_text}}</view>
+</view>
+
+
+

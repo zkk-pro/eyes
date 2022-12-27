@@ -1,0 +1,109 @@
+page{
+    font-family: "微软雅黑";
+    font-size:30rpx;
+    background:#F3F6F9;
+}
+.container {
+    padding-top: 95rpx;
+    padding-bottom: 0rpx;
+    background-color: #F3F6F9;
+}
+
+/*导航栏样式*/
+
+.swiper-tab {
+    width: 100%;
+    border-top: 2rpx solid #F5F5F5;
+    border-bottom: 2rpx solid #F5F5F5;
+    text-align: center;
+    line-height: 90rpx;
+    position: fixed;
+    z-index: 10;
+    top: 0rpx;
+    background: #fff;
+    display:flex;
+    justify-content: space-around;
+}
+
+.swiper-tab-list {
+    font-size: 30rpx;
+    display: inline-block;
+    color: #9F9F9F;
+    border-bottom: 5rpx solid #fff;
+    position: relative;
+}
+.swiper-tab-list .border{
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 8rpx;
+    bottom: -4rpx;
+    left: 0rpx;
+    border-radius: 8rpx;
+    background: #FFF;
+}
+.on {
+    color: #333;
+    font-weight: 600;
+
+}
+.on .border{
+    background: #FFA300;
+}
+.record-list{
+    width: 100%;
+}
+
+.record-list .record{
+    width: 100%;
+    background: #FFF;
+    padding: 0 30rpx;
+    margin-top: 20rpx;
+}
+.record-list .record:first-child{
+    margin-top: 0rpx;
+}
+.record-list .record .top-desc{
+    padding: 20rpx 0;
+}
+.record-list .record .top-desc text:last-child{
+    color: #FF9B65;
+}
+.record-list .record .detail{
+    width: 100%;
+    padding: 20rpx;
+    background: #F7F9FB;
+    border-radius: 5rpx;
+    font-size: 28rpx;
+    color: #777677;
+}
+.record-list .record .detail view:first-child{
+    font-size: 30rpx;
+    color: #1F1E1E;
+    margin-bottom: 15rpx;
+}
+.record-list .record .bottom{
+    width: 100%;
+    padding: 20rpx 0;
+}
+.record-list .record .bottom view:first-child text:last-child{
+    color: #EF692E;
+}
+.record-list .record .bottom .btn-confirm{
+    width: 130rpx;
+    height: 50rpx;
+    background: #EDC281;
+    line-height: 50rpx;
+    border-radius: 50rpx;
+    color: #FFF;
+    text-align: center;
+    font-size: 24rpx;
+}
+.record-list .record .bottom .btn-confirm.cancel{
+    border:1px solid #EDC281;
+    color: #EDC281;
+    background: #FFF;
+}
+.record-list .record .bottom .btn-confirm:last-child{
+    margin-left: 20rpx;
+}

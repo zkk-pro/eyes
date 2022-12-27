@@ -1,0 +1,104 @@
+/* pages/userCenter/addressList/addressList.wxss */
+/* 头部区  */
+page {
+  background: #F5F5F5;
+  font-size: 28rpx;
+}
+.address-list{
+  background: #FFF;
+  padding-left: 20rpx;
+  margin-bottom: 20rpx;
+}
+.addresss-top{
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 0rpx;
+  padding-right: 20rpx;
+  border-bottom: 2rpx solid #EEE;
+}
+.address-name{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20rpx;
+  font-size: 32rpx;
+}
+.address-detail{
+  padding-bottom: 10rpx;
+}
+.address-bottom{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0rpx;
+  padding-right: 20rpx;
+}
+.operate-left{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.check-area{
+  width: 40rpx;
+  height: 40rpx;
+  border: 2rpx solid #DDD;
+  border-radius: 6rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+.check-area .iconfont{
+  color: #FFA300;
+  font-size: 28rpx;
+}
+.operate-right{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.edit{
+  border: 2rpx solid #DDD;
+  width: 120rpx; 
+  height: 50rpx;
+  line-height: 48rpx;
+  border-radius: 50rpx;
+  display: flex;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+.delete{
+  
+  width: 120rpx; 
+  height: 50rpx;
+  line-height: 48rpx;
+  border-radius: 50rpx;
+  display: flex;
+  border: 2rpx solid #DDD;
+  justify-content: center;
+}
+.btn-area{
+  width: 100%;
+  padding:80rpx 40rpx;
+  position: fixed;
+  bottom: 0;
+}
+.submit-area{
+	height: 80rpx;
+	width: 100%;
+	text-align: center;
+	line-height:80rpx;
+	background: #FFA300;
+	font-size: 32rpx;
+	color:#fff;
+  border-radius:50rpx;
+}
+.no-address{
+  width: 100%;
+  text-align: center;
+  padding: 20rpx;
+  color: #8c8c8c;
+}

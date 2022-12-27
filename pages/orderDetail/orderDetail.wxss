@@ -1,0 +1,249 @@
+page{
+    padding-bottom: 200rpx;
+}
+.order-top{
+    width: 100%;
+}
+.order-top image{
+    width: 100%;
+    height: auto;
+    position: relative;
+    display: block;
+}
+.order-top image view{
+    position: absolute;
+    left: 30rpx;
+    top: 27%;
+    color: #FFF;
+    font-size: 30rpx;
+}
+.order-top image view text:last-child{
+    font-size: 26rpx;
+    margin-top: 10rpx;
+}
+.goods-list{
+    background: #FFF;
+    padding: 20rpx;
+}
+.goods-list .goods{
+    width: 100%;
+    margin-top: 10px;
+}
+.goods-list .goods .left{
+    width: 80%;
+}
+.goods-list .goods .left image{
+    width: 200rpx;
+    height: auto;
+    margin-right: 20rpx;
+}
+.goods-list .goods .left .l-info{
+    width: 80%;
+}
+.goods-list .goods .left .l-info view:last-child{
+    color:#A5A5A5;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+    text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.goods-list .goods .right text:first-child{
+    color:#FE6D33;
+    text-align: right;
+}
+.goods-list .goods .right text:last-child{
+    color:#A5A5A5;
+    font-size: 24rpx;
+    margin-top: 20rpx;
+    text-align: right;
+}
+.i-wrap{
+    width: 100%;
+    background: #FFF;
+    padding: 0 20rpx;
+}
+.info{
+    width: 100%;
+    padding: 20rpx 0;
+    border-bottom: 1px solid #FBFBFB;
+}
+.info text:last-child{
+    color:#757575;
+}
+.btn{
+    width: 100%;
+    padding: 20rpx;
+    background: #FFF;
+}
+.btn text{
+    padding: 10rpx 20rpx;
+    color: #fff;
+    background: #FFA300;
+    border-radius: 6rpx;
+}
+.settingArea .title-area{
+    padding: 20rpx 20rpx 20rpx 20rpx;
+}
+.settingArea .title-area view{
+    width: 40%;
+    font-size: 30rpx;
+    font-weight: 550;
+    text-align: right;
+    padding-right: 20rpx;
+}
+.settingArea .title-area view:first-child{
+    width: 18%;
+    text-align: left;
+    padding-right:0rpx
+}
+.settingArea .title-area view:first-child text:last-child{
+    font-weight: normal;
+    font-size: 24rpx;
+    color: #5F5F60;
+    margin-left: 15rpx;
+}
+.settingArea  .input-area{
+    padding: 20rpx;
+    background: #FFF;
+}
+.settingArea  .input-area view{
+    width: 40%;
+    font-size: 30rpx;
+    padding-right: 20rpx;
+    text-align: right;
+    font-size: 24rpx;
+}
+.settingArea .input-area view:first-child{
+    width: 18%;
+    text-align: left;
+    padding-right: 0rpx;
+}
+
+.write-off{
+    width: 80%;
+    height: 75rpx;
+    line-height: 75rpx;
+    border-radius: 75rpx;
+    color: #FFF;
+    text-align: center;
+    background: #FE8A22;
+    position: fixed;
+    bottom: 100rpx;
+    left: 10%;
+}
+
+.order-list{
+    width: 100%;
+    background: #FFF;
+}
+.order-list > .reward ,.order-list > .o-title,.order-list >.list-detail {
+    width: 100%;
+    padding:20rpx;
+}
+.order-list > .o-title {
+   border-bottom: 1px solid #EEE;
+}
+.border{
+    width: 100%;
+    background: #F2F5F8;
+    padding: 10rpx;
+}
+.order-list > view image{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    margin-right: 15rpx;
+}
+.order-list .reward image{
+    margin-left: 15rpx;
+}
+.lookMore {
+    color: #B6B6B6;
+    padding: 20rpx;
+}
+.lookMore .iconfont{
+    font-size: 24rpx;
+    margin-top: 4rpx;
+    margin-left: 10rpx;
+}
+.hidden{
+    display: none !important;
+}
+.settingArea .title-area{
+    padding: 20rpx 20rpx 20rpx 20rpx;
+  }
+  .settingArea .title-area view{
+    width: 27.5%;
+    font-size: 30rpx;
+    font-weight: 550;
+    text-align: right;
+    padding-right: 20rpx;
+  }
+  .settingArea .title-area view:first-child{
+    width: 45%;
+    text-align: left;
+    padding-right:0rpx
+  }
+  .settingArea .title-area view:first-child text:last-child{
+    font-weight: normal;
+    font-size: 24rpx;
+    color: #5F5F60;
+    margin-left: 15rpx;
+  }
+  .settingArea  .input-area{
+    padding: 20rpx;
+    background: #FFF;
+  }
+  .settingArea  .input-area > view{
+    width: 27.5%;
+    font-size: 30rpx;
+    padding-right: 20rpx;
+  }
+  .settingArea .input-area > view:first-child{
+    width: 45%;
+    text-align: left;
+    padding-right: 0rpx;
+  }
+  .settingArea .input-area > view > view{
+    width: 100%;
+  }
+  .settingArea .input-area > view > view input{
+    font-size: 28rpx;
+    width: 150rpx;
+  }
+  .placeholder-class{
+    color:#CBCBCB;
+    font-size: 24rpx;
+  }
+  .settingArea .input-area view .icon-xiasanjiao{
+    font-size: 36rpx;
+    color: #909090;
+  }
+  .choice-area{
+    width: 100%;
+    padding: 20rpx;
+    background: #FFF;
+  }
+  .choice-area .l-area {
+    margin-right: 50rpx;
+  }
+  .choice-area .iconfont{
+    margin-right: 10rpx;
+    font-size: 36rpx;
+  }
+  .choice-area .icon-choosed2{
+    color: #FD9831;
+  }
+
+  .proShop{
+      margin-top: 20rpx;
+      background: #Fff;
+      padding: 0 20rpx;
+  }
+  .proShop .hint{
+    color:#757575;
+  }
