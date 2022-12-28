@@ -86,7 +86,8 @@
 		
 		"pages/questionnaire/questionnaire",
 		"pages/store/heart/heart",
-		"pages/eyeData/eyeData"
+		"pages/eyeData/eyeData",
+		"pages/buyEyeData/buyEyeData"
 	],
 	"window": {
 		"backgroundTextStyle": "light",

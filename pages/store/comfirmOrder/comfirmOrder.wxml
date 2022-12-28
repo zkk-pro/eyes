@@ -205,8 +205,12 @@
     <view wx:if="{{helpBuy == 1}}">
       <view class="help-item">
         <text class="label">照片</text>
-        <img src="src" alt="" />
-        <view class="upload-btn">上传照片</view>
+        <view class="upload-btn">
+          <image src="/static/images/example1.jpg" mode="aspectFit"></image>
+        </view>
+        <view class="upload-btn">
+          <image src="/static/images/example2.jpg" mode="aspectFit"></image>
+        </view>
       </view>
       <view class="help-item">
         <text class="label">品牌</text>

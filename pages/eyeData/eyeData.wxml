@@ -50,6 +50,7 @@
     </view>
   </view>
   <button class="add-btn" bindtap="addData">添加数据</button>
+  <navigator class="buy-more" url="/pages/buyEyeData/buyEyeData">购买更多数量</navigator>
 </view>
 
 <view class="edit-modal" wx:if="{{showModal}}">

@@ -71,6 +71,9 @@ Page({
     })
   },
   onConfirm() {
+    const currentData = this.data.currentData
+    console.log('currentData:', currentData)
+    // if(currentData.degree_left === '') return wx.showToast({title: '请输入完整数据'})
     if (this.data.isEdit) {
       this.udpateItemData()
     } else {

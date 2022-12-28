@@ -4,6 +4,7 @@ const CONFIG = {
      //BASE_URL: "https://qykj20.huimaibuy.com/public/"
       // BASE_URL: "https://jiujiumu.com/public/"
       BASE_URL: "http://39.98.49.123:8081/public/"
+      // BASE_URL: "https://test.jl.100glasses.cn/public/"
     //  BASE_URL: "http://test.host.jiujiumu.com/public/"
     //  BASE_URL: "http://old.test.jiujiumu.com/public/"
     },
